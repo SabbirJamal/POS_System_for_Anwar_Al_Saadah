@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login1"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:text="Anwar Al Saadah"
+        android:textColor="#FFFFFF"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="342dp"
+        android:layout_height="346dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="#4BE1E1E1"
+        app:layout_constraintVertical_bias="0.498">
+
+        <EditText
+            android:id="@+id/idtxt"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:textAlignment="center"
+            android:background="@color/black"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="55dp"
+            android:layout_marginLeft="95dp"
+            android:hint="Enter ID"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/pswdtxt"
+            android:textAlignment="center"
+            android:layout_width="190dp"
+            android:layout_height="61dp"
+            android:background="@color/black"
+            android:backgroundTint="@color/white"
+            android:hint="Enter Password"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="70dp"/>
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="250dp"
+            android:layout_marginLeft="90dp"
+            android:text="Login"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:backgroundTint="#5B6BC3"
+            />
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
