@@ -101,4 +101,10 @@ public class inventoryDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor inventoryclothdetails(String oid){
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+inventbl+" WHERE Company_number="+oid,null);
+        return cursor;
+    }
+
 }

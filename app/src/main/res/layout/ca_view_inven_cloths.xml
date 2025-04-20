@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/cloths">
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cloth Details"
+        android:textAlignment="center"
+        android:textSize="30dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="35dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -72,7 +79,6 @@
                 android:layout_marginTop="10dp"
                 android:text="Total Length :-" />
 
-
         </LinearLayout>
 
         <LinearLayout
@@ -82,63 +88,70 @@
             android:layout_marginStart="15dp"
             android:gravity="left">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="Cloth Name :-" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Supplier Name :-" />
+                android:text="Cloth Name :-"
+                android:id="@+id/clothname"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Number of Rolls :-" />
+                android:text="Supplier Name :-"
+                android:id="@+id/supname"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Roll Length :-" />
+                android:text="Number of Rolls :-"
+                android:id="@+id/nrolls"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Cloth Price Per Roll :-" />
+                android:text="Roll Length :-"
+                android:id="@+id/lrolls"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Delivery Date :-" />
+                android:text="Cloth Price Per Roll :-"
+                android:id="@+id/pproll"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Total Price :-" />
+                android:text="Delivery Date :-"
+                android:id="@+id/dd"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Total Length :-" />
+                android:text="Total Price :-"
+                android:id="@+id/totp"/>
 
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Total Length :-"
+                android:id="@+id/totl"/>
 
         </LinearLayout>
 

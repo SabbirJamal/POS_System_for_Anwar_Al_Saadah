@@ -26,7 +26,12 @@ public class advancedinvenview extends AppCompatActivity {
     String num,nam,em;
     customAdapter_inventory_comdetails ca1;
     ArrayList<String> cn,ce,conn;
-    RecyclerView rc1;
+    RecyclerView rc1,rc2;
+
+
+    //custom adapter for inventory cloths
+    customAdapter_inventory_clothdetails ca2;
+    ArrayList clothn, supn,numr,rl,pr,ddate,totprice,totlength;;
 
 
     //database
@@ -73,6 +78,25 @@ public class advancedinvenview extends AppCompatActivity {
 
         retrievingcomdetails();
 
+
+
+        //customAdapter for Cloth details
+        clothn=new ArrayList();
+        supn=new ArrayList<>();
+        numr=new ArrayList<>();
+        rl=new ArrayList<>();
+        pr=new ArrayList<>();
+        ddate=new ArrayList<>();
+        totprice=new ArrayList<>();
+        totlength=new ArrayList<>();
+        rc2=findViewById(R.id.recyclerView2);
+
+        ca2=new customAdapter_inventory_clothdetails(this,clothn, supn,numr,rl,pr,ddate,totprice,totlength);
+        rc2.setAdapter(ca2);
+        rc2.setLayoutManager(new LinearLayoutManager(advancedinvenview.this));
+
+        retrievingclothdetails();
+
     }
 
     public void retrievingcomdetails() {
@@ -86,6 +110,25 @@ public class advancedinvenview extends AppCompatActivity {
             cn.add(c.getString(1));
             ce.add(c.getString(2));
             conn.add(c.getString(3));
+        }
+    }
+
+    public void retrievingclothdetails(){
+        String oid=o.getText().toString();
+        Cursor c=idb.inventoryclothdetails(oid);
+        if(c.getCount()==0){
+            Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
+        }
+        StringBuffer sb=new StringBuffer();
+        while (c.moveToNext()){
+            clothn.add(c.getString(1));
+            supn.add(c.getString(1));
+            numr.add(c.getString(1));
+            rl.add(c.getString(1));
+            pr.add(c.getString(1));
+            ddate.add(c.getString(1));
+            totprice.add(c.getString(1));
+            totlength.add(c.getString(1));
         }
     }
 }
