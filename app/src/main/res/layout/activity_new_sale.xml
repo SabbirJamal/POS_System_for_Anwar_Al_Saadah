@@ -255,41 +255,99 @@
                     android:orientation="vertical"
                     android:paddingLeft="15dp">
 
+                    <TextView
+                        android:id="@+id/dressprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="16dp"
+                        android:text="4"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/moriollaprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="19dp"
+                        android:text="5"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/khameezprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="20dp"
+                        android:text="4"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/anabiprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="21dp"
+                        android:text="4"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/shailaprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="21dp"
+                        android:text="4"
+                        android:textSize="20dp" />
+
+
+                    <TextView
+                        android:id="@+id/mundeelprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="21dp"
+                        android:text="3"
+                        android:textSize="20dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="15dp">
+
                     <EditText
                         android:id="@+id/dressquantity"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:hint="Quantity" />
+                        android:hint="QTY" />
 
                     <EditText
                         android:id="@+id/moriollaquantity"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:hint="Quantity" />
+                        android:hint="QTY" />
 
                     <EditText
                         android:id="@+id/khameezquantity"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:hint="Quantity" />
+                        android:hint="QTY" />
 
                     <EditText
                         android:id="@+id/anabiquantity"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:hint="Quantity" />
+                        android:hint="QTY" />
 
                     <EditText
                         android:id="@+id/shailaquantity"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:hint="Quantity" />
+                        android:hint="QTY" />
 
                     <EditText
                         android:id="@+id/mundeelquantity"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:hint="Quantity" />
+                        android:hint="QTY" />
 
                 </LinearLayout>
 
@@ -353,6 +411,7 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/calc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Calculate"
