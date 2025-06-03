@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Finalyearproject"
         tools:targetApi="31">
         <activity
+            android:name=".newSale"
+            android:exported="false" />
+        <activity
+            android:name=".employeeHomePage"
+            android:exported="false" />
+        <activity
             android:name=".advancedinvenview"
             android:exported="false" />
         <activity
