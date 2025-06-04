@@ -198,17 +198,28 @@
                 android:layout_marginTop="340dp"
                 android:orientation="horizontal">
 
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
-                    android:orientation="vertical"
-                    android:paddingLeft="15dp">
+                    android:layout_marginStart="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="Items"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textAlignment="center"/>
+
 
                     <CheckBox
                         android:id="@+id/cbdress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="Dress"
                         android:textSize="16sp" />
 
@@ -250,38 +261,52 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="15dp">
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="7dp"
+                        android:text="Price"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textAlignment="center"/>
+
 
                     <TextView
                         android:id="@+id/dressprice"
-                        android:layout_width="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="16dp"
-                        android:text="4"
+                        android:paddingTop="19dp"
+                        android:text="8"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/moriollaprice"
-                        android:layout_width="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="19dp"
+                        android:paddingTop="22dp"
                         android:text="5"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/khameezprice"
-                        android:layout_width="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="20dp"
+                        android:paddingTop="21dp"
                         android:text="4"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/anabiprice"
-                        android:layout_width="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="21dp"
                         android:text="4"
@@ -289,7 +314,8 @@
 
                     <TextView
                         android:id="@+id/shailaprice"
-                        android:layout_width="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="21dp"
                         android:text="4"
@@ -298,7 +324,8 @@
 
                     <TextView
                         android:id="@+id/mundeelprice"
-                        android:layout_width="wrap_content"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="21dp"
                         android:text="3"
@@ -308,46 +335,61 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="15dp">
+                    android:paddingLeft="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="7dp"
+                        android:text="QTY"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textAlignment="center"/>
 
                     <EditText
                         android:id="@+id/dressquantity"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="48dp"
-                        android:hint="QTY" />
+                        android:text="0" />
 
                     <EditText
                         android:id="@+id/moriollaquantity"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="48dp"
-                        android:hint="QTY" />
+                        android:text="0"  />
 
                     <EditText
                         android:id="@+id/khameezquantity"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="48dp"
-                        android:hint="QTY" />
+                        android:text="0"  />
 
                     <EditText
                         android:id="@+id/anabiquantity"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="48dp"
-                        android:hint="QTY" />
+                        android:text="0"  />
 
                     <EditText
                         android:id="@+id/shailaquantity"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="48dp"
-                        android:hint="QTY" />
+                        android:text="0"  />
 
                     <EditText
                         android:id="@+id/mundeelquantity"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="48dp"
-                        android:hint="QTY" />
+                        android:text="0"  />
 
                 </LinearLayout>
 
@@ -358,51 +400,66 @@
                     android:paddingLeft="15dp">
 
                     <TextView
-                        android:id="@+id/dresstotamt"
                         android:layout_width="wrap_content"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="7dp"
+                        android:text="Amount"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:textAlignment="center"/>
+
+                    <TextView
+                        android:id="@+id/dresstotamt"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="wrap_content"
                         android:paddingTop="16dp"
-                        android:text="Total Amount"
+                        android:text="0"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/moriollatotamt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="wrap_content"
                         android:paddingTop="19dp"
-                        android:text="Total Amount"
+                        android:text="0"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/khameeztotamt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="wrap_content"
                         android:paddingTop="20dp"
-                        android:text="Total Amount"
+                        android:text="0"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/anabitotamt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="wrap_content"
                         android:paddingTop="21dp"
-                        android:text="Total Amount"
+                        android:text="0"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/shailatotamt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="wrap_content"
                         android:paddingTop="21dp"
-                        android:text="Total Amount"
+                        android:text="0"
                         android:textSize="20dp" />
 
                     <TextView
                         android:id="@+id/mundeeltotamt"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:textAlignment="center"
                         android:layout_height="wrap_content"
                         android:paddingTop="21dp"
-                        android:text="Total Amount"
+                        android:text="0"
                         android:textSize="20dp" />
 
 
@@ -415,7 +472,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Calculate"
-                android:layout_marginTop="650dp"
+                android:layout_marginTop="680dp"
                 android:layout_marginStart="150dp"/>
 
 
