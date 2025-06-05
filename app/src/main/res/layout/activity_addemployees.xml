@@ -21,8 +21,8 @@
         app:layout_constraintVertical_bias="0.047" />
 
     <ScrollView
-        android:layout_width="410dp"
-        android:layout_height="636dp"
+        android:layout_width="404dp"
+        android:layout_height="707dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -35,89 +35,84 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="12dp"
                 android:text="Employee Name"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
             <EditText
                 android:id="@+id/ntxt"
-                android:layout_marginLeft="200dp"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
                 android:hint="Name"
                 android:textSize="25dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_marginTop="85dp"
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="85dp"
                 android:text="Phone Number"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
             <EditText
                 android:id="@+id/phntxt"
-                android:layout_marginTop="65dp"
-                android:layout_marginLeft="200dp"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="65dp"
                 android:hint="Phone Number"
                 android:textSize="25dp" />
 
             <TextView
-                android:layout_marginTop="158dp"
-                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="158dp"
                 android:text="Date of Joining"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
             <EditText
                 android:id="@+id/dateofjoining"
-                android:layout_marginTop="140dp"
-                android:layout_marginLeft="200dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:layout_marginTop="140dp"
                 android:hint="Date of Joining"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
             <TextView
-                android:layout_marginTop="230dp"
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="230dp"
                 android:text="Employee Type"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
             <TextView
                 android:id="@+id/emptype"
-                android:layout_marginTop="230dp"
-                android:layout_marginStart="200dp"
                 android:layout_width="150dp"
-                android:textAlignment="center"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:layout_marginStart="200dp"
+                android:layout_marginTop="230dp"
                 android:text="Select..."
-                android:textSize="25dp" />
+                android:textAlignment="center"
+                android:textSize="25dp"
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="300dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="270dp"
                 android:layout_marginStart="50dp"
+                android:layout_marginTop="270dp"
                 android:backgroundTint="#59158782">
 
                 <RadioGroup
@@ -131,114 +126,109 @@
                         android:layout_marginTop="5dp"
                         android:text="Sales Man"
                         android:textSize="20dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <RadioButton
                         android:id="@+id/rb2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="-48dp"
                         android:layout_marginStart="200dp"
+                        android:layout_marginTop="-48dp"
                         android:text="Tailor"
                         android:textSize="20dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                 </RadioGroup>
-
 
 
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:layout_marginTop="360dp"
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="360dp"
                 android:text="Employee Salary"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
             <EditText
                 android:id="@+id/stxt"
-                android:layout_marginTop="340dp"
-                android:layout_marginStart="210dp"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="210dp"
+                android:layout_marginTop="340dp"
                 android:hint="Salary"
                 android:textSize="25dp" />
 
             <TextView
-                android:layout_marginTop="433dp"
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="433dp"
                 android:text="Employee Age"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
             <EditText
                 android:id="@+id/atxt"
-                android:layout_marginTop="415dp"
-                android:layout_marginStart="210dp"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="210dp"
+                android:layout_marginTop="415dp"
                 android:hint="Age"
                 android:textSize="25dp" />
 
             <TextView
-                android:layout_marginTop="506dp"
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="506dp"
                 android:text="Password"
-                android:textSize="25dp"
-                />
+                android:textSize="25dp" />
 
             <EditText
                 android:id="@+id/pastxt"
-                android:layout_marginTop="490dp"
-                android:layout_marginStart="210dp"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="210dp"
+                android:layout_marginTop="490dp"
                 android:hint="Password"
                 android:textSize="25dp" />
 
             <TextView
-                android:layout_marginTop="579dp"
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="579dp"
                 android:text="Confirm Password"
-                android:textSize="23dp"
-                />
+                android:textSize="23dp" />
 
             <EditText
                 android:id="@+id/cptxt"
-                android:layout_marginTop="560dp"
-                android:layout_marginStart="210dp"
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
+                android:layout_marginStart="210dp"
+                android:layout_marginTop="560dp"
                 android:hint="Confirm Pass"
-                android:textSize="23dp"/>
+                android:inputType="textPassword"
+                android:textSize="23dp" />
 
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="652dp"
                 android:layout_marginStart="35dp"
+                android:layout_marginTop="652dp"
                 android:text="Cancel"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
 
             <Button
                 android:id="@+id/addemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="652dp"
                 android:layout_marginStart="190dp"
+                android:layout_marginTop="652dp"
                 android:text="Add Emplyee"
-                android:textSize="25dp"/>
+                android:textSize="25dp" />
 
         </RelativeLayout>
 

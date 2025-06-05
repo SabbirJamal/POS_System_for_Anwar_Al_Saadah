@@ -154,6 +154,7 @@
                     android:layout_marginTop="200dp">
 
                     <EditText
+                        android:id="@+id/customerphonenum"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginTop="-11dp"
@@ -162,7 +163,7 @@
                         />
 
                     <TextView
-                        android:id="@+id/custname"
+                        android:id="@+id/customername"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="10dp"
@@ -170,7 +171,7 @@
                         android:textSize="20dp"/>
 
                     <TextView
-                        android:id="@+id/custemail"
+                        android:id="@+id/customeremail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="10dp"
@@ -467,12 +468,36 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Amount :"
+                    android:layout_marginTop="680dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/totamt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="680dp"
+                    android:paddingLeft="15dp"
+                    android:text="Total Amount"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/calc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Calculate"
-                android:layout_marginTop="680dp"
+                android:layout_marginTop="780dp"
                 android:layout_marginStart="150dp"/>
 
 

@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class inventoryDatabase extends SQLiteOpenHelper {
 
     public static final String invendb="inventory.db";
@@ -105,6 +108,22 @@ public class inventoryDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery("SELECT * FROM "+inventbl+" WHERE Company_number="+oid,null);
         return cursor;
+    }
+
+    public List<String> getCLothname() {
+        List<String> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT cloth_name FROM inventory_details", null);
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(0));  // 0 = first column in result
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return list;
     }
 
 }

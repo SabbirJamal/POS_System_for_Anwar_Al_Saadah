@@ -36,6 +36,9 @@ public class newSale extends AppCompatActivity {
     //button for calculation
     Button c;
 
+    //finding total amt textview
+    TextView ta;
+
     //finding the calc java class
     private salecalculation sc;
 
@@ -50,8 +53,8 @@ public class newSale extends AppCompatActivity {
             return insets;
         });
         //finding name and email field of customer
-        name=findViewById(R.id.custname);
-        email=findViewById(R.id.custemail);
+        name=findViewById(R.id.customername);
+        email=findViewById(R.id.customeremail);
 
 
         //finding checkboxes
@@ -85,6 +88,9 @@ public class newSale extends AppCompatActivity {
         ap=findViewById(R.id.anabiprice);
         sp=findViewById(R.id.shailaprice);
         munp=findViewById(R.id.mundeelprice);
+
+        //finding total amt text view
+        ta=findViewById(R.id.totamt);
 
         sc=new salecalculation();
 
@@ -187,6 +193,9 @@ public class newSale extends AppCompatActivity {
                 at.setText(""+c4);
                 st.setText(""+c5);
                 munt.setText(""+c6);
+
+                Double totalamount=c1+c2+c3+c4+c5+c6;
+                ta.setText("OMR "+totalamount);
 
             }
         });
