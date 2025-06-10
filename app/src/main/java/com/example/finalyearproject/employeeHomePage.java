@@ -59,29 +59,8 @@ public class employeeHomePage extends AppCompatActivity {
         if(getIntent().hasExtra("phn")){
             phonenumber=getIntent().getStringExtra("phn");
         }
-        //start of intent of order, sale,resize
-        sale=findViewById(R.id.newSale);
-        order=findViewById(R.id.newOrder);
 
-        sale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(employeeHomePage.this, newSale.class);
-                //send phone number data
-                intent.putExtra("phn",phonenumber);
-                startActivity(intent);
-            }
-        });
 
-        order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(employeeHomePage.this, newOrder.class);
-                //send phone number data
-                intent.putExtra("phn",phonenumber);
-                startActivity(intent);
-            }
-        });
 
         //getting intented phone number
         if(getIntent().hasExtra("phn")){
@@ -89,16 +68,7 @@ public class employeeHomePage extends AppCompatActivity {
         }
 
         //move to resize page
-        resize=findViewById(R.id.newResize);
-        resize.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(employeeHomePage.this, new_resize.class);
-                //send phone number data
-                intent.putExtra("phn",phonenumber);
-                startActivity(intent);
-            }
-        });
+
 
 
 
