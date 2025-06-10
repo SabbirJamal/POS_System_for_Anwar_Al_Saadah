@@ -1,5 +1,6 @@
 package com.example.finalyearproject;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class employeeHomePage extends AppCompatActivity {
     //calling database
     empdatabase empdb;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,11 @@ public class employeeHomePage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //getting intented phone number
+        if(getIntent().hasExtra("phn")){
+            phonenumber=getIntent().getStringExtra("phn");
+        }
         //start of intent of order, sale,resize
         sale=findViewById(R.id.newSale);
         order=findViewById(R.id.newOrder);
@@ -56,6 +63,8 @@ public class employeeHomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(employeeHomePage.this, newSale.class);
+                //send phone number data
+                intent.putExtra("phn",phonenumber);
                 startActivity(intent);
             }
         });
@@ -64,12 +73,13 @@ public class employeeHomePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(employeeHomePage.this, newOrder.class);
+                //send phone number data
+                intent.putExtra("phn",phonenumber);
                 startActivity(intent);
             }
         });
 
         //getting intented phone number
-        phn=findViewById(R.id.employeephonenumber);
         if(getIntent().hasExtra("phn")){
             phonenumber=getIntent().getStringExtra("phn");
         }
@@ -80,6 +90,8 @@ public class employeeHomePage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(employeeHomePage.this, new_resize.class);
+                //send phone number data
+                intent.putExtra("phn",phonenumber);
                 startActivity(intent);
             }
         });
@@ -94,7 +106,7 @@ public class employeeHomePage extends AppCompatActivity {
         emptype=new ArrayList<>();
         empid=new ArrayList<>();
 
-        storedatainarrays();
+        viewheaderdetails();
 
         ca1=new customAdapterEmployePage_topDetails(employeeHomePage.this,empname,emptype,empid);
         rc1.setAdapter(ca1);
@@ -104,17 +116,17 @@ public class employeeHomePage extends AppCompatActivity {
     }
 
     //code for retreving and displaying header details
-    public void storedatainarrays(){
-        Cursor cursor= empdb.allempdata();
-        if (cursor.getCount()==0){
+    public void viewheaderdetails(){
+        Cursor c=empdb.viewepecificempdata(phonenumber);
+        if(c.getCount()==0){
             Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
         }
-        else{
-            while (cursor.moveToNext()){
-                empname.add(cursor.getString(0));
-                emptype.add(cursor.getString(3));
-                empid.add(cursor.getString(1));
-            }
+        StringBuffer sb=new StringBuffer();
+        while (c.moveToNext())
+        {
+            empname.add(c.getString(0));
+            emptype.add(c.getString(3));
+            empid.add(c.getString(1));
         }
     }
 

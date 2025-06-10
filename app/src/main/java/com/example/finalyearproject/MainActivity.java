@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         phn=findViewById(R.id.phntxt);
-        pass=findViewById(R.id.txtpass);
+        pass=findViewById(R.id.pswdtxt);
         log=findViewById(R.id.login);
         log.setOnClickListener(new View.OnClickListener() {
             @Override

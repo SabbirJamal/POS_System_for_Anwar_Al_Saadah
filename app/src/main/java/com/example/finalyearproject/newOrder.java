@@ -1,6 +1,7 @@
 package com.example.finalyearproject;
 
 import android.app.DatePickerDialog;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -8,15 +9,19 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +44,17 @@ public class newOrder extends AppCompatActivity {
     //edittext for delivery date
     EditText deliverydate;
     final Calendar mycalender =Calendar.getInstance();
+    String phonenumber;
+
+    //top header part
+    RecyclerView rc1;
+    customAdapterEmployePage_topDetails ca1;
+    ArrayList<String> empname,emptype,empid;
+
+
+    //calling database
+    empdatabase empdb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,38 +67,10 @@ public class newOrder extends AppCompatActivity {
             return insets;
         });
 
-        //finding Spinner
-        categorySpinner=findViewById(R.id.clothcategorySpinner);
-
-        //initializing database
-        ivnDB=new inventoryDatabase(this);
-
-        List<String> clothcategory=ivnDB.getCLothname();
-
-        ArrayAdapter<String> clothnameadapter=new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item,clothcategory);
-        clothnameadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(clothnameadapter);
-
-        //end of drop down list for cloth selection
-
-
-        //start of current date and time
-        //finding the fields
-        cdate=findViewById(R.id.currentdate);
-
-        // Get current date and time
-        Date currentDate = new Date();
-
-        // Format date
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
-
-        // Set to EditTexts
-        cdate.setText(dateFormat.format(currentDate));
-        String  ct=timeFormat.format(currentDate);
-        //end of current time and date
-
+        //intended phone number
+        if(getIntent().hasExtra("phn")){
+            phonenumber=getIntent().getStringExtra("phn");
+        }
 
 
         //calculation and setting balance amount
@@ -129,5 +117,37 @@ public class newOrder extends AppCompatActivity {
 
 
 
+        //start of top header coding
+        //locating
+        rc1=findViewById(R.id.recyclerView);
+        empdb=new empdatabase(this);
+        empname=new ArrayList<>();
+        emptype=new ArrayList<>();
+        empid=new ArrayList<>();
+
+        viewheaderdetails();
+
+        ca1=new customAdapterEmployePage_topDetails(newOrder.this,empname,emptype,empid);
+        rc1.setAdapter(ca1);
+        rc1.setLayoutManager(new LinearLayoutManager(newOrder.this));
+        //end of it
+
+
+    }
+
+
+    //code for retreving and displaying header details
+    public void viewheaderdetails(){
+        Cursor c=empdb.viewepecificempdata(phonenumber);
+        if(c.getCount()==0){
+            Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
+        }
+        StringBuffer sb=new StringBuffer();
+        while (c.moveToNext())
+        {
+            empname.add(c.getString(0));
+            emptype.add(c.getString(3));
+            empid.add(c.getString(1));
+        }
     }
 }
