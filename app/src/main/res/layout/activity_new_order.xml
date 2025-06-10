@@ -30,11 +30,12 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent">
+
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView3"
-                    android:layout_width="350dp"
+                    android:layout_width="360dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="50dp"
                     app:cardCornerRadius="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -81,19 +82,41 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingStart="10dp"
-                            android:paddingTop="5dp">
+                            android:paddingTop="5dp"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Employee ID :"/>
+                                android:text="Employee ID :" />
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Employee ID:"/>
+                                android:text="Date......." />
 
                         </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:paddingTop="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Employee " />
+
+                            <TextView
+                                android:id="@+id/currentdate"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Date......." />
+
+                        </LinearLayout>
+
 
                     </LinearLayout>
 
@@ -118,7 +141,7 @@
                 <LinearLayout
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="200dp">
 
@@ -130,22 +153,6 @@
                         android:text="Phone number :"
                         android:textSize="20dp"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="10dp"
-                        android:textAlignment="textEnd"
-                        android:text="Name :"
-                        android:textSize="20dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
-                        android:paddingBottom="10dp"
-                        android:text="Email :"
-                        android:textSize="20dp"/>
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -154,7 +161,6 @@
                     android:orientation="vertical"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="200dp">
-
                     <EditText
                         android:id="@+id/customerphonenum"
                         android:layout_width="match_parent"
@@ -163,23 +169,6 @@
                         android:paddingBottom="10dp"
                         android:hint="Phone Number"
                         />
-
-                    <TextView
-                        android:id="@+id/customername"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="10dp"
-                        android:text="Name :"
-                        android:textSize="20dp"/>
-
-                    <TextView
-                        android:id="@+id/customeremail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingBottom="10dp"
-                        android:text="Email :"
-                        android:textSize="20dp"/>
-
                 </LinearLayout>
 
             </LinearLayout>
@@ -218,15 +207,11 @@
 
 
 
-
-
-
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="350dp"
+                android:layout_marginTop="260dp"
                 android:layout_marginStart="5dp">
 
                 <LinearLayout
@@ -243,6 +228,14 @@
                         android:text="Design Number :"
                         android:textSize="20dp"/>
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:paddingTop="15dp"
+                        android:text="Cloth Name :"
+                        android:textSize="20dp"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -250,6 +243,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:paddingLeft="10dp">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Number"
+                        android:layout_marginTop="-2dp"
+                        android:textSize="20dp"/>
 
                     <Spinner
                         android:id="@+id/clothcategorySpinner"
@@ -260,13 +260,12 @@
 
 
 
-
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="420dp"
+                android:layout_marginTop="380dp"
                 android:text="Measurement"
                 android:textSize="20dp"
                 android:textAlignment="center"/>
@@ -275,10 +274,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="450dp"
+                android:layout_marginTop="410dp"
                 android:layout_marginStart="5dp">
-
-
 
                 <LinearLayout
                     android:layout_width="150dp"
@@ -416,14 +413,112 @@
 
             <EditText
                 android:layout_width="350dp"
-                android:layout_height="250dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="850dp"
+                android:layout_marginTop="820dp"
                 android:hint="Additional Information"/>
 
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="890dp">
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:paddingTop="20dp"
+                        android:text="Total Amount :"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:paddingTop="20dp"
+                        android:text="Advance :"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:paddingTop="20dp"
+                        android:text="Balance :"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textEnd"
+                        android:paddingTop="12dp"
+                        android:text="Delivery Date :"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp">
+
+                    <EditText
+                        android:id="@+id/totalpayableamount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:hint="0"
+                        android:textSize="20dp"/>
+
+                    <EditText
+                        android:id="@+id/advancepayableamount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-2dp"
+                        android:hint="0"
+                        android:textSize="20dp"/>
+
+                    <EditText
+                        android:id="@+id/balancepayableamount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="0"
+                        android:textSize="20dp"/>
+
+                    <EditText
+                        android:id="@+id/deliveryDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-5dp"
+                        android:hint="0"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
 
 
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order"
+                android:layout_marginTop="1100dp"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reciept"/>
 
 
         </RelativeLayout>
