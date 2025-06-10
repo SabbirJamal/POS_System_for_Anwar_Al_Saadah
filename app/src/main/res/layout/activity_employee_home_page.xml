@@ -148,126 +148,36 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
+            <Button
+                android:id="@+id/newSale"
                 android:layout_width="100dp"
-                android:layout_height="60dp"
+                android:layout_marginTop="145dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="115dp"
-                android:backgroundTint="#E8E4E4"
+                android:backgroundTint="#807D7D"
                 app:cardCornerRadius="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.128"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.159">
+                android:text="New Sale"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Number" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pending" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Orders" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
+            <Button
+                android:id="@+id/newOrder"
                 android:layout_width="100dp"
-                android:layout_height="60dp"
+                android:layout_marginTop="145dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="160dp"
-                android:layout_marginTop="115dp"
-                android:backgroundTint="#E8E4E4"
+                android:backgroundTint="#807D7D"
                 app:cardCornerRadius="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.26"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.159">
+                android:text="New Order"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Number" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pending" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Orders" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
+            <Button
+                android:id="@+id/newResize"
                 android:layout_width="100dp"
-                android:layout_height="60dp"
+                android:layout_marginTop="145dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="280dp"
-                android:layout_marginTop="115dp"
-                android:backgroundTint="#E8E4E4"
+                android:backgroundTint="#807D7D"
                 app:cardCornerRadius="100dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.639"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.159">
+                android:text="New Resize"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Number" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pending" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Orders" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView

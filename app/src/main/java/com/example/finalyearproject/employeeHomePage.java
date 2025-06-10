@@ -1,14 +1,21 @@
 package com.example.finalyearproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class employeeHomePage extends AppCompatActivity {
+
+    //finding intent to order,sale and resize
+    Button sale,order,resize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +27,27 @@ public class employeeHomePage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //start of intent of order, sale,resize
+        sale=findViewById(R.id.newSale);
+        order=findViewById(R.id.newOrder);
+        resize=findViewById(R.id.newResize);
+
+        sale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(employeeHomePage.this, newSale.class);
+                startActivity(intent);
+            }
+        });
+
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(employeeHomePage.this, newOrder.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
