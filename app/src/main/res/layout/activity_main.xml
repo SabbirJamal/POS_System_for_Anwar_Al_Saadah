@@ -38,7 +38,7 @@
         app:layout_constraintVertical_bias="0.498">
 
         <EditText
-            android:id="@+id/idtxt"
+            android:id="@+id/phntxt"
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:textAlignment="center"
@@ -46,7 +46,7 @@
             android:backgroundTint="@color/white"
             android:layout_marginTop="55dp"
             android:layout_marginLeft="95dp"
-            android:hint="Enter ID"
+            android:hint="Phone Number"
             android:textSize="20dp"
             android:textStyle="bold" />
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,10 @@ public class employeeHomePage extends AppCompatActivity {
 
     //finding intent to order,sale and resize
     Button sale,order,resize;
+
+    //finding field for getting intended data
+    TextView phn;
+    String phonenumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,12 @@ public class employeeHomePage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //getting intented phone number
+        phn=findViewById(R.id.employeephonenumber);
+        if(getIntent().hasExtra("phn")){
+            phonenumber=getIntent().getStringExtra("phn");
+        }
 
 
     }
