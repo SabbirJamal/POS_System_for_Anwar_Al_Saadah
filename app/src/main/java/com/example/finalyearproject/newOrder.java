@@ -3,8 +3,10 @@ package com.example.finalyearproject;
 import android.app.DatePickerDialog;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -54,6 +56,21 @@ public class newOrder extends AppCompatActivity {
 
     //calling database
     empdatabase empdb;
+
+    //finding all columns for adding new order
+    EditText phn,name,design,h,wc,wh,s,b,hl,arms,waist,adinfo;
+
+    //drop down list
+    Spinner itemSpinner;
+    inventoryDatabase invdb;
+
+    //order database
+    orderDatabase odb;
+
+    //button for order
+    Button order;
+
+    TextView employeename,employeetype,employeeid;
 
 
     @Override
@@ -116,7 +133,21 @@ public class newOrder extends AppCompatActivity {
         });
 
 
+        //finding Spinner
+        categorySpinner=findViewById(R.id.clothcategorySpinner);
 
+        //initializing database
+        ivnDB=new inventoryDatabase(this);
+
+        List<String> clothcategory=ivnDB.getCLothname();
+
+        ArrayAdapter<String> clothnameadapter=new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item,clothcategory);
+        clothnameadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(clothnameadapter);
+        //end of dropdownlist
+
+        /*
         //start of top header coding
         //locating
         rc1=findViewById(R.id.recyclerView);
@@ -125,12 +156,85 @@ public class newOrder extends AppCompatActivity {
         emptype=new ArrayList<>();
         empid=new ArrayList<>();
 
-        viewheaderdetails();
-
         ca1=new customAdapterEmployePage_topDetails(newOrder.this,empname,emptype,empid);
         rc1.setAdapter(ca1);
         rc1.setLayoutManager(new LinearLayoutManager(newOrder.this));
+
+        viewheaderdetails();
+
         //end of it
+
+         */
+
+        employeename=findViewById(R.id.fullnametxt);
+        employeetype=findViewById(R.id.employeetypetxt);
+        employeeid=findViewById(R.id.employeeidtxt);
+
+        //code for getting intended data
+        if(getIntent().hasExtra("ename") && getIntent().hasExtra("etype") && getIntent().hasExtra("eid")) {
+            //getting the data from intent
+            String n = getIntent().getStringExtra("ename");
+            String et = getIntent().getStringExtra("etype");
+            String id = getIntent().getStringExtra("eid");
+
+            //setting intended data
+            employeename.setText(n);
+            employeetype.setText(et);
+            employeeid.setText(id);
+
+            Log.d("sample",n+" "+et+" "+id);
+        }else{
+            Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
+        }
+
+
+
+        //Finding all editextfields for adding
+        phn=findViewById(R.id.customerphonenum);
+        name=findViewById(R.id.customername);
+        design=findViewById(R.id.clothdesignnumber);
+        h=findViewById(R.id.heighttxt);
+        wc=findViewById(R.id.widthctxt);
+        wh=findViewById(R.id.widthhtxt);
+        s=findViewById(R.id.shoulderstxt);
+        b=findViewById(R.id.backtxt);
+        hl=findViewById(R.id.handtxt);
+        arms=findViewById(R.id.armstxt);
+        waist=findViewById(R.id.waisttxt);
+        adinfo=findViewById(R.id.additionalinfottxt);
+
+        //finding order button
+        order=findViewById(R.id.placeorder);
+
+        //database call
+        odb=new orderDatabase(this);
+
+        //code start for inserting new order
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String p=phn.getText().toString();
+                String n=name.getText().toString();
+                String dn=design.getText().toString();
+                String clth=categorySpinner.getSelectedItem().toString();
+                String he=h.getText().toString();
+                String wic=wc.getText().toString();
+                String wih=wh.getText().toString();
+                String sh=s.getText().toString();
+                String ba=b.getText().toString();
+                String hal=hl.getText().toString();
+                String a=arms.getText().toString();
+                String w=waist.getText().toString();
+                String ai=adinfo.getText().toString();
+                String tamt=tot.getText().toString();
+                String ad=adv.getText().toString();;
+                String bamt=bal.getText().toString();
+                //String en=empname.getText
+            }
+        });
+
+
+
 
 
     }
@@ -148,6 +252,7 @@ public class newOrder extends AppCompatActivity {
             empname.add(c.getString(0));
             emptype.add(c.getString(3));
             empid.add(c.getString(1));
+
         }
     }
 }

@@ -80,9 +80,9 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView3"
                     android:layout_width="350dp"
-                    android:layout_height="60dp"
+                    android:layout_height="120dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="30dp"
                     app:cardCornerRadius="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -101,43 +101,13 @@
 
             </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/newSale"
-                android:layout_width="100dp"
-                android:layout_marginTop="145dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:backgroundTint="#807D7D"
-                app:cardCornerRadius="100dp"
-                android:text="New Sale"/>
-
-            <Button
-                android:id="@+id/newOrder"
-                android:layout_width="100dp"
-                android:layout_marginTop="145dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="160dp"
-                android:backgroundTint="#807D7D"
-                app:cardCornerRadius="100dp"
-                android:text="New Order"/>
-
-            <Button
-                android:id="@+id/newResize"
-                android:layout_width="100dp"
-                android:layout_marginTop="145dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="280dp"
-                android:backgroundTint="#807D7D"
-                app:cardCornerRadius="100dp"
-                android:text="New Resize"/>
-
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="220dp">
+                android:layout_marginTop="170dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -149,7 +119,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="250dp"
                     android:layout_marginTop="10dp" />
 
             </androidx.cardview.widget.CardView>

@@ -2,6 +2,8 @@ package com.example.finalyearproject;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,6 +29,9 @@ public class new_resize extends AppCompatActivity {
     //calling database
     empdatabase empdb;
 
+    //header
+    TextView employeename,employeetype,employeeid;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,7 @@ public class new_resize extends AppCompatActivity {
         if(getIntent().hasExtra("phn")){
             phonenumber=getIntent().getStringExtra("phn");
         }
-
+/*
         //start of top header coding
         //locating
         rc1=findViewById(R.id.recyclerView);
@@ -59,9 +64,32 @@ public class new_resize extends AppCompatActivity {
         rc1.setLayoutManager(new LinearLayoutManager(new_resize.this));
         //end of it
 
+ */
+
+        employeename=findViewById(R.id.fullnametxt);
+        employeetype=findViewById(R.id.employeetypetxt);
+        employeeid=findViewById(R.id.employeeidtxt);
+
+        //code for getting intended data
+        if(getIntent().hasExtra("ename") && getIntent().hasExtra("etype") && getIntent().hasExtra("eid")) {
+            //getting the data from intent
+            String n = getIntent().getStringExtra("ename");
+            String et = getIntent().getStringExtra("etype");
+            String id = getIntent().getStringExtra("eid");
+
+            //setting intended data
+            employeename.setText(n);
+            employeetype.setText(et);
+            employeeid.setText(id);
+
+            Log.d("sample",n+" "+et+" "+id);
+        }else{
+            Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
+        }
+
 
     }
-
+/*
     //code for retreving and displaying header details
     public void viewheaderdetails(){
         Cursor c=empdb.viewepecificempdata(phonenumber);
@@ -76,6 +104,8 @@ public class new_resize extends AppCompatActivity {
             empid.add(c.getString(1));
         }
     }
+
+ */
 
 
 

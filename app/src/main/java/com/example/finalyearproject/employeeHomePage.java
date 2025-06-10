@@ -39,6 +39,10 @@ public class employeeHomePage extends AppCompatActivity {
     //calling database
     empdatabase empdb;
 
+    //header fields
+    TextView employeename,employeetype,employeeid;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +117,13 @@ public class employeeHomePage extends AppCompatActivity {
         rc1.setLayoutManager(new LinearLayoutManager(employeeHomePage.this));
 
 
+        employeename=findViewById(R.id.fullnametxt);
+        employeetype=findViewById(R.id.employeetypetxt);
+        employeeid=findViewById(R.id.employeeidtxt);
+
+
     }
+
 
     //code for retreving and displaying header details
     public void viewheaderdetails(){
@@ -129,5 +139,6 @@ public class employeeHomePage extends AppCompatActivity {
             empid.add(c.getString(1));
         }
     }
+
 
 }

@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.sql.SQLDataException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class empdatabase extends SQLiteOpenHelper {
     public static final String empdb="employeedatabase.db";
@@ -79,6 +81,10 @@ public class empdatabase extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor=db.rawQuery("SELECT * FROM "+emptbl+" WHERE Phone_Number="+phn,null);
         return cursor;
+    }
+    public Cursor getEmployeeById(String empId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT Employee_Name,Employee_Type,Phone_Number FROM Employee_Database WHERE Phone_Number = ?", new String[]{empId});
     }
 }
 
