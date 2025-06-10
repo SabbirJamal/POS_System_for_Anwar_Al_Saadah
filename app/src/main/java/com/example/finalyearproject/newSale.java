@@ -54,7 +54,6 @@ public class newSale extends AppCompatActivity {
         });
         //finding name and email field of customer
         name=findViewById(R.id.customername);
-        email=findViewById(R.id.customeremail);
 
 
         //finding checkboxes

@@ -35,7 +35,6 @@ public class employeeHomePage extends AppCompatActivity {
         //start of intent of order, sale,resize
         sale=findViewById(R.id.newSale);
         order=findViewById(R.id.newOrder);
-        resize=findViewById(R.id.newResize);
 
         sale.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +57,16 @@ public class employeeHomePage extends AppCompatActivity {
         if(getIntent().hasExtra("phn")){
             phonenumber=getIntent().getStringExtra("phn");
         }
+
+        //move to resize page
+        resize=findViewById(R.id.newResize);
+        resize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(employeeHomePage.this, new_resize.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
