@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 //send phone number data
                 intent.putExtra("phn",phn.getText().toString());
                 startActivity(intent);
-                
+
             }
         });
 
