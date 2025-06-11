@@ -33,9 +33,9 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView3"
-                    android:layout_width="350dp"
+                    android:layout_width="380dp"
                     android:layout_height="60dp"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="50dp"
                     app:cardCornerRadius="5dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -81,10 +81,11 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingStart="10dp"
-                            android:paddingTop="5dp">
+                            android:paddingStart="20dp"
+                            android:paddingTop="5dp"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -92,14 +93,40 @@
                                 android:text="Employee ID :"/>
 
                             <TextView
-                                android:id="@+id/employeeidtxt"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Employee ID:"/>
+                                android:text="Date :"
+                                android:textAlignment="textEnd"/>
+
 
                         </LinearLayout>
 
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:paddingTop="5dp"
+                            android:orientation="vertical">
+
+
+                            <TextView
+                                android:id="@+id/employeeidtxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ID:"/>
+
+                            <TextView
+                                android:id="@+id/currentdate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Date :"/>
+
+                        </LinearLayout>
+
+
                     </LinearLayout>
+
 
 
                 </androidx.cardview.widget.CardView>

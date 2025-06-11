@@ -43,6 +43,15 @@ public class employeeHomePage extends AppCompatActivity {
     TextView employeename,employeetype,employeeid;
 
 
+    //recycle view of orders to cut
+    RecyclerView rc2;
+    //identifying order database
+    orderDatabase odb;
+    //calling the custom adapter
+    order_to_cut_customAdapter ca2;
+    ArrayList<String>oid,cn,tamt, bamt,dd,s,aamt,en;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +101,28 @@ public class employeeHomePage extends AppCompatActivity {
         employeeid=findViewById(R.id.employeeidtxt);
 
 
+
+        //codes for orders to cut recycleview
+        rc2=findViewById(R.id.orderrecyclerView);
+        odb=new orderDatabase(this);
+
+        oid=new ArrayList<>();
+        cn=new ArrayList<>();
+        tamt=new ArrayList<>();
+        bamt=new ArrayList<>();
+        dd=new ArrayList<>();
+        s=new ArrayList<>();
+        aamt=new ArrayList<>();
+        en=new ArrayList<>();
+
+        ViewOrderstoCut();
+
+        ca2=new order_to_cut_customAdapter(employeeHomePage.this,oid,cn,tamt,bamt,dd,s,aamt,en);
+        rc2.setAdapter(ca2);
+        rc2.setLayoutManager(new LinearLayoutManager(employeeHomePage.this));
+
+
+
     }
 
 
@@ -107,6 +138,24 @@ public class employeeHomePage extends AppCompatActivity {
             empname.add(c.getString(0));
             emptype.add(c.getString(3));
             empid.add(c.getString(1));
+        }
+    }
+
+    public void ViewOrderstoCut() {
+       Cursor c = odb.viewepecificorders(phonenumber);
+        if (c.getCount() == 0) {
+            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+        }
+        StringBuffer sb = new StringBuffer();
+        while (c.moveToNext()) {
+            oid.add(c.getString(0));
+            cn.add(c.getString(2));
+            tamt.add(c.getString(14));
+            bamt.add(c.getString(15));
+            dd.add(c.getString(17));
+            s.add(c.getString(20));
+            aamt.add(c.getString(16));
+            en.add(c.getString(18));
         }
     }
 

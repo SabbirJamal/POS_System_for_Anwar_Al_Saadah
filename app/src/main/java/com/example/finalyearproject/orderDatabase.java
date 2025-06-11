@@ -29,6 +29,7 @@ public class orderDatabase extends SQLiteOpenHelper {
     public static final String totamt="Total_Amount";
     public static final String advance="Advance_Amount";
     public static final String balance="Balance_Amount";
+    public static final String odate="Order_Date";
     public static final String deliverydate="Delivery_Date";
     public static final String empid="Employee_ID";
     public static final String empname="Employee_Name";
@@ -39,7 +40,7 @@ public class orderDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query="CREATE TABLE "+ordertbl+" ("+orderid+" INTEGER PRIMARY KEY AUTOINCREMENT, "+phnno+" TEXT, "+custname+" TEXT, "+design+" TEXT, "+cloth+" TEXT, "+height+" TEXT, "+widthc+" TEXT, "+widthh+" TEXT, "+shoulders+"  TEXT, "+back+" TEXT, "+hand+" TEXT, "+arms+"  TEXT, "+waist+" TEXT, "+addinfo+" TEXT, "+totamt+" TEXT, "+advance+" TEXT, "+balance+" TEXT, "+deliverydate+" CHAR(10), "+empid+" TEXT, "+empname+" TEXT, "+status+" TEXT, "+tailor+" TEXT)";
+        String query="CREATE TABLE "+ordertbl+" ("+orderid+" INTEGER PRIMARY KEY AUTOINCREMENT, "+phnno+" TEXT, "+custname+" TEXT, "+design+" TEXT, "+cloth+" TEXT, "+height+" TEXT, "+widthc+" TEXT, "+widthh+" TEXT, "+shoulders+"  TEXT, "+back+" TEXT, "+hand+" TEXT, "+arms+"  TEXT, "+waist+" TEXT, "+addinfo+" TEXT, "+totamt+" TEXT, "+advance+" TEXT, "+balance+" TEXT, "+odate+" TEXT, "+deliverydate+" CHAR(10), "+empid+" TEXT, "+empname+" TEXT, "+status+" TEXT, "+tailor+" TEXT)";
         try {
             db.execSQL(query);
         } catch (SQLException e) {
@@ -51,7 +52,7 @@ public class orderDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ordertbl);
     }
-    public boolean addneworder(String Phone_Number,String Customer_Name,String  Design_Number,String Cloth_Type,String Height,String Width_Chest,String Width_Hip,String Shoulders,String Back,String Hand,String Arms,String Waist,String Addinfo, String Totamt, String Advanceamt, String Balanceamt,String DeliveryDate, String Empid, String Empname, String Status, String Tailor){
+    public boolean addneworder(String Phone_Number,String Customer_Name,String  Design_Number,String Cloth_Type,String Height,String Width_Chest,String Width_Hip,String Shoulders,String Back,String Hand,String Arms,String Waist,String Addinfo, String Totamt, String Advanceamt, String Balanceamt,String Order_Date,String DeliveryDate, String Empid, String Empname, String Status, String Tailor){
         SQLiteDatabase db=this.getReadableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(phnno,Phone_Number);
@@ -70,6 +71,7 @@ public class orderDatabase extends SQLiteOpenHelper {
         contentValues.put(totamt,Totamt);
         contentValues.put(advance,Advanceamt);
         contentValues.put(balance,Balanceamt);;
+        contentValues.put(odate,Order_Date);
         contentValues.put(deliverydate,DeliveryDate);
         contentValues.put(empid,Empid);
         contentValues.put(empname,Empname);
@@ -83,6 +85,25 @@ public class orderDatabase extends SQLiteOpenHelper {
             return true;
     }
 
+
+    Cursor getalldata(){
+        String query="SELECT * FROM "+ordertbl;
+        SQLiteDatabase db=this.getWritableDatabase();
+
+        Cursor cursor=null;
+        if(db !=null)
+        {
+            cursor=db.rawQuery(query,null);
+        }
+        return cursor;
+    }
+
+    public Cursor viewepecificorders(String phn)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Employee_ID="+phn,null);
+        return cursor;
+    }
 
 
 }

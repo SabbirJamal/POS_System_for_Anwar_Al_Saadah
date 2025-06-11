@@ -73,6 +73,9 @@ public class newOrder extends AppCompatActivity {
 
     TextView employeename,employeetype,employeeid;
 
+    //getting current date
+    TextView dateTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +101,18 @@ public class newOrder extends AppCompatActivity {
         bal=findViewById(R.id.balancepayableamount);
 
         //end
+
+        //getting current date
+        dateTextView = findViewById(R.id.currentdate);
+
+        // Get current date
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String currentDate = sdf.format(new Date());
+
+        // Set date to text field
+        dateTextView.setText(currentDate);
+
+        //end of getting current date
 
         //delivery date setting
         deliverydate=findViewById(R.id.deliveryDate);
@@ -148,24 +163,6 @@ public class newOrder extends AppCompatActivity {
         categorySpinner.setAdapter(clothnameadapter);
         //end of dropdownlist
 
-        /*
-        //start of top header coding
-        //locating
-        rc1=findViewById(R.id.recyclerView);
-        empdb=new empdatabase(this);
-        empname=new ArrayList<>();
-        emptype=new ArrayList<>();
-        empid=new ArrayList<>();
-
-        ca1=new customAdapterEmployePage_topDetails(newOrder.this,empname,emptype,empid);
-        rc1.setAdapter(ca1);
-        rc1.setLayoutManager(new LinearLayoutManager(newOrder.this));
-
-        viewheaderdetails();
-
-        //end of it
-
-         */
 
         employeename=findViewById(R.id.fullnametxt);
         employeetype=findViewById(R.id.employeetypetxt);
@@ -230,12 +227,13 @@ public class newOrder extends AppCompatActivity {
                 String tamt=tot.getText().toString();
                 String ad=adv.getText().toString();;
                 String bamt=bal.getText().toString();
+                String curd=dateTextView.getText().toString();
                 String dd=deliverydate.getText().toString();
                 String eid=employeeid.getText().toString();
                 String en=employeename.getText().toString();
                 String status="Cut";
                 String tailor="NULL";
-                boolean insert=odb.addneworder(p,n,dn,clth,he,wic,wih,sh,ba,hal,a,w,ai,tamt,ad,bamt,dd,eid,en,status,tailor);
+                boolean insert=odb.addneworder(p,n,dn,clth,he,wic,wih,sh,ba,hal,a,w,ai,tamt,ad,bamt,curd,dd,eid,en,status,tailor);
                 if(insert==true)
                 {
                     Toast.makeText(newOrder.this,"Order Success", Toast.LENGTH_SHORT).show();
@@ -249,6 +247,8 @@ public class newOrder extends AppCompatActivity {
 
             }
         });
+        //end of inserting
+
 
 
 
