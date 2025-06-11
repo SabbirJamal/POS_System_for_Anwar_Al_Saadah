@@ -1,6 +1,7 @@
 package com.example.finalyearproject;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -229,7 +230,23 @@ public class newOrder extends AppCompatActivity {
                 String tamt=tot.getText().toString();
                 String ad=adv.getText().toString();;
                 String bamt=bal.getText().toString();
-                //String en=empname.getText
+                String dd=deliverydate.getText().toString();
+                String eid=employeeid.getText().toString();
+                String en=employeename.getText().toString();
+                String status="Cut";
+                String tailor="NULL";
+                boolean insert=odb.addneworder(p,n,dn,clth,he,wic,wih,sh,ba,hal,a,w,ai,tamt,ad,bamt,dd,eid,en,status,tailor);
+                if(insert==true)
+                {
+                    Toast.makeText(newOrder.this,"Order Success", Toast.LENGTH_SHORT).show();
+                    Intent login=new Intent(newOrder.this, newOrder.class);
+                    startActivity(login);
+                }
+                else
+                {
+                    Toast.makeText(newOrder.this,"Order Fail", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
