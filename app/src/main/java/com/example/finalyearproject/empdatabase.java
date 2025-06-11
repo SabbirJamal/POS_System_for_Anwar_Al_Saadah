@@ -86,6 +86,22 @@ public class empdatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT Employee_Name,Employee_Type,Phone_Number FROM Employee_Database WHERE Phone_Number = ?", new String[]{empId});
     }
+
+    public List<String> getempname() {
+        List<String> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT Employee_Name FROM Employee_Database WHERE Employee_Type='Tailor'", null);
+        if (cursor.moveToFirst()) {
+            do {
+                list.add(cursor.getString(0));  // 0 = first column in result
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return list;
+    }
 }
 
 

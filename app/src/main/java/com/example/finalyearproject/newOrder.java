@@ -233,12 +233,14 @@ public class newOrder extends AppCompatActivity {
                 String en=employeename.getText().toString();
                 String status="Cut";
                 String tailor="NULL";
-                boolean insert=odb.addneworder(p,n,dn,clth,he,wic,wih,sh,ba,hal,a,w,ai,tamt,ad,bamt,curd,dd,eid,en,status,tailor);
+                String isle="NULL";
+                boolean insert=odb.addneworder(p,n,dn,clth,he,wic,wih,sh,ba,hal,a,w,ai,tamt,ad,bamt,curd,dd,eid,en,status,tailor,isle);
                 if(insert==true)
                 {
                     Toast.makeText(newOrder.this,"Order Success", Toast.LENGTH_SHORT).show();
-                    Intent login=new Intent(newOrder.this, newOrder.class);
-                    startActivity(login);
+                    Intent intent=new Intent(newOrder.this, employeeHomePage.class);
+                    intent.putExtra("phn",phn.getText().toString());
+                    startActivity(intent);
                 }
                 else
                 {

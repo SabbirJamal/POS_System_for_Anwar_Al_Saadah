@@ -236,6 +236,26 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Tailor"
+                android:layout_marginTop="260dp"
+                android:layout_marginStart="15dp"/>
+            <Spinner
+                android:id="@+id/tailorspinner"
+                android:layout_width="150dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="246dp"
+                android:layout_marginStart="110dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="350dp"
+                android:layout_height="350dp"
+                android:layout_marginTop="300dp"
+                android:layout_marginStart="15dp"/>
         </RelativeLayout>
 
 

@@ -35,12 +35,13 @@ public class orderDatabase extends SQLiteOpenHelper {
     public static final String empname="Employee_Name";
     public static final String status="Status";
     public static final String tailor="Tailor";
+    public static final String isle="Isle_Location";
 
    public orderDatabase(Context context){super(context,orderdb,null,1);}
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query="CREATE TABLE "+ordertbl+" ("+orderid+" INTEGER PRIMARY KEY AUTOINCREMENT, "+phnno+" TEXT, "+custname+" TEXT, "+design+" TEXT, "+cloth+" TEXT, "+height+" TEXT, "+widthc+" TEXT, "+widthh+" TEXT, "+shoulders+"  TEXT, "+back+" TEXT, "+hand+" TEXT, "+arms+"  TEXT, "+waist+" TEXT, "+addinfo+" TEXT, "+totamt+" TEXT, "+advance+" TEXT, "+balance+" TEXT, "+odate+" TEXT, "+deliverydate+" CHAR(10), "+empid+" TEXT, "+empname+" TEXT, "+status+" TEXT, "+tailor+" TEXT)";
+        String query="CREATE TABLE "+ordertbl+" ("+orderid+" INTEGER PRIMARY KEY AUTOINCREMENT, "+phnno+" TEXT, "+custname+" TEXT, "+design+" TEXT, "+cloth+" TEXT, "+height+" TEXT, "+widthc+" TEXT, "+widthh+" TEXT, "+shoulders+"  TEXT, "+back+" TEXT, "+hand+" TEXT, "+arms+"  TEXT, "+waist+" TEXT, "+addinfo+" TEXT, "+totamt+" TEXT, "+advance+" TEXT, "+balance+" TEXT, "+odate+" TEXT, "+deliverydate+" CHAR(10), "+empid+" TEXT, "+empname+" TEXT, "+status+" TEXT, "+tailor+" TEXT, "+isle+" TEXT)";
         try {
             db.execSQL(query);
         } catch (SQLException e) {
@@ -52,7 +53,7 @@ public class orderDatabase extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ordertbl);
     }
-    public boolean addneworder(String Phone_Number,String Customer_Name,String  Design_Number,String Cloth_Type,String Height,String Width_Chest,String Width_Hip,String Shoulders,String Back,String Hand,String Arms,String Waist,String Addinfo, String Totamt, String Advanceamt, String Balanceamt,String Order_Date,String DeliveryDate, String Empid, String Empname, String Status, String Tailor){
+    public boolean addneworder(String Phone_Number,String Customer_Name,String  Design_Number,String Cloth_Type,String Height,String Width_Chest,String Width_Hip,String Shoulders,String Back,String Hand,String Arms,String Waist,String Addinfo, String Totamt, String Advanceamt, String Balanceamt,String Order_Date,String DeliveryDate, String Empid, String Empname, String Status, String Tailor,String Isle){
         SQLiteDatabase db=this.getReadableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(phnno,Phone_Number);
@@ -77,6 +78,7 @@ public class orderDatabase extends SQLiteOpenHelper {
         contentValues.put(empname,Empname);
         contentValues.put(status,Status);
         contentValues.put(tailor,Tailor);
+        contentValues.put(isle,Isle);
         long result=db.insert(ordertbl,null,contentValues);
         db.close();;
         if(result==-1)
