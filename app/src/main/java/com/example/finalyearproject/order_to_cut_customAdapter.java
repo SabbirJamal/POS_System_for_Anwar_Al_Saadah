@@ -1,6 +1,7 @@
 package com.example.finalyearproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,22 @@ public class order_to_cut_customAdapter extends RecyclerView.Adapter<order_to_cu
         holder.txts.setText(String.valueOf(s.get(position)));
         holder.txtaamt.setText(String.valueOf(aamt.get(position)));
         holder.txten.setText(String.valueOf(en.get(position)));
+
+        holder.cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context,updateOrderProcess.class);
+                intent.putExtra("orid",String.valueOf(oid.get(position)));
+                intent.putExtra("cn",String.valueOf(cn.get(position)));
+                intent.putExtra("tamt",String.valueOf(tamt.get(position)));
+                intent.putExtra("bamt",String.valueOf(bamt.get(position)));
+                intent.putExtra("dd",String.valueOf(dd.get(position)));
+                intent.putExtra("s",String.valueOf(s.get(position)));
+                intent.putExtra("aamt",String.valueOf(aamt.get(position)));
+                intent.putExtra("en",String.valueOf(en.get(position)));
+                context.startActivity(intent);
+            }
+        });
 
     }
 

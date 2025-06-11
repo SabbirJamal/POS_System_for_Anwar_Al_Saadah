@@ -7,14 +7,52 @@
     android:layout_height="match_parent"
     tools:context=".newOrder">
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:backgroundTint="#0FE2CA"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingHorizontal="5dp">
+
+            <ImageView
+                android:id="@+id/imgmenu"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                app:srcCompat="@drawable/baseline_menu_24" />
+
+            <ImageView
+                android:id="@+id/imgtransfer"
+                android:layout_width="35dp"
+                android:layout_marginStart="75dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/baseline_transfer_within_a_station_24" />
+
+            <ImageView
+                android:id="@+id/imghome"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="85dp"
+                app:srcCompat="@drawable/baseline_home_24" />
+
+            <ImageView
+                android:id="@+id/imgsearch"
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="75dp"
+                app:srcCompat="@drawable/baseline_search_24" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -561,6 +599,12 @@
                 android:text="Order"
                 android:layout_marginTop="1100dp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12"
+                android:layout_marginTop="1200dp"/>
+
 
 
 
@@ -570,3 +614,11 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+

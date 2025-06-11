@@ -153,9 +153,9 @@ public class employeeHomePage extends AppCompatActivity {
             tamt.add(c.getString(14));
             bamt.add(c.getString(15));
             dd.add(c.getString(17));
-            s.add(c.getString(20));
+            s.add(c.getString(21));
             aamt.add(c.getString(16));
-            en.add(c.getString(18));
+            en.add(c.getString(20));
         }
     }
 
