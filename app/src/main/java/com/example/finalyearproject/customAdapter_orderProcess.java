@@ -54,6 +54,8 @@ public class customAdapter_orderProcess extends RecyclerView.Adapter<customAdapt
         holder.txta.setText(String.valueOf(a.get(position)));
         holder.txtw.setText(String.valueOf(w.get(position)));
         holder.txtai.setText(String.valueOf(ai.get(position)));
+
+
     }
 
     @Override
