@@ -1,5 +1,6 @@
 package com.example.finalyearproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +19,10 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class newSale extends AppCompatActivity {
 
@@ -44,7 +48,7 @@ public class newSale extends AppCompatActivity {
     Button c;
 
     //finding total amt textview
-    TextView ta;
+    TextView ta,r;
 
     //finding the calc java class
     private salecalculation sc;
@@ -52,17 +56,20 @@ public class newSale extends AppCompatActivity {
     //intent phone number
     String phonenumber;
 
-    //top header part
-    RecyclerView rc1;
-    customAdapterEmployePage_topDetails ca1;
-    ArrayList<String> empname,emptype,empid;
-
 
     //calling database
     empdatabase empdb;
 
     //header
     TextView employeename,employeetype,employeeid;
+
+    //getting current date
+    TextView dateTextView;
+
+    //add new sales in database
+    saleDatabase sdb;
+    Button confirm;
+    EditText cn,custphn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +87,7 @@ public class newSale extends AppCompatActivity {
             phonenumber=getIntent().getStringExtra("phn");
         }
 
-        //finding name and email field of customer
-        name=findViewById(R.id.customername);
+        r=findViewById(R.id.alloutput);
 
 
         //finding checkboxes
@@ -122,55 +128,27 @@ public class newSale extends AppCompatActivity {
 
         sc=new salecalculation();
 
-        cbd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
                 dp.setText("8");
                 i1="Dress";
-            }
-        });
 
-
-
-        cbm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 mp.setText("5");
                 i2="Moriolla";
-            }
-        });
 
-        cbk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
                 kp.setText("4");
                 i3="Khameez";
-            }
-        });
 
-        cba.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
                 ap.setText("4");
                 i4="Anabi";
-            }
-        });
 
-        cbs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 sp.setText("3");
                 i5="Shaila";
-            }
-        });
 
-        cbmun.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 munp.setText("2");
                 i6="Mundeel";
-            }
-        });
+
 
         c=findViewById(R.id.calc);
         c.setOnClickListener(new View.OnClickListener() {
@@ -217,37 +195,29 @@ public class newSale extends AppCompatActivity {
                 Double c5=sc.salecalc(dsamt,dsquan);
                 Double c6=sc.salecalc(dmunamt,dmunquan);
 
-                dt.setText(""+c1);
-                mt.setText(""+c2);
-                kt.setText(""+c3);
-                at.setText(""+c4);
-                st.setText(""+c5);
-                munt.setText(""+c6);
+                dt.setText("OMR"+c1);
+                mt.setText("OMR"+c2);
+                kt.setText("OMR"+c3);
+                at.setText("OMR"+c4);
+                st.setText("OMR"+c5);
+                munt.setText("OMR"+c6);
 
                 Double totalamount=c1+c2+c3+c4+c5+c6;
                 ta.setText("OMR "+totalamount);
+                String dsale=i1+" - Price:-"+damt+" - Quantity:"+ddquan+" - Total Amount:"+c1;
+                String msale=i2+" - Price:-"+mamt+" - Quantity:"+dmquan+" - Total Amount:"+c2;
+                String ksale=i3+" - Price:-"+kamt+" - Quantity:"+dkquan+" - Total Amount:"+c3;
+                String asale=i3+" - Price:-"+aamt+" - Quantity:"+daquan+" - Total Amount:"+c4;
+                String ssale=i4+" - Price:-"+samt+" - Quantity:"+dsquan+" - Total Amount:"+c5;
+                String munsale=i5+" - Price:-"+munamt+" - Quantity:"+dmunquan+" - Total Amount:"+c6;
+
+                String finalsale=dsale+"\n"+msale+"\n"+ksale+"\n"+asale+"\n"+ssale+"\n"+munsale+"\n"+"Total Payable Amount: "+totalamount;
+               // String finalsale=dsale+msale+ksale+asale+ssale+munsale+"Total Payable Amount: "+totalamount;
+                r.setText(finalsale);
 
             }
         });
 
-/*
-        //start of top header coding
-        //locating
-        rc1=findViewById(R.id.recyclerView);
-        empdb=new empdatabase(this);
-        empname=new ArrayList<>();
-        emptype=new ArrayList<>();
-        empid=new ArrayList<>();
-
-        viewheaderdetails();
-
-        ca1=new customAdapterEmployePage_topDetails(newSale.this,empname,emptype,empid);
-        rc1.setAdapter(ca1);
-        rc1.setLayoutManager(new LinearLayoutManager(newSale.this));
-        //end of it
-
-
- */
 
         employeename=findViewById(R.id.fullnametxt);
         employeetype=findViewById(R.id.employeetypetxt);
@@ -270,25 +240,50 @@ public class newSale extends AppCompatActivity {
             Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
         }
 
-    }
 
-    /*
-    //code for retreving and displaying header details
-    public void viewheaderdetails(){
-        Cursor c=empdb.viewepecificempdata(phonenumber);
-        if(c.getCount()==0){
-            Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
-        }
-        StringBuffer sb=new StringBuffer();
-        while (c.moveToNext())
-        {
-            empname.add(c.getString(0));
-            emptype.add(c.getString(3));
-            empid.add(c.getString(1));
-        }
-    }
+        //getting current date
+        dateTextView = findViewById(R.id.currentdate);
 
-     */
+        // Get current date
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String currentDate = sdf.format(new Date());
+
+        // Set date to text field
+        dateTextView.setText(currentDate);
+
+        //end of getting current date
+
+        //addition in sales databse
+        sdb=new saleDatabase(this);
+        custphn=findViewById(R.id.customerphonenum);
+        cn=findViewById(R.id.customername);
+        confirm=findViewById(R.id.confirm);
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String p=custphn.getText().toString();
+                String custn=cn.getText().toString();
+                String oi=r.getText().toString();
+                String tamt=ta.getText().toString();
+                String sd=dateTextView.getText().toString();
+                String eid=employeeid.getText().toString();
+                String en=employeename.getText().toString();
+                boolean insert=sdb.addnewsale(p,custn,oi,tamt,sd,eid,en);
+                if(insert==true)
+                {
+                    Toast.makeText(newSale.this,"Order Success", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(newSale.this, employeeHomePage.class);
+                    intent.putExtra("phn",custphn.getText().toString());
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(newSale.this,"Order Fail", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
 
 
 
