@@ -54,6 +54,9 @@ public class empdatabase extends SQLiteOpenHelper {
             return true;
     }
 
+
+
+
     public String getpasssalesman (String Phone_Number){
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery("SELECT * FROM "+emptbl+" WHERE "+ephn+"='"+Phone_Number+"' AND "+etype+"='Sales_Man'",null);
@@ -63,6 +66,20 @@ public class empdatabase extends SQLiteOpenHelper {
         cursor.close();
         return Password;
     }
+
+    public String getpasstailor(String Phone_Number){
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+emptbl+" WHERE "+ephn+"='"+Phone_Number+"' AND "+etype+"='Tailor'",null);
+        cursor.moveToFirst();
+        String Password=cursor.getString(6);
+        db.close();
+        cursor.close();
+        return Password;
+    }
+
+
+
+
 
     Cursor allempdata(){
         String query="SELECT * FROM "+emptbl;
@@ -75,6 +92,8 @@ public class empdatabase extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+
 
     public Cursor viewepecificempdata(String phn)
     {
@@ -102,8 +121,35 @@ public class empdatabase extends SQLiteOpenHelper {
         db.close();
         return list;
     }
-}
 
+/*
+    public String getpasssalesman(String empid) {
+        // Get a readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Perform the query with parameterized inputs to avoid SQL injection
+        Cursor cursor = db.rawQuery(
+                "SELECT * FROM " + emptbl + " WHERE Employee_Type = ? AND Phone_Number = ?",
+                new String[]{"Tailor", empid}
+        );
+
+        // Check if the cursor has any data
+        if (cursor != null && cursor.moveToFirst()) {
+            // Assuming the Password is in the 5th column (index 4)
+            String password = cursor.getString(4);  // Change this if the password is in a different column
+            cursor.close();  // Close the cursor after use
+            db.close();  // Close the database after use
+            return password;  // Return the password
+        } else {
+            // If no data is found, return null or handle error appropriately
+            cursor.close();
+            db.close();
+            return null;  // No matching employee found
+        }
+    }
+ */
+
+}
 
 
 
