@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -161,22 +162,33 @@ public class employeeHomePage extends AppCompatActivity {
         rc3.setLayoutManager(new LinearLayoutManager(employeeHomePage.this));
         //end of recycleview for resize to cut
 
+        employeename=findViewById(R.id.intentfullnametxt);
+        employeetype=findViewById(R.id.intentemployeetypetxt);
+        employeeid=findViewById(R.id.intentemployeeidtxt);
+        if(getIntent().hasExtra("ename") && getIntent().hasExtra("etype") && getIntent().hasExtra("eid")) {
+            //getting the data from intent
+            String n = getIntent().getStringExtra("ename");
+            String et = getIntent().getStringExtra("etype");
+            String id = getIntent().getStringExtra("eid");
 
+            //setting intended data
+            employeename.setText(n);
+            employeetype.setText(et);
+            employeeid.setText(id);
 
-        //move to search activity
-        //intended data from order
-        intentename=findViewById(R.id.intentfullnametxt);
-        intenteid=findViewById(R.id.intentemployeeidtxt);
-        intentetype=findViewById(R.id.intentemployeetypetxt);
+            Log.d("sample",n+" "+et+" "+id);
+        }else{
+            Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
+        }
+
         search=findViewById(R.id.imgsearch);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(employeeHomePage.this, search_CustomerItem.class);
-                //send phone number data
-                intent.putExtra("ename",ename.getText().toString());
-                intent.putExtra("etype",etype.getText().toString());
-                intent.putExtra("eid",eid.getText().toString());
+                intent.putExtra("ename",employeename.getText().toString());
+                intent.putExtra("etype",employeetype.getText().toString());
+                intent.putExtra("eid",employeeid.getText().toString());
                 startActivity(intent);
             }
         });

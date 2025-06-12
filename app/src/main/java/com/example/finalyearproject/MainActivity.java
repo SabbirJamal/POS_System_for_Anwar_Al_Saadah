@@ -1,6 +1,7 @@
 package com.example.finalyearproject;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         pass=findViewById(R.id.pswdtxt);
         log=findViewById(R.id.login);
 
+        empdb=new empdatabase(this);
+
 
         log.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +63,24 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent=new Intent(MainActivity.this, employeeHomePage.class);
                             //send phone number data
                             intent.putExtra("phn",phn.getText().toString());
+                            //send phone number data
+                            String iid = phn.getText().toString();
+                            Cursor c = empdb.viewepecificempdata(iid);
+                            if (c.getCount() == 0) {
+                                String a = ("Error");
+                                return;
+                            }
+                            StringBuffer sb = new StringBuffer();
+                            while (c.moveToNext()) {
+                                String fn = c.getString(0);
+                                String et = c.getString(3);
+                                String eid = c.getString(1);
+
+                                //intending data
+                                intent.putExtra("ename",fn);
+                                intent.putExtra("etype",et);
+                                intent.putExtra("eid",eid);
+                            }
                             startActivity(intent);
                         }
                         else{
@@ -77,9 +98,25 @@ public class MainActivity extends AppCompatActivity {
                     if (p.equals(rp))
                     {
                         Toast.makeText(MainActivity.this,"WELCOME",Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(MainActivity.this, newOrder.class);
+                        Intent intent=new Intent(MainActivity.this, salesman_HomePage.class);
                         //send phone number data
-                        intent.putExtra("phn",phn.getText().toString());
+                        String iid = phn.getText().toString();
+                        Cursor c = empdb.viewepecificempdata(iid);
+                        if (c.getCount() == 0) {
+                            String a = ("Error");
+                            return;
+                        }
+                        StringBuffer sb = new StringBuffer();
+                        while (c.moveToNext()) {
+                            String fn = c.getString(0);
+                            String et = c.getString(3);
+                            String eid = c.getString(1);
+
+                            //intending data
+                            intent.putExtra("ename",fn);
+                            intent.putExtra("etype",et);
+                            intent.putExtra("eid",eid);
+                        }
                         startActivity(intent);
                     }
                     else{
@@ -95,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        empdb=new empdatabase(this);
+
 
 
         log2.setOnClickListener(new View.OnClickListener() {
