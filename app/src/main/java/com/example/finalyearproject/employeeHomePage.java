@@ -52,6 +52,15 @@ public class employeeHomePage extends AppCompatActivity {
     ArrayList<String>oid,cn,tamt, bamt,dd,s,aamt,en;
 
 
+    //recycle view of resize to cut
+    RecyclerView rc3;
+    //identifying order database
+    resizeDatabase rdb;
+    //calling the custom adapter
+    resize_to_cut_customAdapter ca3;
+    ArrayList<String>roid,rcn,rtamt,rdd,rs,ren;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,8 +129,26 @@ public class employeeHomePage extends AppCompatActivity {
         ca2=new order_to_cut_customAdapter(employeeHomePage.this,oid,cn,tamt,bamt,dd,s,aamt,en);
         rc2.setAdapter(ca2);
         rc2.setLayoutManager(new LinearLayoutManager(employeeHomePage.this));
+        //end of recycleview for orders to cut
 
 
+        //codes for orders to cut recycleview
+        rc3=findViewById(R.id.resizerecyclerView);
+        rdb=new resizeDatabase(this);
+
+        roid=new ArrayList<>();
+        rcn=new ArrayList<>();
+        rtamt=new ArrayList<>();
+        rdd=new ArrayList<>();
+        rs=new ArrayList<>();
+        ren=new ArrayList<>();
+
+        ViewResizetoCut();
+
+        ca3=new resize_to_cut_customAdapter(employeeHomePage.this,roid,rcn,rtamt,rdd,rs,ren);
+        rc3.setAdapter(ca3);
+        rc3.setLayoutManager(new LinearLayoutManager(employeeHomePage.this));
+        //end of recycleview for orders to cut
 
     }
 
@@ -156,6 +183,22 @@ public class employeeHomePage extends AppCompatActivity {
             s.add(c.getString(21));
             aamt.add(c.getString(16));
             en.add(c.getString(19));
+        }
+    }
+
+    public void ViewResizetoCut() {
+        Cursor c = rdb.viewepecificresizeorder(phonenumber);
+        if (c.getCount() == 0) {
+            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+        }
+        StringBuffer sb = new StringBuffer();
+        while (c.moveToNext()) {
+            oid.add(c.getString(0));
+            cn.add(c.getString(2));
+            tamt.add(c.getString(11));
+            dd.add(c.getString(13));
+            s.add(c.getString(16));
+            en.add(c.getString(14));
         }
     }
 

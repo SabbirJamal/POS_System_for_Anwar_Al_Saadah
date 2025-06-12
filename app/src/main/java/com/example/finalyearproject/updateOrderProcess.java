@@ -1,8 +1,10 @@
 package com.example.finalyearproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -30,6 +32,7 @@ public class updateOrderProcess extends AppCompatActivity {
 
     //DROP DOWN LIST
     Spinner categorySpinner;
+    TextView tailor;
     empdatabase empdb;
 
     //recycleview for remaing data
@@ -84,6 +87,10 @@ public class updateOrderProcess extends AppCompatActivity {
                 this, android.R.layout.simple_spinner_item,tailortype);
         clothnameadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(clothnameadapter);
+
+
+
+        //tailor.setText(categorySpinner);
         //end of dropdownlist
 
         //code for getting intended data from prvs cardview
@@ -147,7 +154,29 @@ public class updateOrderProcess extends AppCompatActivity {
             //end of recycle view
 
 
+
+        //updating status
         f=findViewById(R.id.finish);
+        f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String eid=employeeid.getText().toString();
+                String orderID=oid.getText().toString();
+                String tailor=categorySpinner.getSelectedItem().toString();
+                String s="Stitching";
+                boolean update=odb.updatestatus(orderID,eid,s,tailor);
+                if (update==true)
+                {
+                    Toast.makeText(updateOrderProcess.this, "Data updated", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(updateOrderProcess.this, "Date not updated", Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+        });
 
     }
 

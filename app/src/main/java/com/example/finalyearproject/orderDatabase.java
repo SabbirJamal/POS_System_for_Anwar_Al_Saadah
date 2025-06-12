@@ -52,6 +52,7 @@ public class orderDatabase extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ordertbl);
+        onCreate(db);
     }
     public boolean addneworder(String Phone_Number,String Customer_Name,String  Design_Number,String Cloth_Type,String Height,String Width_Chest,String Width_Hip,String Shoulders,String Back,String Hand,String Arms,String Waist,String Addinfo, String Totamt, String Advanceamt, String Balanceamt,String Order_Date,String DeliveryDate, String Empid, String Empname, String Status, String Tailor,String Isle){
         SQLiteDatabase db=this.getReadableDatabase();
@@ -113,6 +114,33 @@ public class orderDatabase extends SQLiteOpenHelper {
                 " WHERE Status='Cut' AND Employee_ID='" + phn + "' AND Order_ID='" + oid + "'", null);
         return cursor;
     }
+
+    public boolean updatestatus(String oid,String eid,String stat, String t){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        String whereClause = "Order_ID=? AND Employee_ID=?";
+        contentValues.put(status,stat);
+        contentValues.put(tailor,t);
+        db.update("orderDB", contentValues, whereClause, new String[]{oid, eid});
+        return true;
+
+    }
+
+    public boolean newupdateStatus(String oid, String eid, String Status, String Tailor){
+       SQLiteDatabase db=this.getWritableDatabase();
+       ContentValues values=new ContentValues();
+       values.put("Status", Status);
+        values.put("Tailor", Tailor);
+
+        String whereClause="Order_ID = ? AND Employee_ID = ?";
+
+        String [] whereArgs = new String[]{oid,eid};
+
+        int rowsAffected = db.update("orderDB",values,whereClause,whereArgs);
+        return rowsAffected>0;
+    }
+
+
 
 
 

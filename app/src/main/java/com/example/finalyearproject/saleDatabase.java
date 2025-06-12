@@ -38,6 +38,7 @@ public class saleDatabase extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+saletbl);
+        onCreate(db);
     }
 
     public boolean addnewsale(String Phone_Number,String Customer_Name,String Ordered_Items,String Total_Amount,String Sale_Date,String Employee_ID,String Employee_Name){
