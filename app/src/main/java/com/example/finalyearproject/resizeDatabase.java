@@ -73,11 +73,12 @@ public class resizeDatabase extends SQLiteOpenHelper {
             return true;
     }
 
-    public Cursor viewepecificresizeorder(String phn)
+    public Cursor viewepecificresize(String phn)
     {
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor=db.rawQuery("SELECT * FROM "+resizetbl+" WHERE Status='Cut' AND Employee_ID="+phn,null);
         return cursor;
     }
+
 
 }

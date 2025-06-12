@@ -27,7 +27,6 @@ public class resize_to_cut_customAdapter extends RecyclerView.Adapter<resize_to_
         this.en=en;
     }
 
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

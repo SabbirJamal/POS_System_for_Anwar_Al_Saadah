@@ -239,7 +239,9 @@ public class newOrder extends AppCompatActivity {
                 {
                     Toast.makeText(newOrder.this,"Order Success", Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(newOrder.this, employeeHomePage.class);
-                    intent.putExtra("phn",phn.getText().toString());
+                    intent.putExtra("ename",employeename.getText().toString());
+                    intent.putExtra("etype",employeetype.getText().toString());
+                    intent.putExtra("eid",employeeid.getText().toString());
                     startActivity(intent);
                 }
                 else

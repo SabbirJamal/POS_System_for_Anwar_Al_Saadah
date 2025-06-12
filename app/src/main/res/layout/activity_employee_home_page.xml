@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".employeeHomePage">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -76,6 +77,24 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent">
 
+                <TextView
+                    android:id="@+id/intentfullnametxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Full Name" />
+
+                <TextView
+                    android:id="@+id/intentemployeetypetxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Type of person" />
+
+                <TextView
+                    android:id="@+id/intentemployeeidtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ID:"/>
+
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView3"
@@ -130,7 +149,7 @@
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="460dp">
+                android:layout_marginTop="500dp">
 
                 <TextView
                     android:layout_width="match_parent"

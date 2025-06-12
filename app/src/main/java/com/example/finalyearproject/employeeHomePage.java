@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +61,11 @@ public class employeeHomePage extends AppCompatActivity {
     resize_to_cut_customAdapter ca3;
     ArrayList<String>roid,rcn,rtamt,rdd,rs,ren;
 
+    TextView ename,eid,etype;
+
+    ImageView search;
+    TextView intentename,intenteid,intentetype;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -85,7 +91,10 @@ public class employeeHomePage extends AppCompatActivity {
             phonenumber=getIntent().getStringExtra("phn");
         }
 
-        //move to resize page
+        //intended data from order
+        ename=findViewById(R.id.intentfullnametxt);
+        eid=findViewById(R.id.intentemployeeidtxt);
+        etype=findViewById(R.id.intentemployeetypetxt);
 
 
 
@@ -103,6 +112,8 @@ public class employeeHomePage extends AppCompatActivity {
         ca1=new customAdapterEmployePage_topDetails(employeeHomePage.this,empname,emptype,empid);
         rc1.setAdapter(ca1);
         rc1.setLayoutManager(new LinearLayoutManager(employeeHomePage.this));
+
+
 
 
         employeename=findViewById(R.id.fullnametxt);
@@ -132,7 +143,7 @@ public class employeeHomePage extends AppCompatActivity {
         //end of recycleview for orders to cut
 
 
-        //codes for orders to cut recycleview
+        //codes for resize to cut recycleview
         rc3=findViewById(R.id.resizerecyclerView);
         rdb=new resizeDatabase(this);
 
@@ -148,7 +159,28 @@ public class employeeHomePage extends AppCompatActivity {
         ca3=new resize_to_cut_customAdapter(employeeHomePage.this,roid,rcn,rtamt,rdd,rs,ren);
         rc3.setAdapter(ca3);
         rc3.setLayoutManager(new LinearLayoutManager(employeeHomePage.this));
-        //end of recycleview for orders to cut
+        //end of recycleview for resize to cut
+
+
+
+        //move to search activity
+        //intended data from order
+        intentename=findViewById(R.id.intentfullnametxt);
+        intenteid=findViewById(R.id.intentemployeeidtxt);
+        intentetype=findViewById(R.id.intentemployeetypetxt);
+        search=findViewById(R.id.imgsearch);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(employeeHomePage.this, search_CustomerItem.class);
+                //send phone number data
+                intent.putExtra("ename",ename.getText().toString());
+                intent.putExtra("etype",etype.getText().toString());
+                intent.putExtra("eid",eid.getText().toString());
+                startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -165,6 +197,7 @@ public class employeeHomePage extends AppCompatActivity {
             empname.add(c.getString(0));
             emptype.add(c.getString(3));
             empid.add(c.getString(1));
+
         }
     }
 
@@ -187,18 +220,18 @@ public class employeeHomePage extends AppCompatActivity {
     }
 
     public void ViewResizetoCut() {
-        Cursor c = rdb.viewepecificresizeorder(phonenumber);
+        Cursor c = rdb.viewepecificresize(phonenumber);
         if (c.getCount() == 0) {
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
         }
         StringBuffer sb = new StringBuffer();
         while (c.moveToNext()) {
-            oid.add(c.getString(0));
-            cn.add(c.getString(2));
-            tamt.add(c.getString(11));
-            dd.add(c.getString(13));
-            s.add(c.getString(16));
-            en.add(c.getString(14));
+            roid.add(c.getString(0));
+            rcn.add(c.getString(2));
+            rtamt.add(c.getString(11));
+            rdd.add(c.getString(13));
+            rs.add(c.getString(16));
+            ren.add(c.getString(14));
         }
     }
 
