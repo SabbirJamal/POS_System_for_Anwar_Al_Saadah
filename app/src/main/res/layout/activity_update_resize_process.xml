@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".newViews">
+    tools:context=".updateResizeProcess">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -168,14 +168,6 @@
         </androidx.cardview.widget.CardView>
 
     </androidx.cardview.widget.CardView>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/viewOrders"
-            android:layout_width="match_parent"
-            android:layout_height="530dp"
-            android:layout_marginTop="160dp" />
-
 
     </RelativeLayout>
 

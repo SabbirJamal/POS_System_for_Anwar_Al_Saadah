@@ -242,6 +242,7 @@ public class newOrder extends AppCompatActivity {
                     intent.putExtra("ename",employeename.getText().toString());
                     intent.putExtra("etype",employeetype.getText().toString());
                     intent.putExtra("eid",employeeid.getText().toString());
+                    intent.putExtra("phn",employeeid.getText().toString());
                     startActivity(intent);
                 }
                 else

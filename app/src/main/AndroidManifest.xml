@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Finalyearproject"
         tools:targetApi="31">
         <activity
+            android:name=".updateResizeProcess"
+            android:exported="false" />
+        <activity
             android:name=".newViews"
             android:exported="false" />
         <activity

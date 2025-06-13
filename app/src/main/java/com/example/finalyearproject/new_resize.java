@@ -178,6 +178,9 @@ public class new_resize extends AppCompatActivity {
                 if(insert==true)
                 {
                     Toast.makeText(new_resize.this,"Order Success", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(new_resize.this, employeeHomePage.class);
+                    intent.putExtra("phn",employeeid.getText().toString());
+                    startActivity(intent);
                 }
                 else
                 {
