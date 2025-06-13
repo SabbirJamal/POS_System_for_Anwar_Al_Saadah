@@ -158,10 +158,18 @@ public class orderDatabase extends SQLiteOpenHelper {
         return rowsAffected>0;
     }
 
+    public Cursor vieworderbyid(String id)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Order_ID="+id,null);
+        return  cursor;
+    }
 
-
-
-
-
+    public Cursor vieworderbyphonenumber(String phn)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Phone_Number="+phn,null);
+        return  cursor;
+    }
 
 }

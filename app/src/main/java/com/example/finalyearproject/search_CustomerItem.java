@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -30,7 +31,7 @@ public class search_CustomerItem extends AppCompatActivity {
     TextView dateTextView;
 
     RecyclerView rc1;
-    Button id;
+    Button id,sphonenumber;
     EditText number;
     //all order view
     resizeDatabase rdb;
@@ -91,7 +92,7 @@ public class search_CustomerItem extends AppCompatActivity {
         dateTextView.setText(currentDate);
         //end of getting current date
 
-        id=findViewById(R.id.searchbyid);
+
 
         number=findViewById(R.id.searchEditText);
         rc1=findViewById(R.id.searchRecycleView);
@@ -117,6 +118,13 @@ public class search_CustomerItem extends AppCompatActivity {
         rc1.setLayoutManager(new LinearLayoutManager(search_CustomerItem.this));
         //end of recycleview for orders to cut
 
+        //view orders by id
+        id=findViewById(R.id.searchbyid);
+        viewspecificorderbyid();
+
+        sphonenumber=findViewById(R.id.searchbyphonenumber);
+        viewspecificorderbyphonenumber();
+
     }
 
     public void ViewOrderstoCut() {
@@ -135,5 +143,79 @@ public class search_CustomerItem extends AppCompatActivity {
             aamt.add(c.getString(16));
             en.add(c.getString(19));
         }
+    }
+
+    public void viewspecificorderbyphonenumber(){
+        sphonenumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String iid=number.getText().toString();
+                Cursor c=odb.vieworderbyphonenumber(iid);
+                if(c.getCount()==0)
+                {
+                    viewcustomerdetails("Error","Nothing Found");
+                    return;
+                }
+                StringBuffer sb=new StringBuffer();
+                while(c.moveToNext())
+                {
+                    sb.append("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"+"\n");
+                    sb.append("Order ID         :- "+c.getString(0)+"\n");
+                    sb.append("Phone Number     :- "+c.getString(1)+"\n");
+                    sb.append("Customer Name    :- "+c.getString(2)+"\n");
+                    sb.append("Total Payable    :- "+c.getString(14)+"\n");
+                    sb.append("Advance Paid     :- "+c.getString(15)+"\n");
+                    sb.append("Balance Amount   :- "+c.getString(16)+"\n");
+                    sb.append("Status           :- "+c.getString(20)+"\n");
+                    sb.append("Delivery Date    :- "+c.getString(18)+"\n");
+                    sb.append("Employee Name    :- "+c.getString(19)+"\n");
+                    sb.append("tailor Name      :- "+c.getString(22)+"\n");
+                    sb.append("Isle Location    :- "+c.getString(21)+"\n");
+                    sb.append("---------------------------------------"+"\n");
+                }
+                viewcustomerdetails("Order Details",sb.toString());
+            }
+        });
+    }
+
+    public void viewspecificorderbyid(){
+        id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String iid=number.getText().toString();
+                Cursor c=odb.vieworderbyid(iid);
+                if(c.getCount()==0)
+                {
+                    viewcustomerdetails("Error","Nothing Found");
+                    return;
+                }
+                StringBuffer sb=new StringBuffer();
+                while(c.moveToNext())
+                {
+                    sb.append("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"+"\n");
+                    sb.append("Order ID         :- "+c.getString(0)+"\n");
+                    sb.append("Phone Number     :- "+c.getString(1)+"\n");
+                    sb.append("Customer Name    :- "+c.getString(2)+"\n");
+                    sb.append("Total Payable    :- "+c.getString(14)+"\n");
+                    sb.append("Advance Paid     :- "+c.getString(15)+"\n");
+                    sb.append("Balance Amount   :- "+c.getString(16)+"\n");
+                    sb.append("Status           :- "+c.getString(20)+"\n");
+                    sb.append("Delivery Date    :- "+c.getString(18)+"\n");
+                    sb.append("Employee Name    :- "+c.getString(19)+"\n");
+                    sb.append("tailor Name      :- "+c.getString(22)+"\n");
+                    sb.append("Isle Location    :- "+c.getString(21)+"\n");
+                    sb.append("---------------------------------------"+"\n");
+                }
+                viewcustomerdetails("Order Details",sb.toString());
+            }
+        });
+    }
+
+    public void viewcustomerdetails(String title,String mes){
+        AlertDialog.Builder ad = new AlertDialog.Builder(this);
+        ad.setCancelable(true);
+        ad.setTitle(title);
+        ad.setMessage(mes);
+        ad.show();
     }
 }
