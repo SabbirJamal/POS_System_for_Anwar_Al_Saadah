@@ -1,7 +1,11 @@
 package com.example.finalyearproject;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -10,8 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -21,6 +28,25 @@ public class search_CustomerItem extends AppCompatActivity {
     TextView employeename,employeetype,employeeid;
     //for getting current date
     TextView dateTextView;
+
+    RecyclerView rc1;
+    Button id;
+    EditText number;
+    //all order view
+    resizeDatabase rdb;
+
+    ArrayList<String>oid,cn,tamt, bamt,dd,s,aamt,en;
+    order_to_cut_customAdapter ca2;
+
+    //end of order view
+
+
+    //all resize view
+    //identifying database
+    orderDatabase odb;
+    //calling the custom adapter
+    resize_to_cut_customAdapter ca1;
+    ArrayList<String>roid,rcn,rtamt,rdd,rs,ren;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +89,51 @@ public class search_CustomerItem extends AppCompatActivity {
 
         // Set date to text field
         dateTextView.setText(currentDate);
-
         //end of getting current date
 
+        id=findViewById(R.id.searchbyid);
 
+        number=findViewById(R.id.searchEditText);
+        rc1=findViewById(R.id.searchRecycleView);
+        odb=new orderDatabase(this);
+
+
+        //codes for orders to cut recycleview
+        odb=new orderDatabase(this);
+
+        oid=new ArrayList<>();
+        cn=new ArrayList<>();
+        tamt=new ArrayList<>();
+        bamt=new ArrayList<>();
+        dd=new ArrayList<>();
+        s=new ArrayList<>();
+        aamt=new ArrayList<>();
+        en=new ArrayList<>();
+
+        ViewOrderstoCut();
+
+        ca2=new order_to_cut_customAdapter(search_CustomerItem.this,oid,cn,tamt,bamt,dd,s,aamt,en);
+        rc1.setAdapter(ca2);
+        rc1.setLayoutManager(new LinearLayoutManager(search_CustomerItem.this));
+        //end of recycleview for orders to cut
+
+    }
+
+    public void ViewOrderstoCut() {
+        Cursor c = odb.viewallorders();
+        if (c.getCount() == 0) {
+            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+        }
+        StringBuffer sb = new StringBuffer();
+        while (c.moveToNext()) {
+            oid.add(c.getString(0));
+            cn.add(c.getString(2));
+            tamt.add(c.getString(14));
+            bamt.add(c.getString(15));
+            dd.add(c.getString(17));
+            s.add(c.getString(21));
+            aamt.add(c.getString(16));
+            en.add(c.getString(19));
+        }
     }
 }

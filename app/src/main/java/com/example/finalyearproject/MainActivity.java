@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     catch (Exception e)
                     {
-                        Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,"",Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -116,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("ename",fn);
                             intent.putExtra("etype",et);
                             intent.putExtra("eid",eid);
+
+                            //send phone number data
+                            intent.putExtra("phn",phn.getText().toString());
                         }
                         startActivity(intent);
                     }
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 catch (Exception e)
                 {
-                    Toast.makeText(MainActivity.this,"Failed",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"",Toast.LENGTH_SHORT).show();
                 }
             }
         });

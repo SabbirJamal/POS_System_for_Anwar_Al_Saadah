@@ -254,26 +254,6 @@ public class newOrder extends AppCompatActivity {
         //end of inserting
 
 
-
-
-
-
     }
 
-
-    //code for retreving and displaying header details
-    public void viewheaderdetails(){
-        Cursor c=empdb.viewepecificempdata(phonenumber);
-        if(c.getCount()==0){
-            Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
-        }
-        StringBuffer sb=new StringBuffer();
-        while (c.moveToNext())
-        {
-            empname.add(c.getString(0));
-            emptype.add(c.getString(3));
-            empid.add(c.getString(1));
-
-        }
-    }
 }

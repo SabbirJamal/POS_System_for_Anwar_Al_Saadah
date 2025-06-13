@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -21,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class updateOrderProcess extends AppCompatActivity {
 
@@ -42,6 +44,13 @@ public class updateOrderProcess extends AppCompatActivity {
     RecyclerView rc1;
 
     Button f;
+
+
+
+
+    Map<String, String> tailorMap;
+    List<String> tailorNames;
+    TextView newemployeename,newemployeeid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +84,7 @@ public class updateOrderProcess extends AppCompatActivity {
             Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
         }
 
-
+/*
         //code for drop down list of employee names
         //finding Spinner
         categorySpinner=findViewById(R.id.tailorspinner);
@@ -92,6 +101,40 @@ public class updateOrderProcess extends AppCompatActivity {
 
         //tailor.setText(categorySpinner);
         //end of dropdownlist
+ */
+        newemployeename=findViewById(R.id.newempid);
+        newemployeeid=findViewById(R.id.newempname);
+        categorySpinner = findViewById(R.id.tailorspinner);
+        empdb = new empdatabase(this);
+
+        // Fetch tailor data
+        tailorMap = empdb.getTailorNamePhoneMap();
+        tailorNames = new ArrayList<>(tailorMap.keySet());
+
+        // Populate spinner with tailor names
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                tailorNames
+        );
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(adapter);
+
+        // Handle selection
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedName = tailorNames.get(position);
+                String selectedPhone = tailorMap.get(selectedName);
+                newemployeeid.setText(selectedPhone);
+
+                // Do something with the phone number (e.g., save it or pass via intent)
+                Log.d("TAILOR_SELECTED", "Name: " + selectedName + ", Phone: " + selectedPhone);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
         //code for getting intended data from prvs cardview
         oid=findViewById(R.id.orderID);
@@ -161,18 +204,18 @@ public class updateOrderProcess extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String eid=employeeid.getText().toString();
-                String orderID=oid.getText().toString();
-                String tailor=categorySpinner.getSelectedItem().toString();
-                String s="Stitching";
-                boolean update=odb.updatestatus(orderID,eid,s,tailor);
-                if (update==true)
-                {
+                String orderID = oid.getText().toString();  // Get Order ID from input
+                String tailor = newemployeeid.getText().toString();  // Get tailor from dropdown
+                String s = "Stitching";  // Fixed status
+
+                boolean update = odb.updatestatus(orderID, s, tailor);  // Only pass Order_ID, Status, Tailor
+
+                if (update) {
                     Toast.makeText(updateOrderProcess.this, "Data updated", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(updateOrderProcess.this, "Data not updated", Toast.LENGTH_LONG).show();
                 }
-                else {
-                    Toast.makeText(updateOrderProcess.this, "Date not updated", Toast.LENGTH_LONG).show();
-                }
+
 
 
             }

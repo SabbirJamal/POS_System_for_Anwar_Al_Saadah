@@ -108,6 +108,13 @@ public class orderDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor vieworderstostitch(String phn)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Status='Stitching' AND Employee_Name="+phn,null);
+        return cursor;
+    }
+
     public Cursor viewepecificorders2(String phn, String oid) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + ordertbl +
@@ -115,16 +122,27 @@ public class orderDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public boolean updatestatus(String oid,String eid,String stat, String t){
-        SQLiteDatabase db=this.getWritableDatabase();
-        ContentValues contentValues=new ContentValues();
-        String whereClause = "Order_ID=? AND Employee_ID=?";
-        contentValues.put(status,stat);
-        contentValues.put(tailor,t);
-        db.update("orderDB", contentValues, whereClause, new String[]{oid, eid});
-        return true;
-
+    public Cursor viewallorders(){
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("SELECT  * FROM "+ordertbl,null);
+        return cursor;
     }
+
+
+
+    public boolean updatestatus(String oid, String stat, String t) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(status, stat);
+        contentValues.put(tailor, t);
+
+        // Update only using Order_ID
+        int rowsAffected = db.update("orderDB", contentValues, "Order_ID = ?", new String[]{oid});
+
+        return rowsAffected > 0;
+    }
+
 
     public boolean newupdateStatus(String oid, String eid, String Status, String Tailor){
        SQLiteDatabase db=this.getWritableDatabase();

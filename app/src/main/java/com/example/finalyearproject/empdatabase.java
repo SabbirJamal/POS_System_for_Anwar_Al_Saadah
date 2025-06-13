@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.sql.SQLDataException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public class empdatabase extends SQLiteOpenHelper {
     public static final String empdb="employeedatabase.db";
@@ -122,32 +124,25 @@ public class empdatabase extends SQLiteOpenHelper {
         return list;
     }
 
-/*
-    public String getpasssalesman(String empid) {
-        // Get a readable database
+    public Map<String, String> getTailorNamePhoneMap() {
+        Map<String, String> namePhoneMap = new LinkedHashMap<>();  // Keeps insertion order
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // Perform the query with parameterized inputs to avoid SQL injection
-        Cursor cursor = db.rawQuery(
-                "SELECT * FROM " + emptbl + " WHERE Employee_Type = ? AND Phone_Number = ?",
-                new String[]{"Tailor", empid}
-        );
-
-        // Check if the cursor has any data
-        if (cursor != null && cursor.moveToFirst()) {
-            // Assuming the Password is in the 5th column (index 4)
-            String password = cursor.getString(4);  // Change this if the password is in a different column
-            cursor.close();  // Close the cursor after use
-            db.close();  // Close the database after use
-            return password;  // Return the password
-        } else {
-            // If no data is found, return null or handle error appropriately
-            cursor.close();
-            db.close();
-            return null;  // No matching employee found
+        Cursor cursor = db.rawQuery("SELECT Employee_Name, Phone_Number FROM Employee_Database WHERE Employee_Type = 'Tailor'", null);
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(0);
+                String phone = cursor.getString(1);
+                namePhoneMap.put(name, phone);  // key: name, value: phone
+            } while (cursor.moveToNext());
         }
+
+        cursor.close();
+        db.close();
+        return namePhoneMap;
     }
- */
+
+
 
 }
 
