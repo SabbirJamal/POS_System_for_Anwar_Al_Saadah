@@ -135,12 +135,6 @@ public class orderDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor viewOrdersbyDate(String phn, String date) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + ordertbl +
-                " WHERE Status='Cut' AND Employee_ID='" + phn + "' AND Order_Date='" + date + "'", null);
-        return cursor;
-    }
 
 
 

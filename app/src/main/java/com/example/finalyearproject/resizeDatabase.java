@@ -80,5 +80,12 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewepecificresize2(String phn, String oid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + resizetbl +
+                " WHERE Status='Cut' AND Employee_ID='" + phn + "' AND Order_ID='" + oid + "'", null);
+        return cursor;
+    }
+
 
 }

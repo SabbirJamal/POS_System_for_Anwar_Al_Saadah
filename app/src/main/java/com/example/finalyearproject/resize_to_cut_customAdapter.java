@@ -43,11 +43,11 @@ public class resize_to_cut_customAdapter extends RecyclerView.Adapter<resize_to_
         holder.txtdd.setText(String.valueOf(dd.get(position)));
         holder.txts.setText(String.valueOf(s.get(position)));
         holder.txten.setText(String.valueOf(en.get(position)));
-/*
+
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context,updateOrderProcess.class);
+                Intent intent=new Intent(context,updateResizeProcess.class);
                 intent.putExtra("orid",String.valueOf(oid.get(position)));
                 intent.putExtra("cn",String.valueOf(cn.get(position)));
                 intent.putExtra("tamt",String.valueOf(tamt.get(position)));
@@ -58,7 +58,6 @@ public class resize_to_cut_customAdapter extends RecyclerView.Adapter<resize_to_
             }
         });
 
- */
 
     }
 

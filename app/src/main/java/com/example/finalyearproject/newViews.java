@@ -115,7 +115,7 @@ public class newViews extends AppCompatActivity {
         transfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(newViews.this, newViews.class);
+                Intent intent=new Intent(newViews.this, salesman_HomePage.class);
                 intent.putExtra("ename",employeename.getText().toString());
                 intent.putExtra("etype",employeetype.getText().toString());
                 intent.putExtra("eid",employeeid.getText().toString());

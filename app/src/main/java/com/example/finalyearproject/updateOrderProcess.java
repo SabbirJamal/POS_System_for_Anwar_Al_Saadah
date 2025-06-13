@@ -84,24 +84,8 @@ public class updateOrderProcess extends AppCompatActivity {
             Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
         }
 
-/*
         //code for drop down list of employee names
         //finding Spinner
-        categorySpinner=findViewById(R.id.tailorspinner);
-        empdb=new empdatabase(this);
-
-        List<String> tailortype=empdb.getempname();
-
-        ArrayAdapter<String> clothnameadapter=new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item,tailortype);
-        clothnameadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(clothnameadapter);
-
-
-
-        //tailor.setText(categorySpinner);
-        //end of dropdownlist
- */
         newemployeename=findViewById(R.id.newempid);
         newemployeeid=findViewById(R.id.newempname);
         categorySpinner = findViewById(R.id.tailorspinner);
