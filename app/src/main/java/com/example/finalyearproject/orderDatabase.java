@@ -177,6 +177,9 @@ public class orderDatabase extends SQLiteOpenHelper {
     }
 
 
-    //newViews part
+    public Integer deleteOrder(String oid){
+        SQLiteDatabase db=this.getWritableDatabase();
+        return db.delete(ordertbl,"Order_ID=?",new String []{oid});
+    }
 
 }

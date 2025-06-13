@@ -94,4 +94,9 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Integer deleteResize(String oid){
+        SQLiteDatabase db=this.getWritableDatabase();
+        return db.delete(resizetbl,"Resize_ID=?",new String []{oid});
+    }
+
 }

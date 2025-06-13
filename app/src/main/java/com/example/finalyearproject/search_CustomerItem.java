@@ -1,11 +1,13 @@
 package com.example.finalyearproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +50,8 @@ public class search_CustomerItem extends AppCompatActivity {
     //calling the custom adapter
     resize_to_cut_customAdapter ca1;
     ArrayList<String>roid,rcn,rtamt,rdd,rs,ren;
+
+    ImageView menu,home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +97,33 @@ public class search_CustomerItem extends AppCompatActivity {
         //end of getting current date
 
 
+        home=findViewById(R.id.imghome);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(search_CustomerItem.this, employeeHomePage.class);
+                intent.putExtra("ename",employeename.getText().toString());
+                intent.putExtra("etype",employeetype.getText().toString());
+                intent.putExtra("eid",employeeid.getText().toString());
+                //send phone number data
+                intent.putExtra("phn",employeeid.getText().toString());
+                startActivity(intent);
+            }
+        });
+
+        menu=findViewById(R.id.imgmenu);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(search_CustomerItem.this, employeeHomePage.class);
+                intent.putExtra("ename",employeename.getText().toString());
+                intent.putExtra("etype",employeetype.getText().toString());
+                intent.putExtra("eid",employeeid.getText().toString());
+                //send phone number data
+                intent.putExtra("phn",employeeid.getText().toString());
+                startActivity(intent);
+            }
+        });
 
         number=findViewById(R.id.searchEditText);
         rc1=findViewById(R.id.searchRecycleView);
@@ -105,15 +136,13 @@ public class search_CustomerItem extends AppCompatActivity {
         oid=new ArrayList<>();
         cn=new ArrayList<>();
         tamt=new ArrayList<>();
-        bamt=new ArrayList<>();
         dd=new ArrayList<>();
         s=new ArrayList<>();
-        aamt=new ArrayList<>();
         en=new ArrayList<>();
 
         ViewOrderstoCut();
 
-        ca2=new order_to_cut_customAdapter(search_CustomerItem.this,oid,cn,bamt,dd,s,en);
+        ca2=new order_to_cut_customAdapter(search_CustomerItem.this,oid,cn,tamt,dd,s,en);
         rc1.setAdapter(ca2);
         rc1.setLayoutManager(new LinearLayoutManager(search_CustomerItem.this));
         //end of recycleview for orders to cut
