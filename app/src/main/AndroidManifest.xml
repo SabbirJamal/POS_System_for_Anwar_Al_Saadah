@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Finalyearproject"
         tools:targetApi="31">
         <activity
+            android:name=".onlyViewOrder"
+            android:exported="false" />
+        <activity
             android:name=".cancelOrder"
             android:exported="false" />
         <activity

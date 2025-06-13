@@ -34,14 +34,14 @@ public class newViews extends AppCompatActivity {
     TextView dateTextView,selectDate;
     final Calendar mycalender =Calendar.getInstance();
 
-    RecyclerView rc1;
+    RecyclerView rc2;
 
     //for viewing all orders
     //identifying order database
     orderDatabase odb;
     //calling the custom adapter
-    order_to_cut_customAdapter ca2;
-    ArrayList<String> oid,cn,tamt, bamt,dd,s,aamt,en;
+    customAdapter_orderANDresizeCardview ca2;
+    ArrayList<String> oid,cn,tamt,dd,s,en;
 
 
     //search by date
@@ -91,38 +91,6 @@ public class newViews extends AppCompatActivity {
         //end of getting current date
 
 
-        //view all orders
-        rc1=findViewById(R.id.viewOrders);
-        odb=new orderDatabase(this);
-
-        oid=new ArrayList<>();
-        cn=new ArrayList<>();
-        tamt=new ArrayList<>();
-        bamt=new ArrayList<>();
-        dd=new ArrayList<>();
-        s=new ArrayList<>();
-        aamt=new ArrayList<>();
-        en=new ArrayList<>();
-
-        ViewAllOrders();
-
-        ca2=new order_to_cut_customAdapter(newViews.this,oid,cn,tamt,dd,s,en);
-        rc1.setAdapter(ca2);
-        rc1.setLayoutManager(new LinearLayoutManager(newViews.this));
-        //end of recycleview for orders to cut
-
-        transfer=findViewById(R.id.imgtransfer);
-        transfer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(newViews.this, salesman_HomePage.class);
-                intent.putExtra("ename",employeename.getText().toString());
-                intent.putExtra("etype",employeetype.getText().toString());
-                intent.putExtra("eid",employeeid.getText().toString());
-                startActivity(intent);
-            }
-        });
-
         search=findViewById(R.id.imgsearch);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +116,24 @@ public class newViews extends AppCompatActivity {
             }
         });
 
+        //codes for orders to cut recycleview
+        rc2=findViewById(R.id.viewOrders);
+        odb=new orderDatabase(this);
+
+        oid=new ArrayList<>();
+        cn=new ArrayList<>();
+        tamt=new ArrayList<>();
+        dd=new ArrayList<>();
+        s=new ArrayList<>();
+        en=new ArrayList<>();
+
+        ViewAllOrders();
+
+        ca2=new customAdapter_orderANDresizeCardview(newViews.this,oid,cn,tamt,dd,s,en);
+        rc2.setAdapter(ca2);
+        rc2.setLayoutManager(new LinearLayoutManager(newViews.this));
+        //end of recycleview for orders to cut
+
 
 
 
@@ -165,7 +151,7 @@ public class newViews extends AppCompatActivity {
             cn.add(c.getString(2));
             tamt.add(c.getString(14));
             dd.add(c.getString(15));
-            s.add(c.getString(20));
+            s.add(c.getString(19));
             en.add(c.getString(17));
         }
     }

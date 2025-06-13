@@ -14,22 +14,25 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class salesman_HomePage extends AppCompatActivity {
 
-    //getting header intended data
+    //for getting header intent data
     TextView employeename,employeetype,employeeid;
+    //for getting current date
+    TextView dateTextView;
 
-    String phonenumber;
-
-    //recycle view of orders to stitch
+    //recycle view of orders to cut
     RecyclerView rc2;
     //identifying order database
     orderDatabase odb;
     //calling the custom adapter
     order_to_cut_customAdapter ca2;
-    ArrayList<String> oid,cn,tamt, bamt,dd,s,aamt,en;
+    ArrayList<String>oid,cn,tamt,dd,s,en;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +45,7 @@ public class salesman_HomePage extends AppCompatActivity {
             return insets;
         });
 
-
-
+        //header intent data
         employeename=findViewById(R.id.fullnametxt);
         employeetype=findViewById(R.id.employeetypetxt);
         employeeid=findViewById(R.id.employeeidtxt);
@@ -64,36 +66,42 @@ public class salesman_HomePage extends AppCompatActivity {
             Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
         }
 
-        //getting intented phone number
-        if(getIntent().hasExtra("phn")){
-            phonenumber=getIntent().getStringExtra("phn");
-        }
+        //getting current date
+        dateTextView = findViewById(R.id.currentdate);
+
+        // Get current date
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        String currentDate = sdf.format(new Date());
+
+        // Set date to text field
+        dateTextView.setText(currentDate);
+        //end of getting current date
 
 
-        //codes for orders to stitch recycleview
+        //codes for orders to cut recycleview
         rc2=findViewById(R.id.orderrecyclerView);
         odb=new orderDatabase(this);
 
         oid=new ArrayList<>();
         cn=new ArrayList<>();
         tamt=new ArrayList<>();
-        bamt=new ArrayList<>();
         dd=new ArrayList<>();
         s=new ArrayList<>();
-        aamt=new ArrayList<>();
         en=new ArrayList<>();
 
-        ViewOrderstoStitch();
+        ViewOrderstoCut();
 
-        ca2=new order_to_cut_customAdapter(salesman_HomePage.this,oid,cn,bamt,dd,s,en);
+        ca2=new order_to_cut_customAdapter(salesman_HomePage.this,oid,cn,tamt,dd,s,en);
         rc2.setAdapter(ca2);
         rc2.setLayoutManager(new LinearLayoutManager(salesman_HomePage.this));
         //end of recycleview for orders to cut
 
 
     }
-    public void ViewOrderstoStitch() {
-        Cursor c = odb.vieworderstostitch(phonenumber);
+
+    public void ViewOrderstoCut() {
+        String phonenumber=employeeid.getText().toString();
+        Cursor c = odb.viewepecificorders(phonenumber);
         if (c.getCount() == 0) {
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
         }
@@ -107,4 +115,5 @@ public class salesman_HomePage extends AppCompatActivity {
             en.add(c.getString(17));
         }
     }
+
 }

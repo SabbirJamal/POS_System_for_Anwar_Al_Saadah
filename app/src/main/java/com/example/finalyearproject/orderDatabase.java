@@ -118,6 +118,13 @@ public class orderDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewepecificorders3(String phn, String oid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ordertbl +
+                " WHERE Employee_ID='" + phn + "' AND Order_ID='" + oid + "'", null);
+        return cursor;
+    }
+
     public Cursor viewallorders(){
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery("SELECT  * FROM "+ordertbl,null);

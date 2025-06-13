@@ -23,7 +23,7 @@
                 android:id="@+id/imgmenu"
                 android:layout_width="35dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="40dp"
+                android:layout_marginStart="80dp"
                 app:srcCompat="@drawable/baseline_menu_24" />
 
 
@@ -31,15 +31,9 @@
                 android:id="@+id/imghome"
                 android:layout_width="35dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="110dp"
+                android:layout_marginStart="150dp"
                 app:srcCompat="@drawable/baseline_home_24" />
 
-            <ImageView
-                android:id="@+id/imgsearch"
-                android:layout_width="35dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="100dp"
-                app:srcCompat="@drawable/baseline_search_24" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

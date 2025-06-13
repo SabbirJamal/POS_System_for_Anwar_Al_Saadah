@@ -233,7 +233,7 @@ public class employeeHomePage extends AppCompatActivity {
             cn.add(c.getString(2));
             tamt.add(c.getString(14));
             dd.add(c.getString(15));
-            s.add(c.getString(20));
+            s.add(c.getString(19));
             en.add(c.getString(17));
         }
     }

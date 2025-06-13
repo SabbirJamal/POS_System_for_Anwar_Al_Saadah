@@ -39,7 +39,7 @@ public class search_CustomerItem extends AppCompatActivity {
     resizeDatabase rdb;
 
     ArrayList<String>oid,cn,tamt, bamt,dd,s,aamt,en;
-    order_to_cut_customAdapter ca2;
+    customAdapter_orderANDresizeCardview ca2;
 
     //end of order view
 
@@ -142,7 +142,7 @@ public class search_CustomerItem extends AppCompatActivity {
 
         ViewOrderstoCut();
 
-        ca2=new order_to_cut_customAdapter(search_CustomerItem.this,oid,cn,tamt,dd,s,en);
+        ca2=new customAdapter_orderANDresizeCardview(search_CustomerItem.this,oid,cn,tamt,dd,s,en);
         rc1.setAdapter(ca2);
         rc1.setLayoutManager(new LinearLayoutManager(search_CustomerItem.this));
         //end of recycleview for orders to cut
@@ -167,7 +167,7 @@ public class search_CustomerItem extends AppCompatActivity {
             cn.add(c.getString(2));
             tamt.add(c.getString(14));
             dd.add(c.getString(15));
-            s.add(c.getString(20));
+            s.add(c.getString(19));
             en.add(c.getString(17));
         }
     }
