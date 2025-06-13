@@ -87,5 +87,11 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewresizebyEMPID(String phn)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+resizetbl+" WHERE Employee_ID="+phn,null);
+        return cursor;
+    }
 
 }
