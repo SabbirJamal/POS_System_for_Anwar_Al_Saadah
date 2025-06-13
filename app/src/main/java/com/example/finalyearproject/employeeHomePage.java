@@ -64,7 +64,7 @@ public class employeeHomePage extends AppCompatActivity {
 
     TextView ename,eid,etype;
 
-    ImageView search;
+    ImageView search,menu;
     TextView intentename,intenteid,intentetype;
 
 
@@ -193,6 +193,17 @@ public class employeeHomePage extends AppCompatActivity {
             }
         });
 
+        menu=findViewById(R.id.imgmenu);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(employeeHomePage.this, salesmanMenu.class);
+                intent.putExtra("ename",employeename.getText().toString());
+                intent.putExtra("etype",employeetype.getText().toString());
+                intent.putExtra("eid",employeeid.getText().toString());
+                startActivity(intent);
+            }
+        });
 
     }
 
