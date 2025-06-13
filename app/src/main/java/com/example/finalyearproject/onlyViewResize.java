@@ -31,10 +31,15 @@ public class onlyViewResize extends AppCompatActivity {
     final Calendar mycalender =Calendar.getInstance();
 
 
-    TextView oid,cn,amt,dd,s,empid;
+    TextView oid,cn,amt,dd,s2,empid2;
 
     //search by date
-    ImageView transfer,home,search;
+    ImageView menu,home,search;
+
+    resizeDatabase rdb;
+    fullview_Sales ca;
+    ArrayList<String>h,wc,wh,s,b,hand,a,w,phn,od,empid,il;
+    RecyclerView rc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +82,17 @@ public class onlyViewResize extends AppCompatActivity {
         dateTextView.setText(currentDate);
         //end of getting current date
 
+        menu=findViewById(R.id.imgmenu);
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(onlyViewResize.this, search_CustomerItem.class);
+                intent.putExtra("ename",employeename.getText().toString());
+                intent.putExtra("etype",employeetype.getText().toString());
+                intent.putExtra("eid",employeeid.getText().toString());
+                startActivity(intent);
+            }
+        });
 
         search=findViewById(R.id.imgsearch);
         search.setOnClickListener(new View.OnClickListener() {
@@ -108,8 +124,8 @@ public class onlyViewResize extends AppCompatActivity {
         cn=findViewById(R.id.custName);
         amt=findViewById(R.id.totalamt);
         dd=findViewById(R.id.deliveryDate);
-        s=findViewById(R.id.clothStatus);
-        empid=findViewById(R.id.employeeID);
+        s2=findViewById(R.id.clothStatus);
+        empid2=findViewById(R.id.employeeID);
 
         if(getIntent().hasExtra("orid") && getIntent().hasExtra("cn") && getIntent().hasExtra("tamt") && getIntent().hasExtra("dd") &&
                 getIntent().hasExtra("s") && getIntent().hasExtra("en")) {
@@ -126,15 +142,60 @@ public class onlyViewResize extends AppCompatActivity {
             cn.setText(a2);
             amt.setText(a3);
             dd.setText(a5);
-            s.setText(a6);
-            empid.setText(a8);
+            s2.setText(a6);
+            empid2.setText(a8);
 
-            String phonenumber=empid.getText().toString();
+            String phonenumber=empid2.getText().toString();
         }
+
+        //code for remaining information in recycleview
+        rc=findViewById(R.id.recyclerView);
+        rdb=new resizeDatabase(this);
+        h=new ArrayList<>();
+        wc=new ArrayList<>();
+        wh=new ArrayList<>();
+        s=new ArrayList<>();
+        b=new ArrayList<>();
+        hand=new ArrayList<>();
+        a=new ArrayList<>();
+        w=new ArrayList<>();
+        phn=new ArrayList<>();
+        od=new ArrayList<>();
+        empid=new ArrayList<>();
+        il=new ArrayList<>();
+
+        viewalldata();
+
+        ca=new fullview_Sales(onlyViewResize.this,h,wc,wh,s,b,hand,a,w,phn,od,empid,il);
+        rc.setAdapter(ca);
+        rc.setLayoutManager(new LinearLayoutManager(onlyViewResize.this));
+        //end of recycle view
+
 
 
     }
-
-
+    public void viewalldata(){
+        String phonenumber=empid2.getText().toString();
+        String orderid=oid.getText().toString();
+        Cursor c = rdb.viewepecificresize3(phonenumber,orderid);
+        if (c.getCount() == 0) {
+            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
+        }
+        StringBuffer sb = new StringBuffer();
+        while (c.moveToNext()) {
+            phn.add(c.getString(1));
+            h.add(c.getString(3));
+            wc.add(c.getString(4));
+            wh.add(c.getString(5));
+            s.add(c.getString(6));
+            b.add(c.getString(7));
+            hand.add(c.getString(8));
+            a.add(c.getString(9));
+            w.add(c.getString(10));
+            od.add(c.getString(12));
+            empid.add(c.getString(15));
+            il.add(c.getString(18));
+        }
+    }
 
 }
