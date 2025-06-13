@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class updateResizeProcess extends AppCompatActivity {
     viewResizeDetails ca1;
     ArrayList<String>h,wc,wh,sh,b,hand,a,w;
     RecyclerView rc1;
-
+    Button f;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,17 +61,6 @@ public class updateResizeProcess extends AppCompatActivity {
 
 
 
-        transfer=findViewById(R.id.imgtransfer);
-        transfer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(updateResizeProcess.this, newViews.class);
-                intent.putExtra("ename",employeename.getText().toString());
-                intent.putExtra("etype",employeetype.getText().toString());
-                intent.putExtra("eid",employeeid.getText().toString());
-                startActivity(intent);
-            }
-        });
 
         search=findViewById(R.id.imgsearch);
         search.setOnClickListener(new View.OnClickListener() {
@@ -194,15 +184,38 @@ public class updateResizeProcess extends AppCompatActivity {
         a=new ArrayList<>();
         w=new ArrayList<>();
 
-        //viewordertoresizedetails();
+        viewordertoresizedetails();
         ca1=new viewResizeDetails(updateResizeProcess.this,h,wc,wh,sh,b,hand,a,w);
         rc1.setAdapter(ca1);
         rc1.setLayoutManager(new LinearLayoutManager(updateResizeProcess.this));
         //end of recycle view
 
+        //updating status
+        f=findViewById(R.id.finish);
+        f.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String orderID = oid.getText().toString();  // Get Order ID from input
+                String tailor = newemployeeid.getText().toString();  // Get tailor from dropdown
+                String s = "Stitching";  // Fixed status
+
+                boolean update = rdb.updateresizestatus(orderID, s, tailor);  // Only pass Order_ID, Status, Tailor
+
+                if (update) {
+                    Toast.makeText(updateResizeProcess.this, "Data updated", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(updateResizeProcess.this, "Data not updated", Toast.LENGTH_LONG).show();
+                }
+
+
+
+            }
+        });
+
 
     }
-/*
+
     public void viewordertoresizedetails(){
         String phonenumber=empid.getText().toString();
         String orderid=oid.getText().toString();
@@ -212,17 +225,21 @@ public class updateResizeProcess extends AppCompatActivity {
         }
         StringBuffer sb = new StringBuffer();
         while (c.moveToNext()) {
-            h.add(c.getString(3));
-            wc.add(c.getString(4));
-            wh.add(c.getString(5));
-            sh.add(c.getString(6));
-            b.add(c.getString(7));
-            hand.add(c.getString(8));
-            a.add(c.getString(9));
-            w.add(c.getString(10));
+            h.add(c.getString(5));
+            wc.add(c.getString(6));
+            wh.add(c.getString(7));
+            sh.add(c.getString(8));
+            b.add(c.getString(9));
+            hand.add(c.getString(10));
+            a.add(c.getString(11));
+            w.add(c.getString(12));
         }
     }
-*/
+
+
+
+
+
 
 
 }

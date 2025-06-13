@@ -31,7 +31,7 @@ public class newViews_sales extends AppCompatActivity {
     //identifying resize database
     resizeDatabase rdb;
     //calling the custom adapter
-    resize_to_cut_customAdapter ca3;
+    customAdapter_orderANDresizeCardview2 ca3;
     ArrayList<String> roid,rcn,rtamt,rdd,rs,ren;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class newViews_sales extends AppCompatActivity {
 
         ViewResizetoCut();
 
-        ca3=new resize_to_cut_customAdapter(newViews_sales.this,roid,rcn,rtamt,rdd,rs,ren);
+        ca3=new customAdapter_orderANDresizeCardview2(newViews_sales.this,roid,rcn,rtamt,rdd,rs,ren);
         rc3.setAdapter(ca3);
         rc3.setLayoutManager(new LinearLayoutManager(newViews_sales.this));
         //end of recycleview for resize to cut

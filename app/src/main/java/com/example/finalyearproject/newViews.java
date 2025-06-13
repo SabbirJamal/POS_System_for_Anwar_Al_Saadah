@@ -115,7 +115,6 @@ public class newViews extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         //codes for orders to cut recycleview
         rc2=findViewById(R.id.viewOrders);
         odb=new orderDatabase(this);
@@ -133,7 +132,6 @@ public class newViews extends AppCompatActivity {
         rc2.setAdapter(ca2);
         rc2.setLayoutManager(new LinearLayoutManager(newViews.this));
         //end of recycleview for orders to cut
-
 
 
 

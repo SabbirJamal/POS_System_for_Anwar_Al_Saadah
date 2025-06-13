@@ -1,6 +1,7 @@
 package com.example.finalyearproject;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,37 +11,40 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class salesmanMenu extends AppCompatActivity {
+public class onlyViewResize extends AppCompatActivity {
 
-    //for getting header intent data
     TextView employeename,employeetype,employeeid;
     //for getting current date
-    TextView dateTextView;
+    TextView dateTextView,selectDate;
+    final Calendar mycalender =Calendar.getInstance();
 
-    CardView order,sales,cancelorder, cancelresize,updatepassword;
 
-    ImageView search,home;
+    TextView oid,cn,amt,dd,s,empid;
 
+    //search by date
+    ImageView transfer,home,search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_salesman_menu);
+        setContentView(R.layout.activity_only_view_resize);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
         //header intent data
         employeename=findViewById(R.id.fullnametxt);
         employeetype=findViewById(R.id.employeetypetxt);
@@ -74,35 +78,11 @@ public class salesmanMenu extends AppCompatActivity {
         //end of getting current date
 
 
-        order=findViewById(R.id.vieworders);
-        order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(salesmanMenu.this, newViews.class);
-                intent.putExtra("ename",employeename.getText().toString());
-                intent.putExtra("etype",employeetype.getText().toString());
-                intent.putExtra("eid",employeeid.getText().toString());
-                startActivity(intent);
-            }
-        });
-
-        sales=findViewById(R.id.viewresizes);
-        sales.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(salesmanMenu.this, newViews_sales.class);
-                intent.putExtra("ename",employeename.getText().toString());
-                intent.putExtra("etype",employeetype.getText().toString());
-                intent.putExtra("eid",employeeid.getText().toString());
-                startActivity(intent);
-            }
-        });
-
         search=findViewById(R.id.imgsearch);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(salesmanMenu.this, search_CustomerItem.class);
+                Intent intent=new Intent(onlyViewResize.this, search_CustomerItem.class);
                 intent.putExtra("ename",employeename.getText().toString());
                 intent.putExtra("etype",employeetype.getText().toString());
                 intent.putExtra("eid",employeeid.getText().toString());
@@ -114,29 +94,47 @@ public class salesmanMenu extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(salesmanMenu.this, employeeHomePage.class);
+                Intent intent=new Intent(onlyViewResize.this, employeeHomePage.class);
                 intent.putExtra("ename",employeename.getText().toString());
                 intent.putExtra("etype",employeetype.getText().toString());
                 intent.putExtra("eid",employeeid.getText().toString());
-                //send phone number data
                 intent.putExtra("phn",employeeid.getText().toString());
                 startActivity(intent);
             }
         });
 
-        cancelorder=findViewById(R.id.cancelorder);
-        cancelorder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(salesmanMenu.this, cancelOrder.class);
-                intent.putExtra("ename",employeename.getText().toString());
-                intent.putExtra("etype",employeetype.getText().toString());
-                intent.putExtra("eid",employeeid.getText().toString());
-                //send phone number data
-                intent.putExtra("phn",employeeid.getText().toString());
-                startActivity(intent);
-            }
-        });
+        //code for getting intended data from prvs cardview
+        oid=findViewById(R.id.orderID);
+        cn=findViewById(R.id.custName);
+        amt=findViewById(R.id.totalamt);
+        dd=findViewById(R.id.deliveryDate);
+        s=findViewById(R.id.clothStatus);
+        empid=findViewById(R.id.employeeID);
+
+        if(getIntent().hasExtra("orid") && getIntent().hasExtra("cn") && getIntent().hasExtra("tamt") && getIntent().hasExtra("dd") &&
+                getIntent().hasExtra("s") && getIntent().hasExtra("en")) {
+            String a1 = getIntent().getStringExtra("orid");
+            String a2 = getIntent().getStringExtra("cn");
+            String a3 = getIntent().getStringExtra("tamt");
+            String a5 = getIntent().getStringExtra("dd");
+            String a6 = getIntent().getStringExtra("s");
+            String a8 = getIntent().getStringExtra("en");
+
+            String eid=a8;
+
+            oid.setText(a1);
+            cn.setText(a2);
+            amt.setText(a3);
+            dd.setText(a5);
+            s.setText(a6);
+            empid.setText(a8);
+
+            String phonenumber=empid.getText().toString();
+        }
+
 
     }
+
+
+
 }

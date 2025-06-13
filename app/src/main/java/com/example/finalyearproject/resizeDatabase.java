@@ -80,10 +80,18 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewepecificresizetostitch(String phn)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+resizetbl+" WHERE Status='Stitching' AND Employee_ID="+phn,null);
+        return cursor;
+    }
+
+
     public Cursor viewepecificresize2(String phn, String oid) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + resizetbl +
-                " WHERE Status='Cut' AND Employee_ID='" + phn + "' AND Order_ID='" + oid + "'", null);
+                " WHERE Status='Cut' AND Employee_ID='" + phn + "' AND Resize_ID='" + oid + "'", null);
         return cursor;
     }
 
@@ -94,9 +102,23 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+
     public Integer deleteResize(String oid){
         SQLiteDatabase db=this.getWritableDatabase();
         return db.delete(resizetbl,"Resize_ID=?",new String []{oid});
+    }
+
+    public boolean updateresizestatus(String oid, String stat, String t) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(status, stat);
+        contentValues.put(tailor, t);
+
+        // Update only using Order_ID
+        int rowsAffected = db.update("resizeDB", contentValues, "Resize_ID = ?", new String[]{oid});
+
+        return rowsAffected > 0;
     }
 
 }

@@ -161,11 +161,6 @@
 
             </androidx.cardview.widget.CardView>
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_menu_24" />
 
         </RelativeLayout>
 

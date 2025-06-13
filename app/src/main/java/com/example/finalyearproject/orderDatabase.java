@@ -85,17 +85,6 @@ public class orderDatabase extends SQLiteOpenHelper {
     }
 
 
-    Cursor getalldata(){
-        String query="SELECT * FROM "+ordertbl;
-        SQLiteDatabase db=this.getWritableDatabase();
-
-        Cursor cursor=null;
-        if(db !=null)
-        {
-            cursor=db.rawQuery(query,null);
-        }
-        return cursor;
-    }
 
     public Cursor viewepecificorders(String phn)
     {
@@ -107,7 +96,7 @@ public class orderDatabase extends SQLiteOpenHelper {
     public Cursor vieworderstostitch(String phn)
     {
         SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Status='Stitching' AND Employee_Name="+phn,null);
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Status='Stitching' AND Tailor="+phn,null);
         return cursor;
     }
 
@@ -124,6 +113,7 @@ public class orderDatabase extends SQLiteOpenHelper {
                 " WHERE Employee_ID='" + phn + "' AND Order_ID='" + oid + "'", null);
         return cursor;
     }
+
 
     public Cursor viewallorders(){
         SQLiteDatabase db=this.getReadableDatabase();

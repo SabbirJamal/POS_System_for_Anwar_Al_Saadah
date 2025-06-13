@@ -80,10 +80,6 @@ public class employeeHomePage extends AppCompatActivity {
             return insets;
         });
 
-        //getting intented phone number
-        if(getIntent().hasExtra("phn")){
-            phonenumber=getIntent().getStringExtra("phn");
-        }
 
 
 
@@ -253,6 +249,7 @@ public class employeeHomePage extends AppCompatActivity {
             ren.add(c.getString(14));
         }
     }
+
 
 
 }
