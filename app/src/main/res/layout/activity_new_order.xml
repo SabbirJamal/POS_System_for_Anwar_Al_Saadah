@@ -527,22 +527,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="textEnd"
-                        android:paddingTop="20dp"
-                        android:text="Advance :"
-                        android:textSize="20dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
-                        android:paddingTop="20dp"
-                        android:text="Balance :"
-                        android:textSize="20dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAlignment="textEnd"
                         android:paddingTop="12dp"
                         android:text="Delivery Date :"
                         android:textSize="20dp"/>
@@ -563,20 +547,6 @@
                         android:hint="0"
                         android:textSize="20dp"/>
 
-                    <EditText
-                        android:id="@+id/advancepayableamount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="-2dp"
-                        android:hint="0"
-                        android:textSize="20dp"/>
-
-                    <EditText
-                        android:id="@+id/balancepayableamount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="0"
-                        android:textSize="20dp"/>
 
                     <EditText
                         android:id="@+id/deliveryDate"
@@ -597,13 +567,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order"
-                android:layout_marginTop="1100dp"/>
+                android:layout_marginTop="1000dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="12"
-                android:layout_marginTop="1200dp"/>
+                android:layout_marginTop="1100dp"/>
 
 
 

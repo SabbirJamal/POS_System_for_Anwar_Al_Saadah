@@ -106,7 +106,7 @@ public class newViews extends AppCompatActivity {
 
         ViewAllOrders();
 
-        ca2=new order_to_cut_customAdapter(newViews.this,oid,cn,tamt,bamt,dd,s,aamt,en);
+        ca2=new order_to_cut_customAdapter(newViews.this,oid,cn,tamt,dd,s,en);
         rc1.setAdapter(ca2);
         rc1.setLayoutManager(new LinearLayoutManager(newViews.this));
         //end of recycleview for orders to cut
@@ -164,11 +164,9 @@ public class newViews extends AppCompatActivity {
             oid.add(c.getString(0));
             cn.add(c.getString(2));
             tamt.add(c.getString(14));
-            bamt.add(c.getString(15));
-            dd.add(c.getString(17));
-            s.add(c.getString(21));
-            aamt.add(c.getString(16));
-            en.add(c.getString(19));
+            dd.add(c.getString(15));
+            s.add(c.getString(20));
+            en.add(c.getString(17));
         }
     }
 

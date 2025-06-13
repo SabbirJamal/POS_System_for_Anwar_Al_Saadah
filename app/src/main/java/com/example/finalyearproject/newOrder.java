@@ -97,8 +97,6 @@ public class newOrder extends AppCompatActivity {
         //calculation and setting balance amount
         //finding the fields
         tot=findViewById(R.id.totalpayableamount);
-        adv=findViewById(R.id.advancepayableamount);
-        bal=findViewById(R.id.balancepayableamount);
 
         //end
 
@@ -129,20 +127,6 @@ public class newOrder extends AppCompatActivity {
                         String myFormat="dd-MMM-yyyy";
                         SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
                         deliverydate.setText(dateFormat.format(mycalender.getTime()));
-
-
-
-                        //calculation of amt
-                        String t=tot.getText().toString();
-                        Double tot2=Double.parseDouble(t);
-
-                        String a=adv.getText().toString();
-                        Double a2=Double.parseDouble(a);
-
-                        Double bal2=tot2-a2;
-
-                        bal.setText(""+bal2);
-                        //end of amt calculation
                     }
                 }, mycalender.get(Calendar.YEAR), mycalender.get(Calendar.MONTH), mycalender.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -225,8 +209,6 @@ public class newOrder extends AppCompatActivity {
                 String w=waist.getText().toString();
                 String ai=adinfo.getText().toString();
                 String tamt=tot.getText().toString();
-                String ad=adv.getText().toString();;
-                String bamt=bal.getText().toString();
                 String curd=dateTextView.getText().toString();
                 String dd=deliverydate.getText().toString();
                 String eid=employeeid.getText().toString();
@@ -234,7 +216,7 @@ public class newOrder extends AppCompatActivity {
                 String status="Cut";
                 String tailor="NULL";
                 String isle="NULL";
-                boolean insert=odb.addneworder(p,n,dn,clth,he,wic,wih,sh,ba,hal,a,w,ai,tamt,ad,bamt,curd,dd,eid,en,status,tailor,isle);
+                boolean insert=odb.addneworder(p,n,dn,clth,he,wic,wih,sh,ba,hal,a,w,ai,tamt,curd,dd,eid,en,status,tailor,isle);
                 if(insert==true)
                 {
                     Toast.makeText(newOrder.this,"Order Success", Toast.LENGTH_SHORT).show();

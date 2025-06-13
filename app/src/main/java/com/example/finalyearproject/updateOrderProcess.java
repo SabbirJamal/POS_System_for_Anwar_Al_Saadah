@@ -124,21 +124,17 @@ public class updateOrderProcess extends AppCompatActivity {
         oid=findViewById(R.id.orderID);
         cn=findViewById(R.id.custName);
         amt=findViewById(R.id.totalamt);
-        bal=findViewById(R.id.balanceamt);
         dd=findViewById(R.id.deliveryDate);
         s=findViewById(R.id.clothStatus);
-        advanceamt=findViewById(R.id.advanceamt);
         empid=findViewById(R.id.employeeID);
 
-        if(getIntent().hasExtra("orid") && getIntent().hasExtra("cn") && getIntent().hasExtra("tamt") && getIntent().hasExtra("bamt") && getIntent().hasExtra("dd") &&
-                getIntent().hasExtra("s") && getIntent().hasExtra("aamt") && getIntent().hasExtra("en")) {
+        if(getIntent().hasExtra("orid") && getIntent().hasExtra("cn") && getIntent().hasExtra("tamt") && getIntent().hasExtra("dd") &&
+                getIntent().hasExtra("s") && getIntent().hasExtra("en")) {
             String a1 = getIntent().getStringExtra("orid");
             String a2 = getIntent().getStringExtra("cn");
             String a3 = getIntent().getStringExtra("tamt");
-            String a4 = getIntent().getStringExtra("bamt");
             String a5 = getIntent().getStringExtra("dd");
             String a6 = getIntent().getStringExtra("s");
-            String a7 = getIntent().getStringExtra("aamt");
             String a8 = getIntent().getStringExtra("en");
 
             String eid=a8;
@@ -146,10 +142,8 @@ public class updateOrderProcess extends AppCompatActivity {
             oid.setText(a1);
             cn.setText(a2);
             amt.setText(a3);
-            bal.setText(a4);
             dd.setText(a5);
             s.setText(a6);
-            advanceamt.setText(a7);
             empid.setText(a8);
 
             String phonenumber=empid.getText().toString();

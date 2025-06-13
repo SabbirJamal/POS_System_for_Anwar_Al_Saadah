@@ -16,17 +16,15 @@ import java.util.ArrayList;
 public class order_to_cut_customAdapter extends RecyclerView.Adapter<order_to_cut_customAdapter.MyViewHolder> {
 
     private Context context;
-    private ArrayList oid,cn,tamt, bamt,dd,s,aamt,en;
+    private ArrayList oid,cn,tamt,dd,s,en;
 
-    order_to_cut_customAdapter(Context context,ArrayList oid,ArrayList cn,ArrayList tamt,ArrayList bamt,ArrayList dd,ArrayList s,ArrayList aamt,ArrayList en){
+    order_to_cut_customAdapter(Context context,ArrayList oid,ArrayList cn,ArrayList tamt,ArrayList dd,ArrayList s,ArrayList en){
         this.context=context;
         this.oid=oid;
         this.cn=cn;
         this.tamt=tamt;
-        this.bamt=bamt;
         this.dd=dd;
         this.s=s;
-        this.aamt=aamt;
         this.en=en;
     }
     @NonNull
@@ -42,10 +40,8 @@ public class order_to_cut_customAdapter extends RecyclerView.Adapter<order_to_cu
         holder.txtoid.setText(String.valueOf(oid.get(position)));
         holder.txtcn.setText(String.valueOf(cn.get(position)));
         holder.txttamt.setText(String.valueOf(tamt.get(position)));
-        holder.txtbamt.setText(String.valueOf(bamt.get(position)));
         holder.txtdd.setText(String.valueOf(dd.get(position)));
         holder.txts.setText(String.valueOf(s.get(position)));
-        holder.txtaamt.setText(String.valueOf(aamt.get(position)));
         holder.txten.setText(String.valueOf(en.get(position)));
 
         holder.cv.setOnClickListener(new View.OnClickListener() {
@@ -55,10 +51,8 @@ public class order_to_cut_customAdapter extends RecyclerView.Adapter<order_to_cu
                 intent.putExtra("orid",String.valueOf(oid.get(position)));
                 intent.putExtra("cn",String.valueOf(cn.get(position)));
                 intent.putExtra("tamt",String.valueOf(tamt.get(position)));
-                intent.putExtra("bamt",String.valueOf(bamt.get(position)));
                 intent.putExtra("dd",String.valueOf(dd.get(position)));
                 intent.putExtra("s",String.valueOf(s.get(position)));
-                intent.putExtra("aamt",String.valueOf(aamt.get(position)));
                 intent.putExtra("en",String.valueOf(en.get(position)));
                 context.startActivity(intent);
             }
@@ -80,10 +74,8 @@ public class order_to_cut_customAdapter extends RecyclerView.Adapter<order_to_cu
             txtoid=itemView.findViewById(R.id.orderID);
             txtcn=itemView.findViewById(R.id.custName);
             txttamt=itemView.findViewById(R.id.totalamt);
-            txtbamt=itemView.findViewById(R.id.balanceamt);
             txtdd=itemView.findViewById(R.id.deliveryDate);
             txts=itemView.findViewById(R.id.clothStatus);
-            txtaamt=itemView.findViewById(R.id.advanceamt);
             txten=itemView.findViewById(R.id.employeeID);
             cv=itemView.findViewById(R.id.CardView1);
 

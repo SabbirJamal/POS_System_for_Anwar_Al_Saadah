@@ -51,7 +51,7 @@ public class employeeHomePage extends AppCompatActivity {
     orderDatabase odb;
     //calling the custom adapter
     order_to_cut_customAdapter ca2;
-    ArrayList<String>oid,cn,tamt, bamt,dd,s,aamt,en;
+    ArrayList<String>oid,cn,tamt,dd,s,en;
 
 
     //recycle view of resize to cut
@@ -130,15 +130,13 @@ public class employeeHomePage extends AppCompatActivity {
         oid=new ArrayList<>();
         cn=new ArrayList<>();
         tamt=new ArrayList<>();
-        bamt=new ArrayList<>();
         dd=new ArrayList<>();
         s=new ArrayList<>();
-        aamt=new ArrayList<>();
         en=new ArrayList<>();
 
         ViewOrderstoCut();
 
-        ca2=new order_to_cut_customAdapter(employeeHomePage.this,oid,cn,tamt,bamt,dd,s,aamt,en);
+        ca2=new order_to_cut_customAdapter(employeeHomePage.this,oid,cn,tamt,dd,s,en);
         rc2.setAdapter(ca2);
         rc2.setLayoutManager(new LinearLayoutManager(employeeHomePage.this));
         //end of recycleview for orders to cut
@@ -234,11 +232,9 @@ public class employeeHomePage extends AppCompatActivity {
             oid.add(c.getString(0));
             cn.add(c.getString(2));
             tamt.add(c.getString(14));
-            bamt.add(c.getString(15));
-            dd.add(c.getString(17));
-            s.add(c.getString(21));
-            aamt.add(c.getString(16));
-            en.add(c.getString(19));
+            dd.add(c.getString(15));
+            s.add(c.getString(20));
+            en.add(c.getString(17));
         }
     }
 

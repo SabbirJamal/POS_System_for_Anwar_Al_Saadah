@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,8 @@ public class salesmanMenu extends AppCompatActivity {
     TextView dateTextView;
 
     CardView order,sales,resize,updatepassword;
+
+    ImageView search,home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,5 +97,32 @@ public class salesmanMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        search=findViewById(R.id.imgsearch);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(salesmanMenu.this, newViews.class);
+                intent.putExtra("ename",employeename.getText().toString());
+                intent.putExtra("etype",employeetype.getText().toString());
+                intent.putExtra("eid",employeeid.getText().toString());
+                startActivity(intent);
+            }
+        });
+
+        home=findViewById(R.id.imghome);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(salesmanMenu.this, newViews.class);
+                intent.putExtra("ename",employeename.getText().toString());
+                intent.putExtra("etype",employeetype.getText().toString());
+                intent.putExtra("eid",employeeid.getText().toString());
+                //send phone number data
+                intent.putExtra("phn",employeeid.getText().toString());
+                startActivity(intent);
+            }
+        });
+
     }
 }
