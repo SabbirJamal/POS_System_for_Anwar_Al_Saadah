@@ -87,6 +87,13 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewresizedataforTAILOR(String phn)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+resizetbl+" WHERE  Tailor="+phn,null);
+        return cursor;
+    }
+
 
     public Cursor viewepecificresize2(String phn, String oid) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -147,5 +154,6 @@ public class resizeDatabase extends SQLiteOpenHelper {
 
         return rowsAffected > 0;
     }
+
 
 }

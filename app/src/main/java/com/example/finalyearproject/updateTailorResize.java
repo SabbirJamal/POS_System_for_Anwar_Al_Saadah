@@ -110,7 +110,7 @@ public class updateTailorResize extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(updateTailorResize.this, employeeHomePage.class);
+                Intent intent=new Intent(updateTailorResize.this, salesman_HomePage.class);
                 intent.putExtra("ename",employeename.getText().toString());
                 intent.putExtra("etype",employeetype.getText().toString());
                 intent.putExtra("eid",employeeid.getText().toString());
@@ -124,7 +124,7 @@ public class updateTailorResize extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(updateTailorResize.this, salesmanMenu.class);
+                Intent intent=new Intent(updateTailorResize.this, tailorMENU.class);
                 intent.putExtra("ename",employeename.getText().toString());
                 intent.putExtra("etype",employeetype.getText().toString());
                 intent.putExtra("eid",employeeid.getText().toString());

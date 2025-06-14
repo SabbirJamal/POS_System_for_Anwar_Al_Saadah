@@ -13,6 +13,15 @@
         android:theme="@style/Theme.Finalyearproject"
         tools:targetApi="31">
         <activity
+            android:name=".viewTailorAllOrderStitched"
+            android:exported="false" />
+        <activity
+            android:name=".viewTailorAllSalesStitched"
+            android:exported="false" />
+        <activity
+            android:name=".tailorMENU"
+            android:exported="false" />
+        <activity
             android:name=".updateTailorResize"
             android:exported="false" />
         <activity

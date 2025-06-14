@@ -100,6 +100,13 @@ public class orderDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewallorderstostitchTAILOR(String phn)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Tailor="+phn,null);
+        return cursor;
+    }
+
     public Cursor viewepecificorders2(String phn, String oid) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + ordertbl +
