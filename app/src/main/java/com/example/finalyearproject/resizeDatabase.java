@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class resizeDatabase extends SQLiteOpenHelper {
     public static final String resizedb="resize.db";
     public static final String resizetbl ="resizeDB";
@@ -182,6 +185,20 @@ public class resizeDatabase extends SQLiteOpenHelper {
         int rowsAffected = db.update("resizeDB", contentValues, "Resize_ID = ?", new String[]{oid});
 
         return rowsAffected > 0;
+    }
+
+    public List<ReportModel> getResizeReportByDate(String date) {
+        List<ReportModel> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT Resize_ID, Total_Amount, Order_Date FROM " + resizetbl + " WHERE Order_Date = ?", new String[]{date});
+        while (cursor.moveToNext()) {
+            String id = "R" + cursor.getString(0);
+            String amt = cursor.getString(1);
+            String d = cursor.getString(2);
+            list.add(new ReportModel(id, amt, d));
+        }
+        cursor.close();
+        return list;
     }
 
 

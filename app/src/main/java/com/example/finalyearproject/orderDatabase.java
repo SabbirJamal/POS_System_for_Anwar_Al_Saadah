@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class orderDatabase extends SQLiteOpenHelper {
 
     public static final String orderdb="order.db";
@@ -218,6 +221,19 @@ public class orderDatabase extends SQLiteOpenHelper {
     public Integer deleteOrder(String oid){
         SQLiteDatabase db=this.getWritableDatabase();
         return db.delete(ordertbl,"Order_ID=?",new String []{oid});
+    }
+    public List<ReportModel> getOrderReportByDate(String date) {
+        List<ReportModel> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT Order_ID, Total_Amount, Order_Date FROM orderDB WHERE Order_Date = ?", new String[]{date});
+        while (cursor.moveToNext()) {
+            String id = "O" + cursor.getString(0);
+            String amt = cursor.getString(1);
+            String d = cursor.getString(2);
+            list.add(new ReportModel(id, amt, d));
+        }
+        cursor.close();
+        return list;
     }
 
 }

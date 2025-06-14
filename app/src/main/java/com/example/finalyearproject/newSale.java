@@ -203,7 +203,7 @@ public class newSale extends AppCompatActivity {
                 munt.setText("OMR"+c6);
 
                 Double totalamount=c1+c2+c3+c4+c5+c6;
-                ta.setText("OMR "+totalamount);
+                ta.setText(""+totalamount);
                 String dsale=i1+" - Price:-"+damt+" - Quantity:"+ddquan+" - Total Amount:"+c1;
                 String msale=i2+" - Price:-"+mamt+" - Quantity:"+dmquan+" - Total Amount:"+c2;
                 String ksale=i3+" - Price:-"+kamt+" - Quantity:"+dkquan+" - Total Amount:"+c3;

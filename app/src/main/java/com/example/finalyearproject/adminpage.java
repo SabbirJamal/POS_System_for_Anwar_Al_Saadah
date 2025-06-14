@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class adminpage extends AppCompatActivity {
 
-    CardView ae,inventory,empdetails;
+    CardView ae,inventory,empdetails,gene;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,15 @@ public class adminpage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(adminpage.this, viewemployees.class);
+                startActivity(intent);
+            }
+        });
+
+        gene=findViewById(R.id.gr);
+        gene.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(adminpage.this, ADMIN_GenerateDailyReport.class);
                 startActivity(intent);
             }
         });

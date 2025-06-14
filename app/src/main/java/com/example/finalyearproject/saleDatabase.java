@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class saleDatabase extends SQLiteOpenHelper {
     public static final String saledb="sale.db";
     public static  final String saletbl="saleDB";
@@ -70,32 +73,7 @@ public class saleDatabase extends SQLiteOpenHelper {
         cursor.close();
         return newID;
     }
-/*
-    public boolean addnewsale(String Phone_Number, String Customer_Name, String Ordered_Items,
-                              String Total_Amount, String Sale_Date, String Employee_ID, String Employee_Name) {
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-
-        // Auto-generate Sale_ID like S01, S02...
-        String newSaleID = generateNextSaleID();
-        contentValues.put(saleid, newSaleID);
-
-        contentValues.put(phno, Phone_Number);
-        contentValues.put(custname, Customer_Name);
-        contentValues.put(orderitems, Ordered_Items);
-        contentValues.put(totalamt, Total_Amount);
-        contentValues.put(saledate, Sale_Date);
-        contentValues.put(empid, Employee_ID);
-        contentValues.put(empname, Employee_Name);
-
-        long result = db.insert(saletbl, null, contentValues);
-        db.close();
-
-        return result != -1;
-    }
-
- */
 public boolean addnewsale(String Phone_Number, String Customer_Name, String Total_Amount, String Sale_Date, String Employee_ID, String Employee_Name) {
     SQLiteDatabase db = this.getWritableDatabase();
 
@@ -132,6 +110,22 @@ public boolean addnewsale(String Phone_Number, String Customer_Name, String Tota
 
     return result != -1;
 }
+    // Report method
+    public List<ReportModel> getSaleReportByDate(String date) {
+        List<ReportModel> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT Sale_ID, Total_Amount, Sale_Date FROM " + saletbl + " WHERE Sale_Date = ?", new String[]{date});
+        while (cursor.moveToNext()) {
+            String id = "S" + cursor.getString(0);
+            String amt = cursor.getString(1);
+            String d = cursor.getString(2);
+            list.add(new ReportModel(id, amt, d));
+        }
+        cursor.close();
+        return list;
+    }
+
+
 
 
 }
