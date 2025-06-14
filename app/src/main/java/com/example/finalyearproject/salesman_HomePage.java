@@ -41,7 +41,7 @@ public class salesman_HomePage extends AppCompatActivity {
     //identifying order database
     resizeDatabase rdb;
     //calling the custom adapter
-    customerAdapter_CardView_View ca3;
+    customAdapter_CardViewStitch_View ca3;
     ArrayList<String>roid,rcn,rtamt,rdd,rs,ren;
 
     @Override
@@ -121,9 +121,9 @@ public class salesman_HomePage extends AppCompatActivity {
         rs=new ArrayList<>();
         ren=new ArrayList<>();
 
-        //ViewResizetoStitch();
+        ViewResizetoStitch();
 
-        ca3=new customerAdapter_CardView_View(salesman_HomePage.this,roid,rcn,rtamt,rdd,rs,ren);
+        ca3=new customAdapter_CardViewStitch_View(salesman_HomePage.this,roid,rcn,rtamt,rdd,rs,ren);
         rc3.setAdapter(ca3);
         rc3.setLayoutManager(new LinearLayoutManager(salesman_HomePage.this));
         //end of recycleview for resize to stitch

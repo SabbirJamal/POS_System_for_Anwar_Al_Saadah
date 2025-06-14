@@ -102,6 +102,13 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewepecificresize4(String phn)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+resizetbl+" WHERE Resize_ID="+phn,null);
+        return cursor;
+    }
+
     public Cursor viewresizebyEMPID(String phn)
     {
         SQLiteDatabase db=this.getWritableDatabase();
@@ -121,6 +128,19 @@ public class resizeDatabase extends SQLiteOpenHelper {
 
         contentValues.put(status, stat);
         contentValues.put(tailor, t);
+
+        // Update only using Order_ID
+        int rowsAffected = db.update("resizeDB", contentValues, "Resize_ID = ?", new String[]{oid});
+
+        return rowsAffected > 0;
+    }
+
+    public boolean updatestatusRESIZEStITCH(String oid, String stat, String t) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(status, stat);
+        contentValues.put(isle, t);
 
         // Update only using Order_ID
         int rowsAffected = db.update("resizeDB", contentValues, "Resize_ID = ?", new String[]{oid});

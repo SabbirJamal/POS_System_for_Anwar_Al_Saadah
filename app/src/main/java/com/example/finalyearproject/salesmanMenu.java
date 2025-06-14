@@ -26,7 +26,7 @@ public class salesmanMenu extends AppCompatActivity {
     //for getting current date
     TextView dateTextView;
 
-    CardView order,sales,cancelorder, cancelresize,updatepassword;
+    CardView order,sales,cancelorder, cancelresize,updatepassword,logout;
 
     ImageView search,home;
 
@@ -134,6 +134,15 @@ public class salesmanMenu extends AppCompatActivity {
                 intent.putExtra("eid",employeeid.getText().toString());
                 //send phone number data
                 intent.putExtra("phn",employeeid.getText().toString());
+                startActivity(intent);
+            }
+        });
+
+        logout=findViewById(R.id.logout);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(salesmanMenu.this, MainActivity.class);
                 startActivity(intent);
             }
         });
