@@ -154,7 +154,10 @@ public class empdatabase extends SQLiteOpenHelper {
         return rowsAffected > 0; // return true if update succeeded
     }
 
-
+    public Integer deletemployee(String oid){
+        SQLiteDatabase db=this.getWritableDatabase();
+        return db.delete(emptbl,"Phone_Number=?",new String []{oid});
+    }
 
 
 }

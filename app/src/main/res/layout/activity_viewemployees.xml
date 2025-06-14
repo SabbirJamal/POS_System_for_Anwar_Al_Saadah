@@ -70,6 +70,7 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/removeemployee"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="-115dp"

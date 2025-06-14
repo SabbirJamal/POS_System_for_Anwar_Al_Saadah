@@ -1,11 +1,14 @@
 package com.example.finalyearproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -20,6 +23,8 @@ public class viewemployees extends AppCompatActivity {
     empdatabase empdb;
     ArrayList<String> alname,alphn,aldj,altype;
     customAdapter1 ca1;
+
+    CardView removeemp,updateemp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +49,15 @@ public class viewemployees extends AppCompatActivity {
         ca1=new customAdapter1(viewemployees.this,alname,alphn,aldj,altype);
         recyclerView.setAdapter(ca1);
         recyclerView.setLayoutManager(new LinearLayoutManager(viewemployees.this));
+
+        removeemp=findViewById(R.id.removeemployee);
+        removeemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(viewemployees.this, ADMIN_removeEmployee.class);
+                startActivity(intent);
+            }
+        });
 
     }
     //code for retreiving all data
