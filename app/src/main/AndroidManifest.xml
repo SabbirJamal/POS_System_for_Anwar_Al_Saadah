@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Finalyearproject"
         tools:targetApi="31">
         <activity
+            android:name=".ADMIN_GenerateDailyReport"
+            android:exported="false" />
+        <activity
+            android:name=".ADMIN_generatereport"
+            android:exported="false" />
+        <activity
             android:name=".ADMIN_updateEmployeeSalary"
             android:exported="false" />
         <activity

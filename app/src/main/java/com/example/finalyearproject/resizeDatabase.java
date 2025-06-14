@@ -34,7 +34,7 @@ public class resizeDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query="CREATE TABLE "+resizetbl+" ("+resizeid+" INTEGER PRIMARY KEY AUTOINCREMENT, "+phnno+" TEXT, "+custname+" TEXT, "+height+" TEXT, "+widthc+" TEXT, "+widthh+" TEXT, "+shoulders+"  TEXT, "+back+" TEXT, "+hand+" TEXT, "+arms+"  TEXT, "+waist+" TEXT, "+totamt+" TEXT, "+odate+" TEXT, "+deliverydate+" CHAR(10), "+empid+" TEXT, "+empname+" TEXT, "+status+" TEXT, "+tailor+" TEXT, "+isle+" TEXT)";
+        String query="CREATE TABLE "+resizetbl+" ("+resizeid+" TEXT PRIMARY KEY, "+phnno+" TEXT, "+custname+" TEXT, "+height+" TEXT, "+widthc+" TEXT, "+widthh+" TEXT, "+shoulders+"  TEXT, "+back+" TEXT, "+hand+" TEXT, "+arms+"  TEXT, "+waist+" TEXT, "+totamt+" TEXT, "+odate+" TEXT, "+deliverydate+" CHAR(10), "+empid+" TEXT, "+empname+" TEXT, "+status+" TEXT, "+tailor+" TEXT, "+isle+" TEXT)";
         db.execSQL(query);
     }
 
@@ -44,34 +44,63 @@ public class resizeDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addnewresize(String Phone_Number,String Customer_Name,String Height,String Width_Chest,String Width_Hip,String Shoulders,String Back,String Hand,String Arms,String Waist,String Totamt, String Order_Date,String DeliveryDate, String Empid, String Empname, String Status, String Tailor,String Isle){
-        SQLiteDatabase db=this.getReadableDatabase();
-        ContentValues contentValues=new ContentValues();
-        contentValues.put(phnno,Phone_Number);
-        contentValues.put(custname,Customer_Name);
-        contentValues.put(height,Height);
-        contentValues.put(widthc,Width_Chest);
-        contentValues.put(widthh,Width_Hip);
-        contentValues.put(shoulders,Shoulders);
-        contentValues.put(back,Back);
-        contentValues.put(hand,Hand);
-        contentValues.put(arms,Arms);
-        contentValues.put(waist,Waist);
-        contentValues.put(totamt,Totamt);
-        contentValues.put(odate,Order_Date);
-        contentValues.put(deliverydate,DeliveryDate);
-        contentValues.put(empid,Empid);
-        contentValues.put(empname,Empname);
-        contentValues.put(status,Status);
-        contentValues.put(tailor,Tailor);
-        contentValues.put(isle,Isle);
-        long result=db.insert(resizetbl,null,contentValues);
-        db.close();;
-        if(result==-1)
-            return false;
-        else
-            return true;
+    public String generateNextResizeID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " + resizeid + " FROM " + resizetbl +
+                " ORDER BY " + resizeid + " DESC LIMIT 1", null);
+
+        String nextID = "R01";
+        if (cursor != null && cursor.moveToFirst()) {
+            String lastID = cursor.getString(0); // e.g., "R09"
+            try {
+                int num = Integer.parseInt(lastID.substring(1)); // Remove 'R'
+                num++;
+                nextID = String.format("R%02d", num); // Format as R01, R02...
+            } catch (NumberFormatException e) {
+                nextID = "R01";
+            }
+            cursor.close();
+        }
+        return nextID;
     }
+
+    public boolean addnewresize(String Phone_Number, String Customer_Name, String Height, String Width_Chest, String Width_Hip,
+                                String Shoulders, String Back, String Hand, String Arms, String Waist, String Totamt,
+                                String Order_Date, String DeliveryDate, String Empid, String Empname, String Status,
+                                String Tailor, String Isle) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        // Generate next Resize_ID like R01, R02...
+        String newResizeID = generateNextResizeID();
+        contentValues.put(resizeid, newResizeID);
+
+        contentValues.put(phnno, Phone_Number);
+        contentValues.put(custname, Customer_Name);
+        contentValues.put(height, Height);
+        contentValues.put(widthc, Width_Chest);
+        contentValues.put(widthh, Width_Hip);
+        contentValues.put(shoulders, Shoulders);
+        contentValues.put(back, Back);
+        contentValues.put(hand, Hand);
+        contentValues.put(arms, Arms);
+        contentValues.put(waist, Waist);
+        contentValues.put(totamt, Totamt);
+        contentValues.put(odate, Order_Date);
+        contentValues.put(deliverydate, DeliveryDate);
+        contentValues.put(empid, Empid);
+        contentValues.put(empname, Empname);
+        contentValues.put(status, Status);
+        contentValues.put(tailor, Tailor);
+        contentValues.put(isle, Isle);
+
+        long result = db.insert(resizetbl, null, contentValues);
+        db.close();
+
+        return result != -1;
+    }
+
 
     public Cursor viewepecificresize(String phn)
     {

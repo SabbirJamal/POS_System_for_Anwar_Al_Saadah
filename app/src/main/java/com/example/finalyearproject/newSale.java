@@ -268,7 +268,7 @@ public class newSale extends AppCompatActivity {
                 String sd=dateTextView.getText().toString();
                 String eid=employeeid.getText().toString();
                 String en=employeename.getText().toString();
-                boolean insert=sdb.addnewsale(p,custn,oi,tamt,sd,eid,en);
+                boolean insert=sdb.addnewsale(p,custn,tamt,sd,eid,en);
                 if(insert==true)
                 {
                     Toast.makeText(newSale.this,"Order Success", Toast.LENGTH_SHORT).show();
