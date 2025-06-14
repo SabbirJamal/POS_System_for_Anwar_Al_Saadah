@@ -34,18 +34,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Contractor Name :"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Company Email :"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Contractor Name :"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:textSize="20dp"/>
 
         </LinearLayout>
 
@@ -65,14 +65,6 @@
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"/>
 
-            <TextView
-                android:id="@+id/comemail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Company Email"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:textSize="20dp"/>
 
             <TextView
                 android:id="@+id/contname"
@@ -82,6 +74,16 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/comemail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Company Email"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"/>
+
 
         </LinearLayout>
 

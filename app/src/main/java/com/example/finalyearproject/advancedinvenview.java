@@ -115,20 +115,22 @@ public class advancedinvenview extends AppCompatActivity {
 
     public void retrievingclothdetails(){
         String oid=o.getText().toString();
-        Cursor c=idb.inventoryclothdetails(oid);
+        Cursor c=idb.searchInventoryByOrderID(oid);
         if(c.getCount()==0){
             Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
         }
         StringBuffer sb=new StringBuffer();
         while (c.moveToNext()){
             clothn.add(c.getString(1));
-            supn.add(c.getString(1));
-            numr.add(c.getString(1));
-            rl.add(c.getString(1));
-            pr.add(c.getString(1));
-            ddate.add(c.getString(1));
-            totprice.add(c.getString(1));
-            totlength.add(c.getString(1));
+            supn.add(c.getString(2));
+            numr.add(c.getString(3));
+            rl.add(c.getString(4));
+            pr.add(c.getString(5));
+            ddate.add(c.getString(6));
+            totprice.add(c.getString(7));
+            totlength.add(c.getString(8));
         }
     }
+
+
 }

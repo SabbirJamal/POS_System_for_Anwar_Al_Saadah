@@ -103,12 +103,7 @@ public class inventoryDatabase extends SQLiteOpenHelper {
         }
         return cursor;
     }
-
-    public Cursor inventoryclothdetails(String oid){
-        SQLiteDatabase db=this.getReadableDatabase();
-        Cursor cursor=db.rawQuery("SELECT * FROM "+inventbl+" WHERE Company_number="+oid,null);
-        return cursor;
-    }
+    
 
     public List<String> getCLothname() {
         List<String> list = new ArrayList<>();
@@ -125,6 +120,16 @@ public class inventoryDatabase extends SQLiteOpenHelper {
         db.close();
         return list;
     }
+
+    public Cursor searchInventoryByOrderID(String orderID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // Use a parameterized query to prevent SQL injection
+        Cursor cursor = db.rawQuery("SELECT * FROM " + inventbl + " WHERE " + oid + " = ?", new String[]{orderID});
+
+        return cursor;
+    }
+
 
 
 
