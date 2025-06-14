@@ -31,7 +31,7 @@ public class salesman_HomePage extends AppCompatActivity {
     //identifying order database
     orderDatabase odb;
     //calling the custom adapter
-    order_to_cut_customAdapter ca2;
+    customerAdapter_CardView_View ca2;
     ArrayList<String>oid,cn,tamt,dd,s,en;
     String phonenumber;
 
@@ -41,7 +41,7 @@ public class salesman_HomePage extends AppCompatActivity {
     //identifying order database
     resizeDatabase rdb;
     //calling the custom adapter
-    resize_to_cut_customAdapter ca3;
+    customerAdapter_CardView_View ca3;
     ArrayList<String>roid,rcn,rtamt,rdd,rs,ren;
 
     @Override
@@ -105,7 +105,7 @@ public class salesman_HomePage extends AppCompatActivity {
 
         ViewOrderstoStitch();
 
-        ca2=new order_to_cut_customAdapter(salesman_HomePage.this,oid,cn,tamt,dd,s,en);
+        ca2=new customerAdapter_CardView_View(salesman_HomePage.this,oid,cn,tamt,dd,s,en);
         rc2.setAdapter(ca2);
         rc2.setLayoutManager(new LinearLayoutManager(salesman_HomePage.this));
         //end of recycleview for orders to cut
@@ -121,9 +121,9 @@ public class salesman_HomePage extends AppCompatActivity {
         rs=new ArrayList<>();
         ren=new ArrayList<>();
 
-        ViewResizetoStitch();
+        //ViewResizetoStitch();
 
-        ca3=new resize_to_cut_customAdapter(salesman_HomePage.this,roid,rcn,rtamt,rdd,rs,ren);
+        ca3=new customerAdapter_CardView_View(salesman_HomePage.this,roid,rcn,rtamt,rdd,rs,ren);
         rc3.setAdapter(ca3);
         rc3.setLayoutManager(new LinearLayoutManager(salesman_HomePage.this));
         //end of recycleview for resize to stitch
@@ -148,7 +148,7 @@ public class salesman_HomePage extends AppCompatActivity {
     }
 
     public void ViewResizetoStitch() {
-        Cursor c = rdb.viewepecificresize(phonenumber);
+        Cursor c = rdb.viewepecificresizetostitch(phonenumber);
         if (c.getCount() == 0) {
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
         }
@@ -162,6 +162,8 @@ public class salesman_HomePage extends AppCompatActivity {
             ren.add(c.getString(14));
         }
     }
+
+
 
 
 }

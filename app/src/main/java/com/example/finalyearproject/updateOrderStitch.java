@@ -5,9 +5,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,7 +28,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class updateOrderProcess extends AppCompatActivity {
+public class updateOrderStitch extends AppCompatActivity {
 
     //intended data
     TextView employeename,employeetype,employeeid;
@@ -44,8 +43,8 @@ public class updateOrderProcess extends AppCompatActivity {
 
     //recycleview for remaing data
     orderDatabase odb;
-    customAdapter_orderProcess ca1;
-    ArrayList<String>phone,cd,ct,h,wc,wh,sh,b,hand,a,w,ai;
+    customAdapter_orderStitchProcess ca1;
+    ArrayList<String> phone,cd,ct,h,wc,wh,sh,b,hand,a,w,ai;
     RecyclerView rc1;
 
     Button f;
@@ -59,12 +58,13 @@ public class updateOrderProcess extends AppCompatActivity {
 
     TextView dateTextView,selectDate;
     final Calendar mycalender =Calendar.getInstance();
+    EditText isle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_update_order_process);
+        setContentView(R.layout.activity_update_order_stitch);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -102,48 +102,12 @@ public class updateOrderProcess extends AppCompatActivity {
             Toast.makeText(this,"No Data",Toast.LENGTH_SHORT).show();
         }
 
-        //code for drop down list of employee names
-        //finding Spinner
-        newemployeename=findViewById(R.id.newempid);
-        newemployeeid=findViewById(R.id.newempname);
-        categorySpinner = findViewById(R.id.tailorspinner);
-        empdb = new empdatabase(this);
-
-        // Fetch tailor data
-        tailorMap = empdb.getTailorNamePhoneMap();
-        tailorNames = new ArrayList<>(tailorMap.keySet());
-
-        // Populate spinner with tailor names
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                android.R.layout.simple_spinner_item,
-                tailorNames
-        );
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(adapter);
-
-        // Handle selection
-        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedName = tailorNames.get(position);
-                String selectedPhone = tailorMap.get(selectedName);
-                newemployeeid.setText(selectedPhone);
-
-                // Do something with the phone number (e.g., save it or pass via intent)
-                Log.d("TAILOR_SELECTED", "Name: " + selectedName + ", Phone: " + selectedPhone);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
-        });
-
         //botton cardview intent codes
         search=findViewById(R.id.imgsearch);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(updateOrderProcess.this, search_CustomerItem.class);
+                Intent intent=new Intent(updateOrderStitch.this, search_CustomerItem.class);
                 intent.putExtra("ename",employeename.getText().toString());
                 intent.putExtra("etype",employeetype.getText().toString());
                 intent.putExtra("eid",employeeid.getText().toString());
@@ -155,7 +119,7 @@ public class updateOrderProcess extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(updateOrderProcess.this, employeeHomePage.class);
+                Intent intent=new Intent(updateOrderStitch.this, employeeHomePage.class);
                 intent.putExtra("ename",employeename.getText().toString());
                 intent.putExtra("etype",employeetype.getText().toString());
                 intent.putExtra("eid",employeeid.getText().toString());
@@ -169,7 +133,7 @@ public class updateOrderProcess extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(updateOrderProcess.this, salesmanMenu.class);
+                Intent intent=new Intent(updateOrderStitch.this, salesmanMenu.class);
                 intent.putExtra("ename",employeename.getText().toString());
                 intent.putExtra("etype",employeetype.getText().toString());
                 intent.putExtra("eid",employeeid.getText().toString());
@@ -178,7 +142,6 @@ public class updateOrderProcess extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
         //code for getting intended data from prvs cardview
         oid=findViewById(R.id.orderID);
@@ -209,32 +172,32 @@ public class updateOrderProcess extends AppCompatActivity {
             String phonenumber=empid.getText().toString();
         }
 
-
-            //code for remaining information in recycleview
-            rc1=findViewById(R.id.recyclerView);
-            odb=new orderDatabase(this);
-            phone=new ArrayList<>();
-            cd=new ArrayList<>();
-            ct=new ArrayList<>();
-            h=new ArrayList<>();
-            wc=new ArrayList<>();
-            wh=new ArrayList<>();
-            sh=new ArrayList<>();
-            b=new ArrayList<>();
-            hand=new ArrayList<>();
-            a=new ArrayList<>();
-            w=new ArrayList<>();
-            ai=new ArrayList<>();
-
+        //code for remaining information in recycleview
+        rc1=findViewById(R.id.recyclerView);
+        odb=new orderDatabase(this);
+        phone=new ArrayList<>();
+        cd=new ArrayList<>();
+        ct=new ArrayList<>();
+        h=new ArrayList<>();
+        wc=new ArrayList<>();
+        wh=new ArrayList<>();
+        sh=new ArrayList<>();
+        b=new ArrayList<>();
+        hand=new ArrayList<>();
+        a=new ArrayList<>();
+        w=new ArrayList<>();
+        ai=new ArrayList<>();
 
 
-           viewordertocutdetails();
-            ca1=new customAdapter_orderProcess(updateOrderProcess.this,phone,cd,ct,h,wc,wh,sh,b,hand,a,w,ai);
-            rc1.setAdapter(ca1);
-            rc1.setLayoutManager(new LinearLayoutManager(updateOrderProcess.this));
-            //end of recycle view
+
+        viewordertocutdetails();
+        ca1=new customAdapter_orderStitchProcess(updateOrderStitch.this,phone,cd,ct,h,wc,wh,sh,b,hand,a,w,ai);
+        rc1.setAdapter(ca1);
+        rc1.setLayoutManager(new LinearLayoutManager(updateOrderStitch.this));
+        //end of recycle view
 
 
+        isle=findViewById(R.id.isleNumber);
 
         //updating status
         f=findViewById(R.id.finish);
@@ -243,15 +206,15 @@ public class updateOrderProcess extends AppCompatActivity {
             public void onClick(View v) {
 
                 String orderID = oid.getText().toString();  // Get Order ID from input
-                String tailor = newemployeeid.getText().toString();  // Get tailor from dropdown
-                String s = "Stitching";  // Fixed status
+                String il = isle.getText().toString();  // Get tailor from dropdown
+                String s = "Completed";  // Fixed status
 
-                boolean update = odb.updatestatus(orderID, s, tailor);  // Only pass Order_ID, Status, Tailor
+                boolean update = odb.updatestatusorderStITCH(orderID, s, il);  // Only pass Order_ID, Status, Tailor
 
                 if (update) {
-                    Toast.makeText(updateOrderProcess.this, "Data updated", Toast.LENGTH_LONG).show();
+                    Toast.makeText(updateOrderStitch.this, "Data updated", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(updateOrderProcess.this, "Data not updated", Toast.LENGTH_LONG).show();
+                    Toast.makeText(updateOrderStitch.this, "Data not updated", Toast.LENGTH_LONG).show();
                 }
 
 
@@ -259,12 +222,12 @@ public class updateOrderProcess extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void viewordertocutdetails(){
-        String phonenumber=empid.getText().toString();
         String orderid=oid.getText().toString();
-        Cursor c = odb.viewepecificorders2(phonenumber,orderid);
+        Cursor c = odb.viewepecificordersstitch(orderid);
         if (c.getCount() == 0) {
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
         }
@@ -284,10 +247,4 @@ public class updateOrderProcess extends AppCompatActivity {
             ai.add(c.getString(13));
         }
     }
-
-
-
-
-
-
 }

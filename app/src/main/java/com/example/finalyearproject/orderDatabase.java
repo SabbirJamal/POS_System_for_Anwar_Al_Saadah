@@ -107,6 +107,12 @@ public class orderDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewepecificordersstitch(String phn) {
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Order_ID="+phn,null);
+        return cursor;
+    }
+
     public Cursor viewepecificorders3(String phn, String oid) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + ordertbl +
@@ -145,18 +151,17 @@ public class orderDatabase extends SQLiteOpenHelper {
     }
 
 
-    public boolean newupdateStatus(String oid, String eid, String Status, String Tailor){
-       SQLiteDatabase db=this.getWritableDatabase();
-       ContentValues values=new ContentValues();
-       values.put("Status", Status);
-        values.put("Tailor", Tailor);
+    public boolean updatestatusorderStITCH(String oid, String stat, String t) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
 
-        String whereClause="Order_ID = ? AND Employee_ID = ?";
+        contentValues.put(status, stat);
+        contentValues.put(isle, t);
 
-        String [] whereArgs = new String[]{oid,eid};
+        // Update only using Order_ID
+        int rowsAffected = db.update("orderDB", contentValues, "Order_ID = ?", new String[]{oid});
 
-        int rowsAffected = db.update("orderDB",values,whereClause,whereArgs);
-        return rowsAffected>0;
+        return rowsAffected > 0;
     }
 
     public Cursor vieworderbyid(String id)

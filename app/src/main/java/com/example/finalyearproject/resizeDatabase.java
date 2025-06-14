@@ -83,7 +83,7 @@ public class resizeDatabase extends SQLiteOpenHelper {
     public Cursor viewepecificresizetostitch(String phn)
     {
         SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor=db.rawQuery("SELECT * FROM "+resizetbl+" WHERE Status='Stitching' AND Employee_ID="+phn,null);
+        Cursor cursor=db.rawQuery("SELECT * FROM "+resizetbl+" WHERE Status='Stitching' AND Tailor="+phn,null);
         return cursor;
     }
 

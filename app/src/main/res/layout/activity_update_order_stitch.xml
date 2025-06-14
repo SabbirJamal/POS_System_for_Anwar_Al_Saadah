@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".updateOrderProcess">
-
+    tools:context=".updateOrderStitch">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -277,48 +275,28 @@
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Select Tailor"
-                android:layout_marginTop="260dp"
-                android:layout_marginStart="15dp"/>
-            <Spinner
-                android:id="@+id/tailorspinner"
-                android:layout_width="150dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="246dp"
-                android:layout_marginStart="110dp"/>
-
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:layout_marginTop="300dp" />
+                android:layout_marginTop="250dp" />
 
+            <EditText
+                android:id="@+id/isleNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:hint="Isle Number"
+                android:layout_marginTop="550dp"
+                android:layout_marginStart="25dp"/>
             <Button
                 android:id="@+id/finish"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finish Cut"
+                android:text="Finish Stitch"
                 android:layout_marginTop="550dp"
-                android:layout_marginStart="60dp"/>
+                android:layout_marginStart="160dp"/>
 
-            <TextView
-                android:id="@+id/newempid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="610dp"
-                android:text="Empid"/>
-
-            <TextView
-                android:id="@+id/newempname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="610dp"
-                android:layout_marginStart="100dp"
-                android:text="Emp Name"/>
         </RelativeLayout>
 
 
