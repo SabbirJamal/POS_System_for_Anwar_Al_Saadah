@@ -7,10 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import java.util.List;
-
-
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ViewHolder> {
     private List<ReportModel> reportList;
