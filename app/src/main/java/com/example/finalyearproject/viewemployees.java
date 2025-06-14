@@ -59,6 +59,15 @@ public class viewemployees extends AppCompatActivity {
             }
         });
 
+        updateemp=findViewById(R.id.updateSalary);
+        updateemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(viewemployees.this, ADMIN_updateEmployeeSalary.class);
+                startActivity(intent);
+            }
+        });
+
     }
     //code for retreiving all data
     public void storedatainarrays(){

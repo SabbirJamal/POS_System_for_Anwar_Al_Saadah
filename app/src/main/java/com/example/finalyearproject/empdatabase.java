@@ -142,6 +142,24 @@ public class empdatabase extends SQLiteOpenHelper {
         return namePhoneMap;
     }
 
+    public Map<String, String> getALLNamePhoneMap() {
+        Map<String, String> namePhoneMap = new LinkedHashMap<>();  // Keeps insertion order
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT Employee_Name, Phone_Number FROM Employee_Database", null);
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(0);
+                String phone = cursor.getString(1);
+                namePhoneMap.put(name, phone);  // key: name, value: phone
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return namePhoneMap;
+    }
+
     public boolean updateEmployeePasswordByID(String empID, String newPassword) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -157,6 +175,14 @@ public class empdatabase extends SQLiteOpenHelper {
     public Integer deletemployee(String oid){
         SQLiteDatabase db=this.getWritableDatabase();
         return db.delete(emptbl,"Phone_Number=?",new String []{oid});
+    }
+
+    public boolean updateSalary(String dvl,String oid){
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(esal,dvl);
+        db.update(emptbl,contentValues,"Phone_Number=?",new String[]{oid});
+        return true;
     }
 
 

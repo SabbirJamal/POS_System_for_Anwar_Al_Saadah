@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ADMIN_removeEmployee extends AppCompatActivity {
+public class ADMIN_updateEmployeeSalary extends AppCompatActivity {
 
     //DROP DOWN LIST
     Spinner categorySpinner;
@@ -31,19 +32,17 @@ public class ADMIN_removeEmployee extends AppCompatActivity {
     List<String> tailorNames;
 
     TextView newemployeename,newemployeeid;
-
-    Button delete;
+    Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_admin_remove_employee);
+        setContentView(R.layout.activity_admin_update_employee_salary);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
 
         //code for drop down list of employee names
         //finding Spinner
@@ -79,24 +78,24 @@ public class ADMIN_removeEmployee extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
         });
-
-        delete=findViewById(R.id.removeemplyee);
-        delete.setOnClickListener(new View.OnClickListener() {
+        EditText nu=findViewById(R.id.newSalary);
+        update=findViewById(R.id.updateSalary);
+        update.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                String iid=newemployeeid.getText().toString();
-                Integer delete=empdb.deletemployee(iid);
-                if(delete>0){
-                    Toast.makeText(ADMIN_removeEmployee.this,"Employee Removed",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(ADMIN_removeEmployee.this,viewemployees.class);
+            public void onClick(View view) {
+                String custid=newemployeeid.getText().toString();
+                String nd=nu.getText().toString();
+                boolean updatedlv=empdb.updateSalary(nd,custid);
+                if (updatedlv==true)
+                {
+                    Toast.makeText(ADMIN_updateEmployeeSalary.this, "Employee Salary updated", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(ADMIN_updateEmployeeSalary.this,viewemployees.class);
                     startActivity(intent);
                 }
-                else
-                {
-                    Toast.makeText(ADMIN_removeEmployee.this,"Couldn't Cancel",Toast.LENGTH_SHORT).show();
+                else {
+                    Toast.makeText(ADMIN_updateEmployeeSalary.this, "Update Failed", Toast.LENGTH_LONG).show();
                 }
             }
         });
-
     }
 }

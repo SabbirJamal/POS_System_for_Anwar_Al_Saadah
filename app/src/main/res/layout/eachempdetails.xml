@@ -1,85 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/txtsal"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Employee Salary"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.863"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/txtpass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint=" Password"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.716"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.515" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Employee Age"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.802"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.322" />
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="textEnd"
+                android:layout_height="wrap_content"
+                android:text="Employee Salary :"
+                android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Employee Salary :"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.079"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" />
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="textEnd"
+                android:layout_height="wrap_content"
+                android:text="Employee Password :"
+                android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Employee Password :"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.515" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Employee Age :"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.07"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.322" />
+            <TextView
+                android:layout_width="match_parent"
+                android:textAlignment="textEnd"
+                android:layout_height="wrap_content"
+                android:text="Employee Age :"
+                android:textSize="20dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="15dp">
+
+
+            <TextView
+                android:id="@+id/txtsal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Employee Salary"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txtpass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint=" Password"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/txtage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Employee Age"
+                android:textSize="20dp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

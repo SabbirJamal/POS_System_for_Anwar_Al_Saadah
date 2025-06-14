@@ -32,6 +32,7 @@ public class advancedempview extends AppCompatActivity {
 
     RecyclerView rc;
     ArrayList<String> alsal,alage,alpass;
+    Button b;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,15 @@ public class advancedempview extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        b=findViewById(R.id.back);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(advancedempview.this, viewemployees.class);
+                startActivity(intent);
+            }
         });
         //identifying the textviews
         ename=findViewById(R.id.txtename);
