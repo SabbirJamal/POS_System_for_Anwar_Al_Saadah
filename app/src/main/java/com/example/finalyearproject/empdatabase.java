@@ -142,6 +142,19 @@ public class empdatabase extends SQLiteOpenHelper {
         return namePhoneMap;
     }
 
+    public boolean updateEmployeePasswordByID(String empID, String newPassword) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(epass, newPassword); // Set new password
+
+        // Update password where Phone_Number (Employee ID) matches
+        int rowsAffected = db.update(emptbl, contentValues, ephn + " = ?", new String[]{empID});
+
+        return rowsAffected > 0; // return true if update succeeded
+    }
+
+
 
 
 }

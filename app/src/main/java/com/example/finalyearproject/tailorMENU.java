@@ -120,5 +120,19 @@ public class tailorMENU extends AppCompatActivity {
             }
         });
 
+        updatepassword=findViewById(R.id.updatepassword);
+        updatepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(tailorMENU.this, employeeUPDATEpassword.class);
+                intent.putExtra("ename",employeename.getText().toString());
+                intent.putExtra("etype",employeetype.getText().toString());
+                intent.putExtra("eid",employeeid.getText().toString());
+                //send phone number data
+                intent.putExtra("phn",employeeid.getText().toString());
+                startActivity(intent);
+            }
+        });
+
     }
 }
