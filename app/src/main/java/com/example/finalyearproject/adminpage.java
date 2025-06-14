@@ -64,7 +64,7 @@ public class adminpage extends AppCompatActivity {
         gene.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(adminpage.this, ADMIN_GenerateDailyReport.class);
+                Intent intent=new Intent(adminpage.this, ADMIN_generatereport.class);
                 startActivity(intent);
             }
         });
