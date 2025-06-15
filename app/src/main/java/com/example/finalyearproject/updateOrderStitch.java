@@ -43,8 +43,8 @@ public class updateOrderStitch extends AppCompatActivity {
 
     //recycleview for remaing data
     orderDatabase odb;
-    customAdapter_orderStitchProcess ca1;
-    ArrayList<String> phone,cd,ct,h,wc,wh,sh,b,hand,a,w,ai;
+    customAdapter_orderProcess ca1;
+    ArrayList<String>phone,cd,ct,h,wc,wh,sh,b,hand,a,w,ai;
     RecyclerView rc1;
 
     Button f;
@@ -52,11 +52,8 @@ public class updateOrderStitch extends AppCompatActivity {
     ImageView search,home,menu;
 
 
-    Map<String, String> tailorMap;
-    List<String> tailorNames;
-    TextView newemployeename,newemployeeid;
 
-    TextView dateTextView,selectDate;
+    TextView dateTextView;
     final Calendar mycalender =Calendar.getInstance();
     EditText isle;
 
@@ -191,7 +188,7 @@ public class updateOrderStitch extends AppCompatActivity {
 
 
         viewordertocutdetails();
-        ca1=new customAdapter_orderStitchProcess(updateOrderStitch.this,phone,cd,ct,h,wc,wh,sh,b,hand,a,w,ai);
+        ca1=new customAdapter_orderProcess(updateOrderStitch.this,phone,cd,ct,h,wc,wh,sh,b,hand,a,w,ai);
         rc1.setAdapter(ca1);
         rc1.setLayoutManager(new LinearLayoutManager(updateOrderStitch.this));
         //end of recycle view
@@ -226,6 +223,7 @@ public class updateOrderStitch extends AppCompatActivity {
     }
 
     public void viewordertocutdetails(){
+        String phonenumber=empid.getText().toString();
         String orderid=oid.getText().toString();
         Cursor c = odb.viewepecificordersstitch(orderid);
         if (c.getCount() == 0) {

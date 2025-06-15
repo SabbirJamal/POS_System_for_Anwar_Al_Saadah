@@ -48,17 +48,13 @@ public class updateTailorResize extends AppCompatActivity {
     viewResizeDetails ca1;
     ArrayList<String>h,wc,wh,sh,b,hand,a,w;
     RecyclerView rc1;
-
     Button f;
+
 
     ImageView search,home,menu;
 
 
-    Map<String, String> tailorMap;
-    List<String> tailorNames;
-    TextView newemployeename,newemployeeid;
-
-    TextView dateTextView,selectDate;
+    TextView dateTextView;
     final Calendar mycalender =Calendar.getInstance();
     EditText isle;
 
@@ -163,23 +159,7 @@ public class updateTailorResize extends AppCompatActivity {
             String phonenumber=empid.getText().toString();
         }
 
-        //code for remaining information in recycleview
-        rc1=findViewById(R.id.recyclerView);
-        rdb=new resizeDatabase(this);
-        h=new ArrayList<>();
-        wc=new ArrayList<>();
-        wh=new ArrayList<>();
-        sh=new ArrayList<>();
-        b=new ArrayList<>();
-        hand=new ArrayList<>();
-        a=new ArrayList<>();
-        w=new ArrayList<>();
 
-        viewordertoresizedetails();
-        ca1=new viewResizeDetails(updateTailorResize.this,h,wc,wh,sh,b,hand,a,w);
-        rc1.setAdapter(ca1);
-        rc1.setLayoutManager(new LinearLayoutManager(updateTailorResize.this));
-        //end of recycle view
 
         isle=findViewById(R.id.isleNumber);
 
@@ -204,10 +184,29 @@ public class updateTailorResize extends AppCompatActivity {
             }
         });
 
+        //code for remaining information in recycleview
+        rc1=findViewById(R.id.recyclerView);
+        rdb=new resizeDatabase(this);
+        h=new ArrayList<>();
+        wc=new ArrayList<>();
+        wh=new ArrayList<>();
+        sh=new ArrayList<>();
+        b=new ArrayList<>();
+        hand=new ArrayList<>();
+        a=new ArrayList<>();
+        w=new ArrayList<>();
+
+        viewordertoresizedetails();
+        ca1=new viewResizeDetails(updateTailorResize.this,h,wc,wh,sh,b,hand,a,w);
+        rc1.setAdapter(ca1);
+        rc1.setLayoutManager(new LinearLayoutManager(updateTailorResize.this));
+        //end of recycle view
+
 
     }
 
     public void viewordertoresizedetails(){
+        String phonenumber=empid.getText().toString();
         String orderid=oid.getText().toString();
         Cursor c = rdb.viewepecificresize4(orderid);
         if (c.getCount() == 0) {
@@ -225,6 +224,7 @@ public class updateTailorResize extends AppCompatActivity {
             w.add(c.getString(10));
         }
     }
+
 
 
 }

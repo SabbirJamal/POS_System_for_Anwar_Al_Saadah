@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button log,log2;
+    Button log;
 
     EditText phn,pass;
     empdatabase empdb;
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        log2=findViewById(R.id.employee);
 
         phn=findViewById(R.id.phntxt);
         pass=findViewById(R.id.pswdtxt);
@@ -136,18 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-        log2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, adminpage.class);
-                //send phone number data
-                intent.putExtra("phn",phn.getText().toString());
-                startActivity(intent);
-
-            }
-        });
 
 
 

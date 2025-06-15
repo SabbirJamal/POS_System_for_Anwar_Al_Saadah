@@ -204,6 +204,11 @@ public class updateResizeProcess extends AppCompatActivity {
 
                 if (update) {
                     Toast.makeText(updateResizeProcess.this, "Data updated", Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(updateResizeProcess.this, employeeHomePage.class);
+                    intent.putExtra("ename",employeename.getText().toString());
+                    intent.putExtra("etype",employeetype.getText().toString());
+                    intent.putExtra("eid",employeeid.getText().toString());
+                    startActivity(intent);
                 } else {
                     Toast.makeText(updateResizeProcess.this, "Data not updated", Toast.LENGTH_LONG).show();
                 }

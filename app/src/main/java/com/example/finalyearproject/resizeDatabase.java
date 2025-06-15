@@ -134,6 +134,13 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewepecificresize4(String oid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + resizetbl +
+                " WHERE Resize_ID='" + oid + "'", null);
+        return cursor;
+    }
+
     public Cursor viewepecificresize3(String phn, String oid) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + resizetbl +
@@ -141,12 +148,6 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor viewepecificresize4(String phn)
-    {
-        SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor=db.rawQuery("SELECT * FROM "+resizetbl+" WHERE Resize_ID="+phn,null);
-        return cursor;
-    }
 
     public Cursor viewresizebyEMPID(String phn)
     {

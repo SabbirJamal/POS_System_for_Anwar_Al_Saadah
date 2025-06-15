@@ -146,9 +146,11 @@ public class orderDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
-    public Cursor viewepecificordersstitch(String phn) {
-        SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor=db.rawQuery("SELECT * FROM "+ordertbl+" WHERE Order_ID="+phn,null);
+
+    public Cursor viewepecificordersstitch(String oid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + ordertbl +
+                " WHERE Order_ID='" + oid + "'", null);
         return cursor;
     }
 
