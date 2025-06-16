@@ -31,13 +31,17 @@ public class viewTailorAllOrderStitched extends AppCompatActivity {
     final Calendar mycalender =Calendar.getInstance();
     ImageView menu,home,search;
 
-    //recycle view of orders to stitch
-    RecyclerView rc2;
+    //for viewing all orders
     //identifying order database
     orderDatabase odb;
     //calling the custom adapter
-    customerAdapter_CardView_View ca2;
+    customAdapter_orderANDresizeCardview ca2;
     ArrayList<String> oid,cn,tamt,dd,s,en;
+    RecyclerView rc2;
+
+
+    //search by date
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,10 +127,12 @@ public class viewTailorAllOrderStitched extends AppCompatActivity {
 
         ViewOrderstoStitch();
 
-        ca2=new customerAdapter_CardView_View(viewTailorAllOrderStitched.this,oid,cn,tamt,dd,s,en);
+
+        ca2=new customAdapter_orderANDresizeCardview(viewTailorAllOrderStitched.this,oid,cn,tamt,dd,s,en);
         rc2.setAdapter(ca2);
         rc2.setLayoutManager(new LinearLayoutManager(viewTailorAllOrderStitched.this));
         //end of recycleview for orders to cut
+
     }
 
     public void ViewOrderstoStitch() {

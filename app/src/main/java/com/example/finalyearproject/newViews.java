@@ -128,6 +128,7 @@ public class newViews extends AppCompatActivity {
 
         ViewAllOrders();
 
+
         ca2=new customAdapter_orderANDresizeCardview(newViews.this,oid,cn,tamt,dd,s,en);
         rc2.setAdapter(ca2);
         rc2.setLayoutManager(new LinearLayoutManager(newViews.this));

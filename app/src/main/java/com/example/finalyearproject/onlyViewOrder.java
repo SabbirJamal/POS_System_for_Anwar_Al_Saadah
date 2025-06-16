@@ -169,7 +169,7 @@ public class onlyViewOrder extends AppCompatActivity {
     public void viewallemporders(){
         String phonenumber=empid.getText().toString();
         String orderid=oid.getText().toString();
-        Cursor c = odb.viewepecificorders3(phonenumber,orderid);
+        Cursor c = odb.viewepecificorders3(orderid);
         if (c.getCount() == 0) {
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
         }

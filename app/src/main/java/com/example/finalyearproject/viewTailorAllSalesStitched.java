@@ -35,7 +35,7 @@ public class viewTailorAllSalesStitched extends AppCompatActivity {
     //identifying order database
     resizeDatabase rdb;
     //calling the custom adapter
-    customAdapter_CardViewStitch_View ca3;
+    customAdapter_orderANDresizeCardview2 ca3;
     ArrayList<String>roid,rcn,rtamt,rdd,rs,ren;
 
 
@@ -125,7 +125,7 @@ public class viewTailorAllSalesStitched extends AppCompatActivity {
 
         ViewResizetoStitch();
 
-        ca3=new customAdapter_CardViewStitch_View(viewTailorAllSalesStitched.this,roid,rcn,rtamt,rdd,rs,ren);
+        ca3=new customAdapter_orderANDresizeCardview2(viewTailorAllSalesStitched.this,roid,rcn,rtamt,rdd,rs,ren);
         rc3.setAdapter(ca3);
         rc3.setLayoutManager(new LinearLayoutManager(viewTailorAllSalesStitched.this));
         //end of recycleview for resize to stitch
