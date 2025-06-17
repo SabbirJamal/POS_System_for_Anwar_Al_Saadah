@@ -190,6 +190,8 @@ public class addinventory extends AppCompatActivity {
                 if(insert==true)
                 {
                     Toast.makeText(addinventory.this,"Order sucessfully placed", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(addinventory.this,inventory.class);
+                    startActivity(intent);
                 }
                 else
                 {

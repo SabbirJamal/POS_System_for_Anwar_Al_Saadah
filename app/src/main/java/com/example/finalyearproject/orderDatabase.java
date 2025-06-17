@@ -8,10 +8,20 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import javax.xml.transform.Result;
+
+
 
 public class orderDatabase extends SQLiteOpenHelper {
+    private SQLiteDatabase database;
 
     public static final String orderdb="order.db";
     public static final String ordertbl ="orderDB";
@@ -238,4 +248,112 @@ public class orderDatabase extends SQLiteOpenHelper {
         return list;
     }
 
+    public List<ReportModel> getOrderReportByDateRange(String startDate, String endDate) {
+        List<ReportModel> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT Order_ID, Total_Amount, Order_Date FROM orderDB WHERE Order_Date BETWEEN ? AND ?";
+        Cursor cursor = db.rawQuery(query, new String[]{startDate, endDate});
+        while (cursor.moveToNext()) {
+            String id =cursor.getString(0); // Prefix "O" to ID
+            String amt = cursor.getString(1); // Get total amount
+            String d = cursor.getString(2); // Get the date
+            list.add(new ReportModel(id, amt, d));
+        }
+        cursor.close();
+        return list;
+    }
+
+    // Method to count orders for a given Employee_ID
+    public int getOrderCountByEmployee(String employeeId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM orderDB WHERE Employee_ID = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{employeeId});
+
+        int orderCount = 0;
+        if (cursor.moveToFirst()) {
+            orderCount = cursor.getInt(0); // Get the first column value (the count)
+        }
+        cursor.close();
+
+        return orderCount;
+    }
+
+    public int getOrderCountByTailor(String employeeId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM orderDB WHERE Tailor = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{employeeId});
+
+        int orderCount = 0;
+        if (cursor.moveToFirst()) {
+            orderCount = cursor.getInt(0); // Get the first column value (the count)
+        }
+        cursor.close();
+
+        return orderCount;
+    }
+
+    public int getTotalOrdersInLast30Days(String employeeId) {
+        int count = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + odate + " FROM " + ordertbl + " WHERE " + empid + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{employeeId});
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        Calendar today = Calendar.getInstance();
+        Calendar past30Days = Calendar.getInstance();
+        past30Days.add(Calendar.DAY_OF_YEAR, -30);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String dateStr = cursor.getString(0);
+                try {
+                    Date date = sdf.parse(dateStr);
+                    if (date != null && !date.before(past30Days.getTime()) && !date.after(today.getTime())) {
+                        count++;
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return count;
+    }
+
+    public int getTailorTotalOrderInLast30Days(String employeeId) {
+        int count = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + odate + " FROM " + ordertbl + " WHERE " + tailor + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{employeeId});
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        Calendar today = Calendar.getInstance();
+        Calendar past30Days = Calendar.getInstance();
+        past30Days.add(Calendar.DAY_OF_YEAR, -30);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String dateStr = cursor.getString(0);
+                try {
+                    Date date = sdf.parse(dateStr);
+                    if (date != null && !date.before(past30Days.getTime()) && !date.after(today.getTime())) {
+                        count++;
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return count;
+    }
+
+
+
 }
+
+

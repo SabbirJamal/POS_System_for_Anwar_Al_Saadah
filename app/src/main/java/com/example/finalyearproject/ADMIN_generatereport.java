@@ -13,7 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class ADMIN_generatereport extends AppCompatActivity {
 
-    CardView dr;
+    CardView dr,reportbydate,empreport,logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,24 @@ public class ADMIN_generatereport extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ADMIN_generatereport.this,ADMIN_GenerateDailyReport.class);
+                startActivity(intent);
+            }
+        });
+
+        reportbydate=findViewById(R.id.chhoosedatereport);
+        reportbydate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ADMIN_generatereport.this, ADMIN_GenerateReportByDate.class);
+                startActivity(intent);
+            }
+        });
+
+        empreport=findViewById(R.id.viewemployeereport);
+        empreport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ADMIN_generatereport.this, ADMIN_GenerateEachEmployeeReport.class);
                 startActivity(intent);
             }
         });

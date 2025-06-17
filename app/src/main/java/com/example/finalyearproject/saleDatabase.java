@@ -12,12 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class saleDatabase extends SQLiteOpenHelper {
+    private SQLiteDatabase database;
     public static final String saledb="sale.db";
     public static  final String saletbl="saleDB";
     public static final String saleid="Sale_ID";
     public static  final String phno="Phone_Number";
     public static final String custname="Customer_Name";
-    public static final String orderitems="Ordered_Items";
+
     public final String totalamt="Total_Amount";
     public final String saledate="Sale_Date";
     public static final String empid="Employee_ID";
@@ -125,6 +126,21 @@ public boolean addnewsale(String Phone_Number, String Customer_Name, String Tota
         return list;
     }
 
+
+    public List<ReportModel> getSaleReportByDateRange(String startDate, String endDate) {
+        List<ReportModel> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT Sale_ID, Total_Amount, Sale_Date FROM saleDB WHERE Sale_Date BETWEEN ? AND ?";
+        Cursor cursor = db.rawQuery(query, new String[]{startDate, endDate});
+        while (cursor.moveToNext()) {
+            String id = cursor.getString(0); // Prefix "S" to ID
+            String amt = cursor.getString(1); // Get total amount
+            String d = cursor.getString(2); // Get the date
+            list.add(new ReportModel(id, amt, d));
+        }
+        cursor.close();
+        return list;
+    }
 
 
 

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@drawable/adminwallpaper"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ADMIN_GenerateEachEmployeeReport">
+
+    <TextView
+        android:id="@+id/empIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Generate Report"
+        android:textStyle="bold"
+        android:padding="16dp"
+        android:textSize="18sp"
+        android:textAlignment="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Tailor"
+            android:layout_marginStart="50dp"/>
+        <Spinner
+            android:id="@+id/tailorspinner"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Employee Phone Number: "
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:id="@+id/newempid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Empid" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Employee Name: "
+            android:layout_marginStart="77dp"/>
+        <TextView
+            android:id="@+id/newempname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emp Name" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="40dp">
+
+        <Button
+            android:id="@+id/salesman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Salesman"
+            android:layout_gravity="center"
+            android:layout_marginStart="40dp"/>
+
+        <Button
+            android:id="@+id/tailorSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tailor"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/ordersCountTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Orders: 0"
+        android:paddingTop="20dp"
+        android:textSize="18sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/resizeCountTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total Resize: 0"
+        android:paddingTop="20dp"
+        android:textSize="18sp"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Past 30 days "
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="16dp"/>
+        <TextView
+            android:id="@+id/orderCountLast30Days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orders in Last 30 Days: 0"
+            android:padding="16dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/resizeCountLast30Days"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resize in Last 30 Days: 0"
+            android:padding="16dp"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

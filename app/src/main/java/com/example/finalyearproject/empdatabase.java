@@ -142,6 +142,24 @@ public class empdatabase extends SQLiteOpenHelper {
         return namePhoneMap;
     }
 
+    public Map<String, String> getEmployeeNamePhoneMap() {
+        Map<String, String> namePhoneMap = new LinkedHashMap<>();  // Keeps insertion order
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT Employee_Name, Phone_Number FROM Employee_Database ", null);
+        if (cursor.moveToFirst()) {
+            do {
+                String name = cursor.getString(0);
+                String phone = cursor.getString(1);
+                namePhoneMap.put(name, phone);  // key: name, value: phone
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return namePhoneMap;
+    }
+
     public Map<String, String> getALLNamePhoneMap() {
         Map<String, String> namePhoneMap = new LinkedHashMap<>();  // Keeps insertion order
         SQLiteDatabase db = this.getReadableDatabase();
@@ -184,6 +202,32 @@ public class empdatabase extends SQLiteOpenHelper {
         db.update(emptbl,contentValues,"Phone_Number=?",new String[]{oid});
         return true;
     }
+
+
+    private int getSalesCountForEmployee(String phone) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM saleDB WHERE Employee_ID = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{phone});
+        int salesCount = 0;
+        if (cursor.moveToFirst()) {
+            salesCount = cursor.getInt(0);
+        }
+        cursor.close();
+        return salesCount;
+    }
+
+    private int getResizeCountForEmployee(String phone) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT COUNT(*) FROM resizeDB WHERE Employee_ID = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{phone});
+        int resizeCount = 0;
+        if (cursor.moveToFirst()) {
+            resizeCount = cursor.getInt(0);
+        }
+        cursor.close();
+        return resizeCount;
+    }
+
 
 
 }
