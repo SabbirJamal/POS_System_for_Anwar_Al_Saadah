@@ -152,7 +152,7 @@ public class search_CustomerItem extends AppCompatActivity {
         viewspecificorderbyid();
 
         sphonenumber=findViewById(R.id.searchbyphonenumber);
-        viewspecificorderbyphonenumber();
+        viewspecificorderbyphone();
 
     }
 
@@ -170,70 +170,87 @@ public class search_CustomerItem extends AppCompatActivity {
             s.add(c.getString(19));
             en.add(c.getString(17));
         }
+
+        rdb=new resizeDatabase(this);
     }
 
-    public void viewspecificorderbyphonenumber(){
+    public void viewspecificorderbyphone() {
         sphonenumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String iid=number.getText().toString();
-                Cursor c=odb.vieworderbyphonenumber(iid);
-                if(c.getCount()==0)
-                {
-                    viewcustomerdetails("Error","Nothing Found");
+                String phone = number.getText().toString().trim();
+                if (phone.isEmpty()) {
+                    Toast.makeText(search_CustomerItem.this, "Enter a Phone Number", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                StringBuffer sb=new StringBuffer();
-                while(c.moveToNext())
-                {
-                    sb.append("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"+"\n");
-                    sb.append("Order ID         :- "+c.getString(0)+"\n");
-                    sb.append("Phone Number     :- "+c.getString(1)+"\n");
-                    sb.append("Customer Name    :- "+c.getString(2)+"\n");
-                    sb.append("Total Payable    :- "+c.getString(14)+"\n");
-                    sb.append("Advance Paid     :- "+c.getString(15)+"\n");
-                    sb.append("Balance Amount   :- "+c.getString(16)+"\n");
-                    sb.append("Status           :- "+c.getString(20)+"\n");
-                    sb.append("Delivery Date    :- "+c.getString(18)+"\n");
-                    sb.append("Employee Name    :- "+c.getString(19)+"\n");
-                    sb.append("tailor Name      :- "+c.getString(22)+"\n");
-                    sb.append("Isle Location    :- "+c.getString(21)+"\n");
-                    sb.append("---------------------------------------"+"\n");
+
+                Cursor c = rdb.viewresizedatabyPhone(phone);
+                if (c.getCount() == 0) {
+                    viewcustomerdetails("Error", "Nothing Found");
+                    return;
                 }
-                viewcustomerdetails("Order Details",sb.toString());
+
+                StringBuilder sb = new StringBuilder();
+                try {
+                    while (c.moveToNext()) {
+                        sb.append("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n");
+                        sb.append("Order ID         :- ").append(c.getString(0)).append("\n");
+                        sb.append("Phone Number     :- ").append(c.getString(1)).append("\n");
+                        sb.append("Customer Name    :- ").append(c.getString(2)).append("\n");
+                        sb.append("Total Payable    :- ").append(c.getString(11)).append("\n");
+                        sb.append("Order Date       :- ").append(c.getString(12)).append("\n");
+                        sb.append("Delivery Date    :- ").append(c.getString(13)).append("\n");
+                        sb.append("Employee Name    :- ").append(c.getString(15)).append("\n");
+                        sb.append("Status           :- ").append(c.getString(16)).append("\n");
+                        sb.append("Tailor ID        :- ").append(c.getString(17)).append("\n");
+                        sb.append("Isle Location    :- ").append(c.getString(18)).append("\n");
+                        sb.append("---------------------------------------\n");
+                    }
+                    viewcustomerdetails("Order Details", sb.toString());
+                } catch (Exception e) {
+                    Toast.makeText(search_CustomerItem.this, "Error reading data: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
 
-    public void viewspecificorderbyid(){
+
+    public void viewspecificorderbyid() {
         id.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String iid=number.getText().toString();
-                Cursor c=odb.vieworderbyid(iid);
-                if(c.getCount()==0)
-                {
-                    viewcustomerdetails("Error","Nothing Found");
+                String iid = number.getText().toString().trim();
+                if (iid.isEmpty()) {
+                    Toast.makeText(search_CustomerItem.this, "Enter a Resize ID", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                StringBuffer sb=new StringBuffer();
-                while(c.moveToNext())
-                {
-                    sb.append("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"+"\n");
-                    sb.append("Order ID         :- "+c.getString(0)+"\n");
-                    sb.append("Phone Number     :- "+c.getString(1)+"\n");
-                    sb.append("Customer Name    :- "+c.getString(2)+"\n");
-                    sb.append("Total Payable    :- "+c.getString(14)+"\n");
-                    sb.append("Advance Paid     :- "+c.getString(15)+"\n");
-                    sb.append("Balance Amount   :- "+c.getString(16)+"\n");
-                    sb.append("Status           :- "+c.getString(20)+"\n");
-                    sb.append("Delivery Date    :- "+c.getString(18)+"\n");
-                    sb.append("Employee Name    :- "+c.getString(19)+"\n");
-                    sb.append("tailor Name      :- "+c.getString(22)+"\n");
-                    sb.append("Isle Location    :- "+c.getString(21)+"\n");
-                    sb.append("---------------------------------------"+"\n");
+
+                Cursor c = rdb.viewresizedatabyID(iid);
+                if (c.getCount() == 0) {
+                    viewcustomerdetails("Error", "Nothing Found");
+                    return;
                 }
-                viewcustomerdetails("Order Details",sb.toString());
+
+                StringBuilder sb = new StringBuilder();
+                try {
+                    while (c.moveToNext()) {
+                        sb.append("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-\n");
+                        sb.append("Order ID         :- ").append(c.getString(0)).append("\n");
+                        sb.append("Phone Number     :- ").append(c.getString(1)).append("\n");
+                        sb.append("Customer Name    :- ").append(c.getString(2)).append("\n");
+                        sb.append("Total Payable    :- ").append(c.getString(11)).append("\n");
+                        sb.append("Order Date       :- ").append(c.getString(12)).append("\n");
+                        sb.append("Delivery Date    :- ").append(c.getString(13)).append("\n");
+                        sb.append("Employee Name    :- ").append(c.getString(15)).append("\n");
+                        sb.append("Status           :- ").append(c.getString(16)).append("\n");
+                        sb.append("Tailor ID        :- ").append(c.getString(17)).append("\n");
+                        sb.append("Isle Location    :- ").append(c.getString(18)).append("\n");
+                        sb.append("---------------------------------------\n");
+                    }
+                    viewcustomerdetails("Order Details", sb.toString());
+                } catch (Exception e) {
+                    Toast.makeText(search_CustomerItem.this, "Error reading data: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

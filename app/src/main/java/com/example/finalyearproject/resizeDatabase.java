@@ -141,6 +141,17 @@ public class resizeDatabase extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor viewresizedatabyID(String resizeID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + resizetbl + " WHERE " + resizeid + " = ?";
+        return db.rawQuery(query, new String[]{resizeID});
+    }
+
+    public Cursor viewresizedatabyPhone(String phone) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + resizetbl + " WHERE " + phnno + " = ?", new String[]{phone});
+    }
+
     public Cursor viewepecificresize4(String oid) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " + resizetbl +
