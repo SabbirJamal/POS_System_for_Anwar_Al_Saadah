@@ -8,6 +8,8 @@
     android:background="@drawable/adminwallpaper"
     tools:context=".inventory">
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -37,6 +39,12 @@
             android:text="Jamal Osmanghoni"
             android:textColor="@color/white"
             />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/baseline_arrow_back_24" />
 
     </androidx.cardview.widget.CardView>
 
@@ -108,6 +116,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.873" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

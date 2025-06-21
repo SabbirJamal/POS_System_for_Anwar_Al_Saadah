@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -83,5 +84,14 @@ public class viewemployees extends AppCompatActivity {
                 altype.add(cursor.getString(3));
             }
         }
+
+        ImageView b=findViewById(R.id.back);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(viewemployees.this, adminpage.class);
+                startActivity(intent);
+            }
+        });
     }
 }

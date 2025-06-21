@@ -3,6 +3,7 @@ package com.example.finalyearproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class ADMIN_generatereport extends AppCompatActivity {
 
     CardView dr,reportbydate,empreport,logout;
+    ImageView b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,14 @@ public class ADMIN_generatereport extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ADMIN_generatereport.this, ADMIN_GenerateEachEmployeeReport.class);
+                startActivity(intent);
+            }
+        });
+        b=findViewById(R.id.back);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ADMIN_generatereport.this, adminpage.class);
                 startActivity(intent);
             }
         });
